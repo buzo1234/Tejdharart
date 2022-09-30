@@ -13,7 +13,7 @@ const Footer = ({ data }) => {
         <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
-          crossorigin
+          crossOrigin
         ></link>
         <link
           href='https://fonts.googleapis.com/css2?family=Baloo+2&family=Caveat:wght@500&display=swap'
@@ -24,8 +24,8 @@ const Footer = ({ data }) => {
         <div className='col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 '>
           <p className='text-xl font-bold my-2'>Tejdharart</p>
           <p className='text-3xl pr-32 mt-3 drop-shadow-lg tagline'>
-            “There’s no better way than a personalised ‘Gift’, to express
-            yourself.”
+            “There&apos;s no better way than a personalised &apos;Gift&apos;, to
+            express yourself.”
           </p>
           <p className='mt-5 text-xl font-bold'>Address: </p>
           <p className='text-lg'>

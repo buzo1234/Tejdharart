@@ -15,13 +15,13 @@ const AboutFounder = () => {
           className='float-left object-contain px-5 py-5'
         />
         <p className='text-[25px] about__para px-5 '>
-          Creativity is the core of Tejashree’s personality. Having no formal
-          education or a degree in Arts, this fact hasn’t deterred her from
-          exploring the artsy world because she had an inherent connect with
-          colours, paper, pencils, pens and brushes since childhood. Moreso a
-          sharp ‘eye’ for anything and everything creative. Even today you’d
-          find her with her sketchbook or her iPad in her spare time. This hobby
-          of hers has been a great stress-buster too.
+          Creativity is the core of Tejashree&apos;s personality. Having no
+          formal education or a degree in Arts, this fact hasn&apos;t deterred
+          her from exploring the artsy world because she had an inherent connect
+          with colours, paper, pencils, pens and brushes since childhood. Moreso
+          a sharp &apos;eye&apos; for anything and everything creative. Even
+          today you&apos;d find her with her sketchbook or her iPad in her spare
+          time. This hobby of hers has been a great stress-buster too.
           <br />
           <br />
           The story behind Tej-Dhar is equally unique. It all began with unique
@@ -43,7 +43,7 @@ const AboutFounder = () => {
           <br />
         </p>
         <p className=' underline text-[48px] font-semibold tagline px-2 text-center'>
-          I’m sure you’ll love it too!
+          I&apos;m sure you&apos;ll love it too!
         </p>
       </div>
     </div>

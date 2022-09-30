@@ -6,7 +6,7 @@ const Intro = () => {
       <p className='font-bold text-2xl'>
         “…it has to be unique”, <br />
         <br />
-        “Umm…how ‘bout something crazy?”, <br />
+        “Umm…how &apos;bout something crazy?”, <br />
         <br />
         “No…no…no, it has to have a personal touch…”, <br />
         <br />
@@ -16,9 +16,9 @@ const Intro = () => {
       <br />
       <p className='text-xl '>
         Have you ever faced this dilemma, when it comes to gifting for that
-        special occasion or when it’s the festive season? You don’t want it to
-        be just a GIFT. It should reflect your emotions; your feelings and it
-        should leave a lasting impression. Right!
+        special occasion or when it&apos;s the festive season? You don&apos;t
+        want it to be just a GIFT. It should reflect your emotions; your
+        feelings and it should leave a lasting impression. Right!
         <br />
         <br />
         Welcome to Tej-Dhar Art. Your perfect destination for the personalised,

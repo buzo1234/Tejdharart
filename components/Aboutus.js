@@ -9,7 +9,7 @@ const Aboutus = () => {
         <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
-          crossorigin
+          crossOrigin
         ></link>
         <link
           href='https://fonts.googleapis.com/css2?family=Kalam&display=swap'
@@ -20,7 +20,7 @@ const Aboutus = () => {
         <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
-          crossorigin
+          crossOrigin
         ></link>
         <link
           href='https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap'
@@ -31,7 +31,7 @@ const Aboutus = () => {
         <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
-          crossorigin
+          crossOrigin
         ></link>
         <link
           href='https://fonts.googleapis.com/css2?family=Baloo+2&family=Caveat:wght@500&display=swap'
@@ -49,13 +49,14 @@ const Aboutus = () => {
         </p>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 items-center justify-center gap-5'>
           <p className='col-span-1 text-[25px] px-5 about__para'>
-            Well, it does mean ‘precise’ and ‘sharp’ but it’s an acronym of the
-            founder’s name. Tejashree Dharane. Tej-Dhar Art was founded xx years
-            ago with the idea of bringing Nostalgia, creativity, uniqueness and
-            lots of love, packaged in the form of a GIFT. We understand your
-            need for that perfect gift for that special someone, or for that
-            special occasion. We make sure that “special someone” feels really
-            special and it does make a lasting impression.
+            Well, it does mean &apos;precise&apos; and &apos;sharp&apos; but
+            it&apos;s an acronym of the founder&apos;s name. Tejashree Dharane.
+            Tej-Dhar Art was founded xx years ago with the idea of bringing
+            Nostalgia, creativity, uniqueness and lots of love, packaged in the
+            form of a GIFT. We understand your need for that perfect gift for
+            that special someone, or for that special occasion. We make sure
+            that “special someone” feels really special and it does make a
+            lasting impression.
           </p>
           <Image
             src={'/abtus-new.png'}
@@ -91,9 +92,9 @@ const Aboutus = () => {
           understand your specific need, gather info about the recipient, their
           psyche and based on this we customise the gift for you. So, each gift
           is truly unique and nothing of the shelf. We have ensured that our
-          product lines are ‘Quirky’ enough and contemporary too. It well
-          evident just by their names. Like “Twisted Bollywood”, “Measurers”,
-          “Daaru” and more…
+          product lines are &apos;Quirky&apos; enough and contemporary too. It
+          well evident just by their names. Like “Twisted Bollywood”,
+          “Measurers”, “Daaru” and more…
         </p>
         <br />
         <p>
@@ -104,15 +105,15 @@ const Aboutus = () => {
         </p>
         <br />
         <p className='tagline text-3xl'>
-          “There’s no better way than a personalised ‘Gift’, to express
-          yourself.”
+          “There&apos;s no better way than a personalised &apos;Gift&apos;, to
+          express yourself.”
         </p>
 
         <p className='tagline text-4xl text-yellow-500'>
-          Love, emotions, feelings, and a lot of ‘unsaid words’
+          Love, emotions, feelings, and a lot of &apos;unsaid words&apos;
         </p>
         <br />
-        <p className='text-right about__para'>- it’s the Tej-Dhar touch</p>
+        <p className='text-right about__para'>- it&apos;s the Tej-Dhar touch</p>
       </section>
     </div>
   );
