@@ -46,7 +46,7 @@ const Aboutus = () => {
       <div className='flex w-full h-1 bg-yellow-200'>{/* Underline */}</div>
       <section className='flex flex-col '>
         <p className='text-yellow-500 text-[28px] md:text-[48px] lg:text-[48px] xl:text-[48px] text-center font-bold italic my-10'>
-          Wondering what "Tej-Dhar" means?
+          Wondering what &quot;Tej-Dhar&quot; means?
         </p>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 items-center justify-center gap-5'>
           <p className='col-span-1 text-[25px] px-5 about__para'>
