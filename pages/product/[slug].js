@@ -34,7 +34,7 @@ const ProductDetails = ({ product, products }) => {
                     defaultProductVariant.images[index]
                 )
               }
-              className='product-detail-image'
+              className='product-detail-image object-contain'
             />
           </div>
           <div className='small-images-container'>
@@ -52,7 +52,7 @@ const ProductDetails = ({ product, products }) => {
         </div>
 
         <div className='product-detail-desc'>
-          <h1 className='text-2xl'>{title}</h1>
+          <h1>{title}</h1>
           <div className='reviews'>
             <div className='flex'>
               <AiFillStar />

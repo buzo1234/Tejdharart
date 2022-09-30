@@ -29,7 +29,7 @@ a {
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  margin: 0px 18px;
+  margin: 6px 18px;
   position: relative;
 }
 .marquee-text {
@@ -462,6 +462,7 @@ span.text-red {
 }
 .small-images-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
 }
@@ -648,18 +649,6 @@ span.text-red {
   margin-top: 10px;
 }
 
-.tagline {
-  font-family: 'Baloo 2', cursive;
-  font-family: 'Caveat', cursive;
-}
-
-.about__para {
-  font-family: 'Kalam', cursive;
-}
-
-.about__para_2 {
-  font-family: 'Josefin Sans', sans-serif;
-}
 @media screen and (max-width: 800px) {
   .hero-banner-container {
     height: 560px;
