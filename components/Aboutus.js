@@ -40,7 +40,8 @@ const Aboutus = () => {
       </Head>
       <p className='text-[64px] font-bold italic'>ABOUT US</p>
       <p className='font-semibold text-[36px] italic my-5 text-center'>
-        "Love, emotions, feelings, and a lot of 'unsaid words'"
+        &quot;Love, emotions, feelings, and a lot of &apos;unsaid
+        words&apos;&quot;
       </p>
       <div className='flex w-full h-1 bg-yellow-200'>{/* Underline */}</div>
       <section className='flex flex-col '>
