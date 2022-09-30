@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
-import {
-  AiOutlineMinus,
-  AiOutlinePlus,
-  AiFillStar,
-  AiOutlineStar,
-} from 'react-icons/ai';
 
 import { useRouter } from 'next/router';
-import { client, urlFor } from '../../lib/client';
+import { client } from '../../lib/client';
 import { Footer, Product } from '../../components';
 
 const CategoryDetails = ({ category, products }) => {
@@ -21,7 +15,7 @@ const CategoryDetails = ({ category, products }) => {
 
       <div className='products-container'>
         {products?.map((product) => (
-          <Product key={product._id} product={product} />
+          <Product key={product?._id} product={product} />
         ))}
       </div>
 
@@ -57,7 +51,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
   const category = await client.fetch(query);
 
-  const productsQuery = `*[_type == "product" && category._ref == '${category._id}']`;
+  const productsQuery = `*[_type == "product" && category._ref == '${category?._id}']`;
   const products = await client.fetch(productsQuery);
 
   console.log(category);
