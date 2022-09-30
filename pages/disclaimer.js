@@ -34,8 +34,8 @@ const disclaimer = () => {
           </li>
           <br />
           <li>
-            Any artwork from Tejdhar can't be used in the same form under other
-            brand name.
+            Any artwork from Tejdhar can&apos;t be used in the same form under
+            other brand name.
           </li>
         </ol>
       </div>

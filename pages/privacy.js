@@ -7,9 +7,9 @@ const privacy = () => {
       <div className='px-4 my-5 max-w-6xl mx-auto'>
         <p className='text-4xl font-bold font-sans mb-5'>Privacy Policy</p>
         <p>
-          This Privacy Policy ("Privacy Policy") is designed to help you
-          understand how Tejdhar Art collects and processes the information that
-          you share when you use this and any of our website.
+          This Privacy Policy (&quot;Privacy Policy&quot;) is designed to help
+          you understand how Tejdhar Art collects and processes the information
+          that you share when you use this and any of our website.
         </p>
         <br />
         <p>
@@ -25,10 +25,10 @@ const privacy = () => {
         <p className='font-bold'>Personal Information You Share With Us: </p>
         <br />
         <p>
-          "Personal Information" is information that can personally identify
-          you, such as your name, email address and telephone number. We
-          maintain one or more databases to store your Personal Information and
-          may retain it as reasonably required to serve you and operate the
+          &quot;Personal Information&quot; is information that can personally
+          identify you, such as your name, email address and telephone number.
+          We maintain one or more databases to store your Personal Information
+          and may retain it as reasonably required to serve you and operate the
           Site. Personal Information that we collect depends on how you use the
           Site. Providing your Personal Information to us is your choice.{' '}
         </p>
@@ -70,20 +70,21 @@ const privacy = () => {
           <br />
           We use cookies to keep track of your shopping cart. A cookie is a
           small file stored by your internet browser on your computer. <br />
-          <br />A "session cookie" stores temporary information that is erased
-          when you close your web browser or turn off your computer. A
-          "persistent cookie" enables the Site to recognize you when you return
-          to it and remains stored on your computer until you delete it. Your
-          web browser is usually set up to initially accept cookies. If you set
-          your browser to reject cookies, the Site will not be able to recognize
-          your account. We do not and cannot use cookies to gather other
-          information that may be stored on your hard drive.
+          <br />A &quot;session cookie&quot; stores temporary information that
+          is erased when you close your web browser or turn off your computer. A
+          &quot;persistent cookie&quot; enables the Site to recognize you when
+          you return to it and remains stored on your computer until you delete
+          it. Your web browser is usually set up to initially accept cookies. If
+          you set your browser to reject cookies, the Site will not be able to
+          recognize your account. We do not and cannot use cookies to gather
+          other information that may be stored on your hard drive.
           <br />
           <br />
           Tejdhar may use Google Analytics to monitor activity on the Site and
           assist with advertising. To learn how Google Analytics collects and
           processes data, please visit: “How Google uses data when you use our
-          partners’ sites or apps” located at www.google.com/policies/privacy
+          partners&apos; sites or apps” located at
+          www.google.com/policies/privacy
         </p>
         <br />
         <br />
@@ -91,13 +92,13 @@ const privacy = () => {
         <br />
         <p>
           Some web browsers (including Safari, Internet Explorer, Firefox and
-          Chrome) incorporate a "Do Not Track" ("DNT") or similar feature that
-          signals to websites that a user does not want to have his or her
-          online activity and behaviour tracked. If a website that responds to a
-          particular DNT signal receives the DNT signal, the browser can block
-          that website from collecting certain information about the browser's
-          user. Not all browsers offer a DNT option and DNT signals are not yet
-          uniform.{' '}
+          Chrome) incorporate a &quot;Do Not Track&quot; (&quot;DNT&quot;) or
+          similar feature that signals to websites that a user does not want to
+          have his or her online activity and behaviour tracked. If a website
+          that responds to a particular DNT signal receives the DNT signal, the
+          browser can block that website from collecting certain information
+          about the browser's user. Not all browsers offer a DNT option and DNT
+          signals are not yet uniform.{' '}
         </p>
         <br />
         <br />
@@ -105,10 +106,11 @@ const privacy = () => {
         <br />
         <p>
           The Site also may include an activity feed, social media buttons and
-          widgets, such as the Facebook "Like" button or the "Share This"
-          button. These features are either hosted by a third party or hosted
-          directly on the Site and your interactions with them are governed by
-          the privacy policy of the third party that provides the feature.
+          widgets, such as the Facebook &quot;Like&quot; button or the
+          &quot;Share This&quot; button. These features are either hosted by a
+          third party or hosted directly on the Site and your interactions with
+          them are governed by the privacy policy of the third party that
+          provides the feature.
         </p>
         <br />
         <br />
@@ -224,9 +226,10 @@ const privacy = () => {
           SSL-protected page, a picture of a closed lock appears at the bottom
           or top of some web browsers. Another way to tell if you are on a
           secure page is to check the URL or address of the page. (Look in the
-          address box or right-click on the page and select "Properties".) These
-          secure SSL-encrypted pages have URLs that start with "https://"
-          instead of "http://". <br />
+          address box or right-click on the page and select
+          &quot;Properties&quot;.) These secure SSL-encrypted pages have URLs
+          that start with &quot;https://&quot; instead of &quot;http://&quot;.{' '}
+          <br />
           <br />
           Please understand, however, that it is possible for third parties to
           access information despite our efforts. Without limiting the terms of
@@ -252,12 +255,12 @@ const privacy = () => {
         <p>
           We may occasionally update this Privacy Policy to reflect changes in
           our practices. When we post modifications to this Privacy Policy, we
-          will revise the "Last Updated" date at the top of this web page. The
-          modified Privacy Policy will be effective immediately upon posting on
-          the Site. Your continued use of the Site after the posting of the
-          modified Privacy Policy constitutes your agreement to abide and be
-          bound by it. We encourage you to periodically review this page for the
-          latest information on our privacy practices. If you object to any
+          will revise the &quot;Last Updated&quot; date at the top of this web
+          page. The modified Privacy Policy will be effective immediately upon
+          posting on the Site. Your continued use of the Site after the posting
+          of the modified Privacy Policy constitutes your agreement to abide and
+          be bound by it. We encourage you to periodically review this page for
+          the latest information on our privacy practices. If you object to any
           modification, your sole recourse is to stop using the Site.
         </p>
       </div>
