@@ -82,8 +82,8 @@ const privacy = () => {
           <br />
           Tejdhar may use Google Analytics to monitor activity on the Site and
           assist with advertising. To learn how Google Analytics collects and
-          processes data, please visit: “How Google uses data when you use our
-          partners&apos; sites or apps” located at
+          processes data, please visit: &quot;How Google uses data when you use
+          our partners&apos; sites or apps&quot; located at
           www.google.com/policies/privacy
         </p>
         <br />
@@ -97,8 +97,8 @@ const privacy = () => {
           have his or her online activity and behaviour tracked. If a website
           that responds to a particular DNT signal receives the DNT signal, the
           browser can block that website from collecting certain information
-          about the browser's user. Not all browsers offer a DNT option and DNT
-          signals are not yet uniform.{' '}
+          about the browser&apos;s user. Not all browsers offer a DNT option and
+          DNT signals are not yet uniform.{' '}
         </p>
         <br />
         <br />
