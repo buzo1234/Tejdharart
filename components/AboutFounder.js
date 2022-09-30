@@ -4,15 +4,17 @@ import Image from 'next/image';
 const AboutFounder = () => {
   return (
     <div className='mt-10 flex justify-center w-full flex-col items-center font-poppins max-w-6xl mx-auto'>
-      <p className='text-[64px] font-bold italic my-12'>About the Founder</p>
+      <p className='text-[64px] px-2 text-center font-bold italic my-12'>
+        About the Founder
+      </p>
       <div className='w-full'>
         <img
           src={'/founder.jpeg'}
           height={400}
           width={400}
-          className='float-left object-contain px-5 '
+          className='float-left object-contain px-5 py-5'
         />
-        <p className='text-[25px] font-poppins px-5'>
+        <p className='text-[25px] about__para px-5 '>
           Creativity is the core of Tejashree’s personality. Having no formal
           education or a degree in Arts, this fact hasn’t deterred her from
           exploring the artsy world because she had an inherent connect with
@@ -40,7 +42,7 @@ const AboutFounder = () => {
           <br />
           <br />
         </p>
-        <p className='italic underline text-[48px] font-semibold text-center'>
+        <p className=' underline text-[48px] font-semibold tagline px-2 text-center'>
           I’m sure you’ll love it too!
         </p>
       </div>

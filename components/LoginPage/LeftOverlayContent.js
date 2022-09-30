@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const LeftOverlayContent = ({ isAnimated, setIsAnimated }) => {
   return (
-    <div className='p-8 text-center'>
+    <div className='text-center'>
       <Image
         src={'/create-illustation.png'}
         width={700}

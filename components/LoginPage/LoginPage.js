@@ -9,7 +9,7 @@ const LoginPage = () => {
   const overlayBg = '';
 
   return (
-    <div className='h-4/5 w-4/5 bg-white relative overflow-hidden rounded-3xl'>
+    <div className='h-4/5 w-11/12 md:w-4/5 lg:w-4/5 xl:w-4/5 bg-white relative overflow-hidden rounded-3xl'>
       <div
         className={`signin bg-white absolute top-0 left-0 h-full w-1/2 flex justify-center items-center transition-all duration-700 ease-in-out z-20 bg-repeat ${
           isAnimated ? 'translate-x-full opacity-0' : ''

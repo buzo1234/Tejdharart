@@ -7,10 +7,12 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
   return (
     <div className='selection:bg-indigo-500 selection:text-white '>
       <div className='flex justify-center items-center '>
-        <div className='p-8 flex-1'>
+        <div className=' flex-1'>
           <div className='mx-auto overflow-hidden'>
             <div className='p-8'>
-              <h1 className='text-5xl font-bold text-black'>Welcome back!</h1>
+              <h1 className='text-xl md:text-4xl lg:text-5xl font-bold text-black'>
+                Welcome back!
+              </h1>
 
               <form className='mt-12' action='' method='POST'>
                 <div className='relative '>
@@ -58,7 +60,9 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
                 Forgot your password?{' '}
               </a>
               <div className='flex w-full justify-center items-center mt-5 space-x-4'>
-                <p>Don't have an account?</p>
+                <p className='text-xs md:text-lg lg:text-lg xl:text-lg'>
+                  Don't have an account?
+                </p>
                 <button
                   className='px-4 py-2 rounded-lg border-2 border-black font-semibold'
                   onClick={(e) => {
