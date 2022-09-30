@@ -5,6 +5,7 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from 'react-icons/ai';
+import { PortableText } from '@portabletext/react';
 
 import { client, urlFor } from '../../lib/client';
 import { Footer, Product } from '../../components';
@@ -52,7 +53,7 @@ const ProductDetails = ({ product, products }) => {
         </div>
 
         <div className='product-detail-desc'>
-          <h1>{title}</h1>
+          <h1 className='text-2xl'>{title}</h1>
           <div className='reviews'>
             <div className='flex'>
               <AiFillStar />
@@ -64,7 +65,7 @@ const ProductDetails = ({ product, products }) => {
             <p>(20)</p>
           </div>
           <h4 className='font-semibold'>Details: </h4>
-          <p>{body?.en[0].children[0].text}</p>
+          <PortableText value={body?.en} />
           <p className='price'>&#x20B9;{defaultProductVariant.price}</p>
           <div className='quantity'>
             <h3>Quantity:</h3>

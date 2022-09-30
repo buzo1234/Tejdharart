@@ -29,7 +29,7 @@ a {
 .navbar-container {
   display: flex;
   justify-content: space-between;
-  margin: 6px 18px;
+  margin: 0px 18px;
   position: relative;
 }
 .marquee-text {
@@ -118,7 +118,7 @@ span.text-red {
   flex-direction: column;
 }
 .product-card:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.02, 1.02);
 }
 
 .category-card {
@@ -137,7 +137,7 @@ span.text-red {
   flex-direction: column;
 }
 .category-card:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.03, 1.03);
 }
 .product-image {
   display: flex;
@@ -295,7 +295,7 @@ span.text-red {
   font-weight: 300;
 }
 .cart-wrapper {
-  width: 100vw;
+  width: 100%;
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
   right: 0;
@@ -649,6 +649,19 @@ span.text-red {
   margin-top: 10px;
 }
 
+.tagline {
+  font-family: 'Baloo 2', cursive;
+  font-family: 'Caveat', cursive;
+}
+
+.about__para {
+  font-family: 'Kalam', cursive;
+}
+
+.about__para_2 {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 @media screen and (max-width: 800px) {
   .hero-banner-container {
     height: 560px;
@@ -714,7 +727,7 @@ span.text-red {
     height: 350px;
   }
   .cart-container {
-    width: 415px;
+    width: 100vw;
     padding: 4px;
   }
   .cart-heading {
