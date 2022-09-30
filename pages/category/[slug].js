@@ -4,13 +4,13 @@ import { useRouter } from 'next/router';
 import { client } from '../../lib/client';
 import { Footer, Product } from '../../components';
 
-const CategoryDetails = ({ category, products }) => {
+const CategoryDetails = ({ category: { title }, products }) => {
   const router = useRouter();
   const { slug } = router.query;
   return (
     <div>
       <div className='products-heading'>
-        <h2>{category.title}</h2>
+        <h2>{title}</h2>
       </div>
 
       <div className='products-container'>
@@ -25,7 +25,7 @@ const CategoryDetails = ({ category, products }) => {
 };
 
 export const getStaticPaths = async () => {
-  const query = `*[_type == "product"] {
+  const query = `*[_type == "category"] {
     slug {
       current
     }
@@ -40,6 +40,8 @@ export const getStaticPaths = async () => {
     },
   }));
 
+  console.log(paths);
+
   return {
     paths,
     fallback: 'blocking',
@@ -51,10 +53,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
 
   const category = await client.fetch(query);
 
-  const productsQuery = `*[_type == "product" && category._ref == '${category?._id}']`;
+  const productsQuery = `*[_type == "product" && category._ref == '${category._id}']`;
   const products = await client.fetch(productsQuery);
-
-  console.log(category);
 
   return {
     props: { products, category },
