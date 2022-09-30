@@ -61,7 +61,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
               </a>
               <div className='flex w-full justify-center items-center mt-5 space-x-4'>
                 <p className='text-xs md:text-lg lg:text-lg xl:text-lg'>
-                  Don't have an account?
+                  Don&apos;t have an account?
                 </p>
                 <button
                   className='px-4 py-2 rounded-lg border-2 border-black font-semibold'

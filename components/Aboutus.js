@@ -84,8 +84,8 @@ const Aboutus = () => {
         </p>
         <br />
         <p className='about__para'>
-          And last but not the least, we ensure you get the best “Value for
-          money”, experience.
+          And last but not the least, we ensure you get the best &apos;Value for
+          money&apos;, experience.
         </p>
         <br />
         <p className='about__para'>
@@ -94,20 +94,20 @@ const Aboutus = () => {
           psyche and based on this we customise the gift for you. So, each gift
           is truly unique and nothing of the shelf. We have ensured that our
           product lines are &apos;Quirky&apos; enough and contemporary too. It
-          well evident just by their names. Like “Twisted Bollywood”,
-          “Measurers”, “Daaru” and more…
+          well evident just by their names. Like &apos;Twisted Bollywood&apos;,
+          &apos;Measurers&apos;, &apos;Daaru&apos; and more…
         </p>
         <br />
         <p>
           <b className='about__para_2'>
-            We have recently added the “Wedding Goodies” and the “Corporate
-            gifting” section. Make sure to visit them too.
+            We have recently added the &apos;Wedding Goodies&apos; and the
+            &apos;Corporate gifting&apos; section. Make sure to visit them too.
           </b>
         </p>
         <br />
         <p className='tagline text-3xl'>
-          “There&apos;s no better way than a personalised &apos;Gift&apos;, to
-          express yourself.”
+          &apos;There&apos;s no better way than a personalised &apos;Gift&apos;,
+          to express yourself.&apos;
         </p>
 
         <p className='tagline text-4xl text-yellow-500'>
