@@ -44,6 +44,17 @@ const Footer = ({ data }) => {
           <Link href='/founder'>
             <p className='hover:underline cursor-pointer'>About Founder</p>
           </Link>
+          <Link href='/privacy'>
+            <p className='hover:underline cursor-pointer'>Privacy Policies</p>
+          </Link>
+          <Link href='/cancellation'>
+            <p className='hover:underline cursor-pointer'>
+              Refunds and Cancellation
+            </p>
+          </Link>
+          <Link href='/disclaimer'>
+            <p className='hover:underline cursor-pointer'>Disclaimer</p>
+          </Link>
         </div>
         <div className='mt-4 md:mt-0 lg:mt-0 xl:mt-0'>
           <p className=' font-bold text-lg py-2'>Our Categories</p>
