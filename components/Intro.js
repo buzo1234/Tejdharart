@@ -2,8 +2,8 @@ import React from 'react';
 
 const Intro = () => {
   return (
-    <div className='my-10'>
-      <p className='font-bold text-2xl'>
+    <div className=''>
+      <p className='font-bold md:text-2xl lg:text-2xl xl:text-2xl'>
         “…it has to be unique”, <br />
         <br />
         “Umm…how &apos;bout something crazy?”, <br />
@@ -14,7 +14,7 @@ const Intro = () => {
         <br />
       </p>
       <br />
-      <p className='text-xl '>
+      <p className='md:text-xl lg:text-xl xl:text-xl '>
         Have you ever faced this dilemma, when it comes to gifting for that
         special occasion or when it&apos;s the festive season? You don&apos;t
         want it to be just a GIFT. It should reflect your emotions; your
@@ -29,7 +29,7 @@ const Intro = () => {
         Each product line comes with that personalised touch. Warmly
         hand-crafted, contemporary and quirky too. <br />
         <br />
-        Browse through our wide array… <b>Happy Shopping 😄</b>.
+        Browse through our wide array… <b>Happy Shopping 🛒</b>.
         <br />
         <br />
       </p>

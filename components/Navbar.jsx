@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar-container'>
-      <p className='logo'>
+      <p className='logo mt-2'>
         <Link href='/'>
           <Image src='/logo_tejdharart.jpg' width={120} height={120} />
         </Link>
