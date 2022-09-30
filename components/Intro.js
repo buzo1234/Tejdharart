@@ -3,7 +3,7 @@ import React from 'react';
 const Intro = () => {
   return (
     <div className=''>
-      <p className='font-bold md:text-2xl lg:text-2xl xl:text-2xl'>
+      <p className='font-bold text-sm md:text-2xl lg:text-2xl xl:text-2xl'>
         “…it has to be unique”, <br />
         <br />
         “Umm…how &apos;bout something crazy?”, <br />
