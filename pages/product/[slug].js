@@ -52,7 +52,7 @@ const ProductDetails = ({ product, products }) => {
         </div>
 
         <div className='product-detail-desc'>
-          <h1>{title}</h1>
+          <h1 className='text-2xl'>{title}</h1>
           <div className='reviews'>
             <div className='flex'>
               <AiFillStar />
