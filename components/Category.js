@@ -14,6 +14,7 @@ const Category = ({ category: { title, slug, image, description, _id } }) => {
               width={250}
               height={250}
               className='product-image'
+              loading='eager'
             />
           )}
           <p className='product-name'>{title}</p>
