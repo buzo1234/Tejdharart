@@ -1,9 +1,44 @@
 import React from 'react';
 import Image from 'next/image';
+import Head from 'next/head';
 
 const AboutFounder = () => {
   return (
     <div className='mt-10 flex justify-center w-full flex-col items-center font-poppins max-w-6xl mx-auto'>
+      <Head>
+        <link rel='preconnect' href='https://fonts.googleapis.com'></link>
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin
+        ></link>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Kalam&display=swap'
+          rel='stylesheet'
+        ></link>
+
+        <link rel='preconnect' href='https://fonts.googleapis.com'></link>
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin
+        ></link>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap'
+          rel='stylesheet'
+        ></link>
+
+        <link rel='preconnect' href='https://fonts.googleapis.com'></link>
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossOrigin
+        ></link>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Baloo+2&family=Caveat:wght@500&display=swap'
+          rel='stylesheet'
+        ></link>
+      </Head>
       <p className='text-[64px] px-2 text-center font-bold italic my-12'>
         About the Founder
       </p>
