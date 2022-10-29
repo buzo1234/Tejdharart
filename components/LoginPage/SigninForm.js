@@ -1,8 +1,67 @@
 import { useState } from 'react';
+import axios from 'axios';
+import dynamic from 'next/dynamic';
+
+const OTPInput = dynamic(() => import('otp-input-react'), {
+  // Do not import in server side
+  ssr: false,
+});
+import { useUserContext } from '../../context/UserContext';
+import { useRouter } from 'next/router';
 
 const SigninForm = ({ isAnimated, setIsAnimated }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [otpbtn, setotpbtn] = useState(true);
+  const { state, dispatch } = useUserContext();
+  const [signbtn, setsignbtn] = useState(false);
+  const [OTP, setOTP] = useState('');
+
+  const router = useRouter();
+
+  async function otpHandler(e) {
+    e.preventDefault();
+    try {
+      await axios({
+        method: 'post',
+        url: 'https://tejdhar-otp-service.vercel.app/auth/signin/',
+        data: {
+          email: email,
+        },
+      }).then((response) => {});
+      setotpbtn(false);
+      setsignbtn(true);
+    } catch (error) {
+      alert(error);
+    }
+  }
+
+  async function verifyOtp(e) {
+    e.preventDefault();
+    try {
+      await axios({
+        method: 'post',
+        url: 'https://tejdhar-otp-service.vercel.app/auth/verify/',
+        data: {
+          email: email,
+          otp: OTP,
+        },
+      }).then((response) => {
+        if (response.data[0]) {
+          alert(`Verification Successfull with OTT ${OTP}`);
+          dispatch({
+            type: 'logged_in',
+            value: { name: response.data[1].name, phone: email },
+          });
+          router.push('/');
+        } else {
+          alert(`Message from Server : ${response.data[1]}`);
+        }
+      });
+    } catch (error) {
+      alert('Please enter the correct OTP');
+    }
+  }
 
   return (
     <div className='selection:bg-indigo-500 selection:text-white '>
@@ -21,7 +80,8 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
                     name='email'
                     type='number'
                     className='peer h-10 w-full border-b-2 border-black text-black placeholder-transparent focus:outline-none focus:border-indigo-600  bg-transparent'
-                    placeholder='john@doe.com'
+                    placeholder='Phone'
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <label
                     htmlFor='email'
@@ -30,26 +90,46 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
                     Mobile Number
                   </label>
                 </div>
-                <div className='mt-10 relative'>
-                  <input
-                    id='password'
-                    type='password'
-                    name='password'
-                    className='peer h-10 w-full border-b-2 border-black text-gray-900 placeholder-transparent focus:outline-none focus:border-indigo-600 bg-transparent'
-                    placeholder='Password'
-                  />
+
+                <div className='flex w-full justify-center items-center'>
+                  <button
+                    disabled={!otpbtn}
+                    name='send otp'
+                    className='mt-5 py-1 px-3 rounded-md flex bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-center w-fit focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 focus:ring-opacity-80 cursor-pointer bg-transparent disabled:bg-gray-400 disabled:cursor-not-allowed'
+                    onClick={otpHandler}
+                  >
+                    send otp
+                  </button>
+                </div>
+
+                <div className='mt-10 flex flex-col w-full  justify-center'>
                   <label
                     htmlFor='password'
-                    className='absolute left-0 -top-3.5 text-black text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-black peer-focus:text-sm'
+                    className='left-0 -top-3.5 text-black transition-all mb-3 text-lg font-semibold peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-black peer-focus:text-sm'
                   >
-                    Password
+                    OTP
                   </label>
+                  <OTPInput
+                    value={OTP}
+                    onChange={setOTP}
+                    autoFocus
+                    OTPLength={6}
+                    otpType='number'
+                    disabled={!signbtn}
+                    className='justify-between flex'
+                    inputStyles={{
+                      marginRight: '0px',
+                      backgroundColor: 'none',
+                    }}
+                  />
                 </div>
 
                 <input
+                  onClick={verifyOtp}
+                  disabled={!signbtn}
                   type='submit'
                   value='Sign in'
-                  className='mt-20 px-8 py-4 uppercase rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 focus:ring-opacity-80 cursor-pointer'
+                  className='mt-20 px-8 py-4 uppercase rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 focus:ring-opacity-80 cursor-pointer bg-transparent disabled:bg-opacity-40 disabled:cursor-not-allowed'
                 />
               </form>
               <a
