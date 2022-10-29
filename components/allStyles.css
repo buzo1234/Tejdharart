@@ -353,6 +353,10 @@ span.text-red {
 }
 .empty-cart {
   margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 .empty-cart h3 {
