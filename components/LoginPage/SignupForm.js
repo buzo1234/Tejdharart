@@ -70,7 +70,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
     return (
       <div className='selection:bg-indigo-500 selection:text-white'>
         <div className='flex justify-center items-center'>
-          <div className='flex h-full'>
+          <div className='block h-full'>
             <div className='mx-auto overflow-hidden'>
               <div className='p-8'>
                 <h1 className='text-xl md:text-4xl lg:text-5xl font-bold text-black '>
