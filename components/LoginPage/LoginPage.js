@@ -9,14 +9,14 @@ const LoginPage = () => {
   const overlayBg = '';
 
   return (
-    <div className='h-4/5 w-11/12 md:w-4/5 lg:w-4/5 xl:w-4/5 bg-white relative overflow-hidden rounded-3xl '>
+    <div className='h-4/5 w-11/12 md:w-4/5 lg:w-4/5 xl:w-4/5 bg-white relative overflow-hidden rounded-3xl flex-col'>
       <div
         className={`signin bg-white absolute top-0 left-0 h-full w-full md:w-1/2 lg:w-1/2 xl:w-1/2 flex justify-center items-center transition-all duration-700 ease-in-out z-20 bg-repeat ${
           isAnimated ? 'translate-x-full opacity-0' : ''
         } bg-red-500`}
         style={{ backgroundImage: 'url(Background.jpg)' }}
       >
-        <div className='h-full w-full flex justify-center items-center'>
+        <div className='h-full w-full flex justify-center items-center my-3'>
           <SignupForm isAnimated={isAnimated} setIsAnimated={setIsAnimated} />
         </div>
       </div>
@@ -29,7 +29,7 @@ const LoginPage = () => {
         }`}
         style={{ backgroundImage: 'url(Background.jpg)' }}
       >
-        <div className='h-full w-full flex justify-center items-center'>
+        <div className='h-full w-full flex justify-center items-center my-3'>
           <SigninForm isAnimated={isAnimated} setIsAnimated={setIsAnimated} />
         </div>
       </div>

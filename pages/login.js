@@ -20,7 +20,7 @@ export default function Home() {
   if (typeof window !== 'undefined') {
     if (!JSON.parse(localStorage.getItem('state')).user.userAvailable) {
       return (
-        <div className=' h-full w-screen '>
+        <div className=' h-full w-screen flex flex-col '>
           <Head>
             <title>Slider Login / Signup</title>
             <link rel='icon' href='/favicon.ico' />
@@ -35,14 +35,14 @@ export default function Home() {
     } else {
       router.push('/');
       return (
-        <div className='h-screen w-screen flex justify-center items-center'>
+        <div className='h-full w-screen flex flex-col justify-center items-center'>
           <p className='text-lg font-bold'>Loading...</p>
         </div>
       );
     }
   } else {
     return (
-      <div className='h-screen w-screen flex justify-center items-center'>
+      <div className='h-full w-screen flex flex-col justify-center items-center'>
         <p className='text-lg font-bold'>Loading...</p>
       </div>
     );
