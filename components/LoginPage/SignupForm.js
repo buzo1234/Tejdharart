@@ -73,7 +73,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
           <div className='flex-1'>
             <div className='mx-auto overflow-hidden'>
               <div className='p-8'>
-                <h1 className='text-xl md:text-4xl lg:text-5xl font-bold text-black'>
+                <h1 className='text-xl md:text-4xl lg:text-5xl font-bold text-black '>
                   Create account
                 </h1>
 
