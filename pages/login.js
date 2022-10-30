@@ -22,7 +22,7 @@ export default function Home() {
       return (
         <div className=' h-full w-screen flex flex-col '>
           <Head>
-            <title>Slider Login / Signup</title>
+            <title>Login | Tejdharart</title>
             <link rel='icon' href='/favicon.ico' />
           </Head>
           <div className='flex flex-col w-screen h-screen justify-center items-center'>
