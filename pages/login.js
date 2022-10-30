@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { LoginPage } from '../components';
+import { Footer, LoginPage } from '../components';
 import { useRouter } from 'next/router';
 import { useUserContext } from '../context/UserContext';
 import { useEffect, useState } from 'react';
@@ -20,13 +20,16 @@ export default function Home() {
   if (typeof window !== 'undefined') {
     if (!JSON.parse(localStorage.getItem('state')).user.userAvailable) {
       return (
-        <div className='flex flex-col items-center justify-center h-screen w-full '>
+        <div className=' h-full w-screen '>
           <Head>
             <title>Slider Login / Signup</title>
             <link rel='icon' href='/favicon.ico' />
           </Head>
+          <div className='flex flex-col w-screen h-screen justify-center items-center'>
+            <LoginPage />
+          </div>
 
-          <LoginPage />
+          <Footer />
         </div>
       );
     } else {

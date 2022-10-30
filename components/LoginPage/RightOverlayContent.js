@@ -5,8 +5,8 @@ const RightOverlayContent = ({ isAnimated, setIsAnimated }) => {
     <div className='text-center'>
       <Image
         src={'/log-illustration.png'}
-        width={700}
-        height={700}
+        width={600}
+        height={600}
         objectFit='contain'
       />
     </div>

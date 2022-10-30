@@ -5,8 +5,8 @@ const LeftOverlayContent = ({ isAnimated, setIsAnimated }) => {
     <div className='text-center'>
       <Image
         src={'/create-illustation.png'}
-        width={700}
-        height={700}
+        width={600}
+        height={600}
         objectFit='contain'
       />
     </div>
