@@ -4,7 +4,7 @@ import { useUserContext } from '../context/UserContext';
 import axios from 'axios';
 import Orderblock from '../components/Orderblock';
 
-const orders = () => {
+export default function Orders() {
   const { state, dispatch } = useUserContext();
   const router = useRouter();
   const [p, setP] = useState(false);
@@ -65,6 +65,4 @@ const orders = () => {
       </div>
     );
   }
-};
-
-export default orders;
+}
