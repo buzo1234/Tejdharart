@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   AiOutlineMinus,
@@ -12,6 +12,8 @@ import toast from 'react-hot-toast';
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import getStripe from '../lib/getStripe';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const Cart = () => {
   const cartRef = useRef();
@@ -23,25 +25,37 @@ const Cart = () => {
     toggleCartItemQuanitity,
     onRemove,
   } = useStateContext();
+  const router = useRouter();
+  const [present, setPresent] = useState(false);
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem('state')).user;
+
+    if (userData.userAvailable) {
+      setPresent(true);
+    } else {
+      setPresent(false);
+    }
+  }, []);
 
   const handleCheckout = async () => {
-    const stripe = await getStripe();
+    console.log(totalPrice);
+    const userData = JSON.parse(localStorage.getItem('state')).user;
+    const data = {
+      purpose: 'Payment to Tejdharart',
+      amount: totalPrice,
+      buyer_name: userData.userDetails.userName,
+      phone: userData.userDetails.userPhone,
+      redirect_url: 'https://www.tejdharart.com/',
+    };
 
-    const response = await fetch('/api/stripe', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cartItems),
-    });
-
-    if (response.statusCode === 500) return;
-
-    const data = await response.json();
-
-    toast.loading('Redirecting...');
-
-    stripe.redirectToCheckout({ sessionId: data.id });
+    await axios
+      .post('https://tejdhar-otp-service.vercel.app/auth/pay/', data)
+      .then((res) => {
+        console.log('resp', res.data);
+        router.push(res.data);
+      })
+      .catch((error) => console.log(error.response.data));
   };
 
   return (
@@ -122,7 +136,7 @@ const Cart = () => {
               </div>
             ))}
         </div>
-        {cartItems.length >= 1 && (
+        {cartItems.length >= 1 && present ? (
           <div className='cart-bottom'>
             <div className='total'>
               <h3>Subtotal:</h3>
@@ -130,8 +144,20 @@ const Cart = () => {
             </div>
             <div className='btn-container'>
               <button type='button' className='btn' onClick={handleCheckout}>
-                Pay with Stripe
+                Pay Now
               </button>
+            </div>
+          </div>
+        ) : (
+          <div className='cart-bottom'>
+            <div className='total'>
+              <h3>Subtotal:</h3>
+              <h3>&#x20B9;{totalPrice}</h3>
+            </div>
+            <div className='btn-container'>
+              <div className='bg-red-500 px-3 py-1 mx-auto text-center text-white text-xl rounded-xl mt-5'>
+                Please LogIn to continue!
+              </div>
             </div>
           </div>
         )}
