@@ -49,7 +49,7 @@ export default function Orders() {
   if (p) {
     console.log(orders);
     return (
-      <div className='max-w-6xl mx-auto'>
+      <div className='max-w-6xl mx-auto px-4'>
         <p className='text-2xl font-semibold'>Your Orders</p>
         {/* Order Template */}
         {/*  */}
