@@ -8,11 +8,8 @@ const Orderblock = ({ item, index }) => {
       <p className='text-lg font-semibold'>Order: {index}</p>
       {item.map((val, i) => {
         return (
-          <div>
-            <div
-              className=' grid grid-cols-4 h-[150px] justify-center items-center my-2'
-              key={i}
-            >
+          <div key={i}>
+            <div className=' grid grid-cols-4 h-[150px] justify-center items-center my-2'>
               <div className='flex w-full justify-center items-center'>
                 <img
                   src={

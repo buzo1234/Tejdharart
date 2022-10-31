@@ -106,17 +106,11 @@ const Navbar = () => {
                   <div className='py-1'>
                     <Menu.Item>
                       {({ active }) => (
-                        <a
-                          href='/orders'
-                          className={classNames(
-                            active
-                              ? 'bg-gray-100 text-gray-900'
-                              : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          )}
-                        >
-                          Orders
-                        </a>
+                        <Link href='/orders'>
+                          <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                            Orders
+                          </a>
+                        </Link>
                       )}
                     </Menu.Item>
                     <Menu.Item>
