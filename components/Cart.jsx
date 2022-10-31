@@ -46,16 +46,33 @@ const Cart = () => {
       amount: totalPrice,
       buyer_name: userData.userDetails.userName,
       phone: userData.userDetails.userPhone,
-      redirect_url: 'https://www.tejdharart.com/',
+      redirect_url: 'https://tejdharart.com/',
     };
 
-    await axios
-      .post('https://tejdhar-otp-service.vercel.app/auth/pay/', data)
-      .then((res) => {
-        console.log('resp', res.data);
-        router.push(res.data);
+    try {
+      await axios({
+        method: 'post',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers':
+            'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
+        },
+        withCredentials: false,
+
+        url: 'https://tejdhar-otp-service.vercel.app/auth/pay/',
+        data: data,
       })
-      .catch((error) => console.log(error.response.data));
+        .then((res) => {
+          console.log('resp', res.data);
+          router.push(res.data);
+        })
+        .catch((error) => console.log('Error now ', error));
+    } catch (error) {
+      alert(error);
+    }
   };
 
   return (

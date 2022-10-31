@@ -55,7 +55,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
         },
       }).then((response) => {
         if (response.data[0]) {
-          alert(`Verification Successfull with OTT ${OTP}`);
+          alert(`Verification Successfull with OTP ${OTP}`);
           dispatch({ type: 'logged_in', value: { name: name, phone: email } });
           router.push('/');
         } else {
