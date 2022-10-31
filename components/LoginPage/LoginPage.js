@@ -16,7 +16,7 @@ const LoginPage = () => {
         } bg-red-500`}
         style={{ backgroundImage: 'url(Background.jpg)' }}
       >
-        <div className='h-full w-full block justify-center items-center my-3 '>
+        <div className='h-full w-full flex justify-center items-center my-3 '>
           <SignupForm isAnimated={isAnimated} setIsAnimated={setIsAnimated} />
         </div>
       </div>
