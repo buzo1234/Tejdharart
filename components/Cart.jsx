@@ -87,7 +87,7 @@ const Cart = () => {
         },
         withCredentials: false,
 
-        url: 'https://tejdhar-otp-service.vercel.app/auth/auth/pay/',
+        url: 'https://tejdhar-otp-service.vercel.app/auth/pay/',
         data: data,
       })
         .then((res) => {
