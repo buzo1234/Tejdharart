@@ -28,9 +28,14 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
         data: {
           email: email,
         },
-      }).then((response) => {});
-      setotpbtn(false);
-      setsignbtn(true);
+      }).then((response) => {
+        if (response.data[0]) {
+          setotpbtn(false);
+          setsignbtn(true);
+        } else {
+          alert(response.data[1]);
+        }
+      });
     } catch (error) {
       alert(error);
     }
