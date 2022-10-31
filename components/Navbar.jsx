@@ -107,7 +107,7 @@ const Navbar = () => {
                     <Menu.Item>
                       {({ active }) => (
                         <a
-                          href='#'
+                          href='/orders'
                           className={classNames(
                             active
                               ? 'bg-gray-100 text-gray-900'
@@ -115,7 +115,7 @@ const Navbar = () => {
                             'block px-4 py-2 text-sm'
                           )}
                         >
-                          Account settings
+                          Orders
                         </a>
                       )}
                     </Menu.Item>

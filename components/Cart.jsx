@@ -38,6 +38,8 @@ const Cart = () => {
     }
   }, []);
 
+  console.log(cartItems);
+
   const handleCheckout = async () => {
     console.log(totalPrice);
     const userData = JSON.parse(localStorage.getItem('state')).user;
@@ -46,10 +48,33 @@ const Cart = () => {
       amount: totalPrice,
       buyer_name: userData.userDetails.userName,
       phone: userData.userDetails.userPhone,
-      redirect_url: 'https://tejdharart.com/',
+      redirect_url: `https://tejdhar-otp-service.vercel.app/auth/orders?user_id=${userData.userDetails.userPhone}`,
+      webhook_url: '/webhook/',
     };
 
     try {
+      await axios({
+        method: 'post',
+        url: 'https://tejdhar-otp-service.vercel.app/auth/atc',
+        data: {
+          userID: userData.userDetails.userPhone,
+          cart: cartItems,
+        },
+      })
+        .then((res) => {
+          console.log('response ', res);
+          if (res.data[0]) {
+            console.log('cart updated');
+          } else {
+            alert('Error');
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          alert('Error Occured');
+          return;
+        });
+
       await axios({
         method: 'post',
         headers: {
@@ -62,7 +87,7 @@ const Cart = () => {
         },
         withCredentials: false,
 
-        url: 'https://tejdhar-otp-service.vercel.app/auth/pay/',
+        url: 'https://tejdhar-otp-service.vercel.app/auth/auth/pay/',
         data: data,
       })
         .then((res) => {
