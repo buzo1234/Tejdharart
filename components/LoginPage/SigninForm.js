@@ -25,6 +25,14 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
       await axios({
         method: 'post',
         url: 'https://tejdhar-otp-service.vercel.app/auth/signin/',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Headers':
+            'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
+        },
         data: {
           email: email,
         },
@@ -61,7 +69,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
         },
       }).then((response) => {
         if (response.data[0]) {
-          alert(`Verification Successfull with OTT ${OTP}`);
+          alert(`Verification Successfull with OTP ${OTP}`);
           dispatch({
             type: 'logged_in',
             value: { name: response.data[1].name, phone: email },
