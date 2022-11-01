@@ -3,19 +3,16 @@ import Link from 'next/link';
 
 import { urlFor } from '../lib/client';
 
-const Product = ({ product: { defaultProductVariant, title, slug, tags } }) => {
+const Product = ({ product: { productImage, slug, title, defaultPrice } }) => {
   return (
     <div>
       <Link href={`/product/${slug.current}`}>
         <div className='product-card'>
-          {defaultProductVariant.images && (
+          {productImage && (
             <img
               src={
-                defaultProductVariant
-                  ? urlFor(
-                      defaultProductVariant?.images &&
-                        defaultProductVariant?.images[0]
-                    )
+                productImage
+                  ? urlFor(productImage && productImage[0])
                   : urlFor(
                       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnIm-lbLsUFMpqohRj4di_06WAkoJrDC9AFg&usqp=CAU'
                     )
@@ -26,12 +23,7 @@ const Product = ({ product: { defaultProductVariant, title, slug, tags } }) => {
             />
           )}
           <p className='product-name'>{title}</p>
-          <p className='product-price'>&#x20B9;{defaultProductVariant.price}</p>
-          {/*  <div>
-            {tags?.map((tag) => (
-              <p>{tag}</p>
-            ))}
-          </div> */}
+          <p className='product-price'>&#x20B9;{defaultPrice}</p>
         </div>
       </Link>
     </div>

@@ -4,32 +4,19 @@ export default {
   type: 'object',
   fields: [
     {
-      title: 'Title',
-      name: 'title',
+      title: 'Color Name',
+      name: 'colorName',
       type: 'string',
     },
     {
-      title: 'Price',
-      name: 'price',
-      type: 'number',
+      title: 'Color',
+      name: 'color',
+      type: 'color',
     },
     {
       title: 'SKU',
       name: 'sku',
       type: 'string',
-    },
-    {
-      name: 'images',
-      title: 'Images',
-      type: 'array',
-      of: [
-        {
-          type: 'image',
-          options: {
-            hotspot: true,
-          },
-        },
-      ],
     },
   ],
 };

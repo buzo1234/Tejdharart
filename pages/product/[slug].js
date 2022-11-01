@@ -12,7 +12,7 @@ import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
-  const { defaultProductVariant, title, body, price } = product;
+  const { productImage, title, body, defaultPrice } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
@@ -28,18 +28,12 @@ const ProductDetails = ({ product, products }) => {
         <div>
           <div className='image-container'>
             <img
-              src={
-                defaultProductVariant.images &&
-                urlFor(
-                  defaultProductVariant.images &&
-                    defaultProductVariant.images[index]
-                )
-              }
+              src={productImage && urlFor(productImage && productImage[index])}
               className='product-detail-image object-contain'
             />
           </div>
           <div className='small-images-container'>
-            {defaultProductVariant.images?.map((item, i) => (
+            {productImage?.map((item, i) => (
               <img
                 key={i}
                 src={urlFor(item)}
@@ -66,7 +60,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
           <h4 className='font-semibold'>Details: </h4>
           <PortableText value={body?.en} />
-          <p className='price'>&#x20B9;{defaultProductVariant.price}</p>
+          <p className='price'>&#x20B9;{defaultPrice}</p>
           <div className='quantity'>
             <h3>Quantity:</h3>
             <p className='quantity-desc'>

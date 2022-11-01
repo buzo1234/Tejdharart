@@ -18,18 +18,43 @@ export default {
       },
     },
     {
-      title: 'Default variant',
-      name: 'defaultProductVariant',
-      type: 'productVariant',
+      title: 'Default Price',
+      name: 'defaultPrice',
+      type: 'number',
     },
     {
-      title: 'Variants',
-      name: 'variants',
+      name: 'productImage',
+      title: 'Product Images',
       type: 'array',
       of: [
         {
-          title: 'Variant',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+        },
+      ],
+    },
+    {
+      title: 'Color Variants',
+      name: 'colorVariants',
+      type: 'array',
+      of: [
+        {
+          title: 'Colors',
           type: 'productVariant',
+        },
+      ],
+    },
+
+    {
+      title: 'Size Variants',
+      name: 'sizeVariants',
+      type: 'array',
+      of: [
+        {
+          title: 'Sizes',
+          type: 'sizeVariant',
         },
       ],
     },
