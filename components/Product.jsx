@@ -3,7 +3,9 @@ import Link from 'next/link';
 
 import { urlFor } from '../lib/client';
 
-const Product = ({ product: { productImage, slug, title, defaultPrice } }) => {
+const Product = ({
+  product: { productImage, slug, title, defaultPrice, colorVariants },
+}) => {
   return (
     <div>
       <Link href={`/product/${slug.current}`}>
@@ -23,6 +25,9 @@ const Product = ({ product: { productImage, slug, title, defaultPrice } }) => {
             />
           )}
           <p className='product-name'>{title}</p>
+          {colorVariants !== undefined ? (
+            <p className='text-sm text-gray-700 italic'>Has colour variants</p>
+          ) : null}
           <p className='product-price'>&#x20B9;{defaultPrice}</p>
         </div>
       </Link>

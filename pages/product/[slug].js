@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   AiOutlineMinus,
   AiOutlinePlus,
@@ -12,12 +12,23 @@ import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
-  const { productImage, title, body, defaultPrice } = product;
+  console.log('product details', product);
+  const { productImage, title, body, defaultPrice, colorVariants } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+  const [selcolor, setselcolor] = useState(null);
+
+  useEffect(() => {
+    if (colorVariants !== undefined) {
+      console.log(colorVariants);
+      setselcolor(colorVariants[0].colorName);
+    } else {
+      setselcolor(null);
+    }
+  }, [colorVariants]);
 
   const handleBuyNow = () => {
-    onAdd(product, qty);
+    onAdd(product, selcolor, qty);
 
     setShowCart(true);
   };
@@ -58,6 +69,32 @@ const ProductDetails = ({ product, products }) => {
             </div>
             <p>(20)</p>
           </div>
+          {colorVariants !== undefined ? (
+            <div>
+              <p className='font-semibold'>Color Variants:</p>
+              <p className='p-0 m-0 text-sm'>{selcolor}</p>
+              <div className='flex gap-4'>
+                {colorVariants.map((item, i) => (
+                  <div
+                    /* className={`w-[20px] h-[20px] bg-[${item?.color?.hex}] `} */
+
+                    className={
+                      selcolor === item.colorName
+                        ? 'border-[2px] border-black border-solid rounded-md'
+                        : 'border-[0.1px] border-gray-500 border-solid rounded-md'
+                    }
+                    style={{
+                      width: '30px',
+                      height: '30px',
+                      backgroundColor: item.color.hex,
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => setselcolor(item.colorName)}
+                  ></div>
+                ))}
+              </div>
+            </div>
+          ) : null}
           <h4 className='font-semibold'>Details: </h4>
           <PortableText value={body?.en} />
           <p className='price'>&#x20B9;{defaultPrice}</p>
@@ -77,7 +114,7 @@ const ProductDetails = ({ product, products }) => {
             <button
               type='button'
               className='add-to-cart'
-              onClick={() => onAdd(product, qty)}
+              onClick={() => onAdd(product, selcolor, qty)}
             >
               Add to Cart
             </button>
