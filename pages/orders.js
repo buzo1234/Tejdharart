@@ -21,6 +21,7 @@ export default function Orders() {
         },
       })
         .then((response) => {
+          console.log('res', response);
           if (response.data[0]) {
             setOrders(response.data[1]);
           } else {

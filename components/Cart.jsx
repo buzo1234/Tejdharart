@@ -26,6 +26,7 @@ const Cart = () => {
   } = useStateContext();
   const router = useRouter();
   const [present, setPresent] = useState(false);
+  const [address, setAddress] = useState('');
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('state')).user;
@@ -52,13 +53,16 @@ const Cart = () => {
     };
 
     try {
+      let new_cart = {
+        cart: cartItems,
+        address: address,
+        userID: userData.userDetails.userPhone,
+        userNa: userData.userDetails.userName,
+      };
       await axios({
         method: 'post',
         url: 'https://tejdhar-otp-service.vercel.app/auth/atc',
-        data: {
-          userID: userData.userDetails.userPhone,
-          cart: cartItems,
-        },
+        data: new_cart,
       })
         .then((res) => {
           console.log('response ', res);
@@ -106,7 +110,7 @@ const Cart = () => {
 
   return (
     <div className='cart-wrapper' ref={cartRef}>
-      <div className='cart-container'>
+      <div className='cart-container overflow-y-scroll'>
         <button
           type='button'
           className='cart-heading'
@@ -133,7 +137,19 @@ const Cart = () => {
           </div>
         )}
 
-        <div className='product-container'>
+        <div className='w-full px-3 py-2 flex flex-col items-center justify-center mt-3 mb-2 overflow-auto'>
+          <div className='flex w-full'>
+            <p className='text-left text-lg font-bold'>Address</p>
+          </div>
+          <input
+            type='textarea'
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder='Enter Delivery Address'
+            className='border-red-500 border-[1px] w-full px-2 py-1'
+          />
+        </div>
+
+        <div className='product-container '>
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className='product' key={item?._id + item?.colorVariant}>
@@ -185,14 +201,20 @@ const Cart = () => {
               </div>
             ))}
         </div>
+
         {cartItems.length >= 1 && present ? (
-          <div className='cart-bottom'>
+          <div className='cart-bottom bg-white'>
             <div className='total'>
               <h3>Subtotal:</h3>
               <h3>&#x20B9;{totalPrice}</h3>
             </div>
             <div className='btn-container'>
-              <button type='button' className='btn' onClick={handleCheckout}>
+              <button
+                type='button'
+                className='btn disabled:bg-gray-400 disabled:cursor-not-allowed'
+                disabled={address.length > 10 ? false : true}
+                onClick={handleCheckout}
+              >
                 Pay Now
               </button>
             </div>

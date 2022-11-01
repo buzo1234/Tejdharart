@@ -368,6 +368,7 @@ span.text-red {
 }
 .product-container {
   margin-top: 15px;
+  margin-bottom: 50px;
   overflow: auto;
   max-height: 70vh;
   padding: 20px 10px;
@@ -414,7 +415,7 @@ span.text-red {
   border: none;
 }
 .cart-bottom {
-  position: absolute;
+  position: block;
   bottom: 12px;
   right: 5px;
   width: 100%;

@@ -113,7 +113,7 @@ const Navbar = () => {
                         </Link>
                       )}
                     </Menu.Item>
-                    <Menu.Item>
+                    {/*  <Menu.Item>
                       {({ active }) => (
                         <a
                           href='#'
@@ -142,7 +142,7 @@ const Navbar = () => {
                           License
                         </a>
                       )}
-                    </Menu.Item>
+                    </Menu.Item> */}
 
                     <Menu.Item>
                       {({ active }) => (
