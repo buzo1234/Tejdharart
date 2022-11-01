@@ -33,6 +33,8 @@ export default function Orders() {
     }
   }
 
+  console.log('orders', orders);
+
   useEffect(() => {
     if (state !== undefined) {
       let flag = state.user;
@@ -54,7 +56,14 @@ export default function Orders() {
         {/* Order Template */}
         {/*  */}
         {orders.map((item, i) => {
-          return <Orderblock key={i} item={item} index={i + 1} />;
+          return (
+            <Orderblock
+              key={i}
+              item={item.order}
+              index={i + 1}
+              date={item.datetime}
+            />
+          );
         })}
       </div>
     );

@@ -2,10 +2,23 @@ import React from 'react';
 import Image from 'next/image';
 import { urlFor } from '../lib/client';
 
-const Orderblock = ({ item, index }) => {
+const Orderblock = ({ item, index, date }) => {
+  let d = new Date(date);
+  /*let date_new = d.getDate();
+  let month_new = d.getMonth();
+  let year_new = d.getFullYear(); */
+  let date_of_order = new Intl.DateTimeFormat('en-US', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  }).format(d);
   return (
     <div className='bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300 px-4 py-2 rounded-md  my-4 flex flex-col justify-center   w-full'>
       <p className='text-lg font-semibold'>Order: {index}</p>
+      <p className='font-semibold'>Date: {date_of_order}</p>
       {item.map((val, i) => {
         return (
           <div key={i}>
