@@ -11,7 +11,6 @@ import toast from 'react-hot-toast';
 
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
-import getStripe from '../lib/getStripe';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -100,6 +99,11 @@ const Cart = () => {
     }
   };
 
+  function routeLogin() {
+    setShowCart(false);
+    router.push('/login');
+  }
+
   return (
     <div className='cart-wrapper' ref={cartRef}>
       <div className='cart-container'>
@@ -133,10 +137,10 @@ const Cart = () => {
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
               <div className='product' key={item?._id + item?.colorVariant}>
-                {/* <img
+                <img
                   src={urlFor(item?.productImage?.[0])}
                   className='cart-product-image'
-                /> */}
+                />
                 <div className='item-desc'>
                   <div className='flex top'>
                     <h5>{item?.title}</h5>
@@ -199,9 +203,10 @@ const Cart = () => {
               <h3>Subtotal:</h3>
               <h3>&#x20B9;{totalPrice}</h3>
             </div>
-            <div className='btn-container'>
-              <div className='bg-red-500 px-3 py-1 mx-auto text-center text-white text-xl rounded-xl mt-5'>
-                Please LogIn to continue!
+
+            <div className='btn-container cursor-pointer' onClick={routeLogin}>
+              <div className='bg-red-500 px-3 py-1 mx-auto text-center text-white shadow-md text-lg rounded-xl mt-5'>
+                Please Login to continue!
               </div>
             </div>
           </div>

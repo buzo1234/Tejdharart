@@ -76,6 +76,7 @@ const ProductDetails = ({ product, products }) => {
               <div className='flex gap-4'>
                 {colorVariants.map((item, i) => (
                   <div
+                    key={i}
                     /* className={`w-[20px] h-[20px] bg-[${item?.color?.hex}] `} */
 
                     className={
