@@ -13,11 +13,8 @@ const Orderblock = ({ item, index }) => {
               <div className='flex w-full justify-center items-center'>
                 <img
                   src={
-                    val.defaultProductVariant
-                      ? urlFor(
-                          val.defaultProductVariant?.images &&
-                            val.defaultProductVariant?.images[0]
-                        )
+                    val.productImage
+                      ? urlFor(val.productImage && val.productImage[0])
                       : urlFor(
                           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnIm-lbLsUFMpqohRj4di_06WAkoJrDC9AFg&usqp=CAU'
                         )
@@ -29,7 +26,7 @@ const Orderblock = ({ item, index }) => {
               </div>
               <p className='font-semibold text-lg text-center'>{val.title}</p>
               <p className='font-semibold text-lg text-center'>
-                Price: &#x20B9;{val.defaultProductVariant.price}
+                Price: &#x20B9;{val.defaultPrice}
               </p>
               <p className='font-semibold text-lg text-center'>
                 Qty x {val.quantity}

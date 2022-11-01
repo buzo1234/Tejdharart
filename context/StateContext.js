@@ -20,8 +20,7 @@ export const StateContext = ({ children }) => {
     );
 
     setTotalPrice(
-      (prevTotalPrice) =>
-        prevTotalPrice + product.defaultProductVariant.price * quantity
+      (prevTotalPrice) => prevTotalPrice + product.defaultPrice * quantity
     );
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 
@@ -50,8 +49,7 @@ export const StateContext = ({ children }) => {
 
     setTotalPrice(
       (prevTotalPrice) =>
-        prevTotalPrice -
-        foundProduct.defaultProductVariant.price * foundProduct.quantity
+        prevTotalPrice - foundProduct.defaultPrice * foundProduct.quantity
     );
     setTotalQuantities(
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
@@ -81,8 +79,7 @@ export const StateContext = ({ children }) => {
           { ...foundProduct, quantity: foundProduct.quantity - 1 },
         ]);
         setTotalPrice(
-          (prevTotalPrice) =>
-            prevTotalPrice - foundProduct.defaultProductVariant.price
+          (prevTotalPrice) => prevTotalPrice - foundProduct.defaultPrice
         );
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
       }

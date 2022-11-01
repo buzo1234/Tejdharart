@@ -134,13 +134,13 @@ const Cart = () => {
             cartItems.map((item) => (
               <div className='product' key={item?._id}>
                 <img
-                  src={urlFor(item?.defaultProductVariant?.images[0])}
+                  src={urlFor(item?.productImage?.[0])}
                   className='cart-product-image'
                 />
                 <div className='item-desc'>
                   <div className='flex top'>
                     <h5>{item?.title}</h5>
-                    <h4>&#x20B9;{item?.defaultProductVariant.price}</h4>
+                    <h4>&#x20B9;{item?.defaultPrice}</h4>
                   </div>
                   <div className='flex bottom'>
                     <div>
