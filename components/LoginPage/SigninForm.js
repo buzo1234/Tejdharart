@@ -28,6 +28,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'content-type': 'text/json',
+          'Access-Control-Allow-Methods': 'GET, POST, DELETE, HEAD, OPTIONS',
         },
         data: {
           email: email,
