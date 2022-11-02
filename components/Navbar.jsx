@@ -73,7 +73,7 @@ const Navbar = () => {
 
   return (
     <div className='navbar-container'>
-      <p className='logo mt-2'>
+      <p className='logo mt-2 cursor-pointer'>
         <Link href='/'>
           <Image
             src='/logo_tejdharart.jpg'
