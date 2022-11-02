@@ -26,14 +26,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
       await axios({
         method: 'post',
         url: 'https://tejdhar-otp-service.vercel.app/auth/',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-          'Access-Control-Allow-Headers':
-            'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
-        },
+
         data: {
           name: name,
           email: email,
@@ -56,14 +49,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
     try {
       await axios({
         method: 'post',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
-          'Access-Control-Allow-Headers':
-            'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
-        },
+
         url: 'https://tejdhar-otp-service.vercel.app/auth/verify/',
         data: {
           email: email,
