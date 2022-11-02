@@ -3,9 +3,19 @@ import Image from 'next/image';
 import Head from 'next/head';
 const Aboutus = () => {
   return (
-    <div className='mt-10 flex justify-center max-w-6xl mx-auto flex-col items-center font-poppins'>
+    <div className='mt-10 flex justify-center max-w-6xl mx-auto flex-col items-center about__para'>
       <Head>
         <link rel='preconnect' href='https://fonts.googleapis.com'></link>
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossorigin
+        ></link>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'
+          rel='stylesheet'
+        ></link>
+        {/* <link rel='preconnect' href='https://fonts.googleapis.com'></link>
         <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
@@ -36,7 +46,7 @@ const Aboutus = () => {
         <link
           href='https://fonts.googleapis.com/css2?family=Baloo+2&family=Caveat:wght@500&display=swap'
           rel='stylesheet'
-        ></link>
+        ></link> */}
       </Head>
       <p className='text-[64px] font-bold italic'>ABOUT US</p>
       <p className='font-semibold text-[36px] italic my-5 text-center'>
@@ -99,18 +109,18 @@ const Aboutus = () => {
         </p>
         <br />
         <p>
-          <b className='about__para_2'>
+          <b className='about__para'>
             We have recently added the &apos;Wedding Goodies&apos; and the
             &apos;Corporate gifting&apos; section. Make sure to visit them too.
           </b>
         </p>
         <br />
-        <p className='tagline text-3xl'>
+        <p className=' text-3xl'>
           &apos;There&apos;s no better way than a personalised &apos;Gift&apos;,
           to express yourself.&apos;
         </p>
 
-        <p className='tagline text-4xl text-yellow-500'>
+        <p className=' text-4xl text-yellow-500'>
           Love, emotions, feelings, and a lot of &apos;unsaid words&apos;
         </p>
         <br />

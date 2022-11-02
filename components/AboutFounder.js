@@ -4,9 +4,19 @@ import Head from 'next/head';
 
 const AboutFounder = () => {
   return (
-    <div className='mt-10 flex justify-center w-full flex-col items-center font-poppins max-w-6xl mx-auto'>
+    <div className='mt-10 flex justify-center w-full flex-col items-center about__para max-w-6xl mx-auto'>
       <Head>
         <link rel='preconnect' href='https://fonts.googleapis.com'></link>
+        <link
+          rel='preconnect'
+          href='https://fonts.gstatic.com'
+          crossorigin
+        ></link>
+        <link
+          href='https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'
+          rel='stylesheet'
+        ></link>
+        {/* <link rel='preconnect' href='https://fonts.googleapis.com'></link>
         <link
           rel='preconnect'
           href='https://fonts.gstatic.com'
@@ -37,7 +47,7 @@ const AboutFounder = () => {
         <link
           href='https://fonts.googleapis.com/css2?family=Baloo+2&family=Caveat:wght@500&display=swap'
           rel='stylesheet'
-        ></link>
+        ></link> */}
       </Head>
       <p className='text-[64px] px-2 text-center font-bold italic my-12'>
         About the Founder
@@ -77,7 +87,7 @@ const AboutFounder = () => {
           <br />
           <br />
         </p>
-        <p className=' underline text-[48px] font-semibold tagline px-2 text-center'>
+        <p className=' underline text-[48px] font-semibold  px-2 text-center'>
           I&apos;m sure you&apos;ll love it too!
         </p>
       </div>

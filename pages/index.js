@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head';
 
 import { client } from '../lib/client';
 import {
@@ -17,7 +18,19 @@ const Home = ({ products, CategoryData }) => {
     return <></>;
   } else {
     return (
-      <div className='relative'>
+      <div className='relative about__para'>
+        <Head>
+          <link rel='preconnect' href='https://fonts.googleapis.com'></link>
+          <link
+            rel='preconnect'
+            href='https://fonts.gstatic.com'
+            crossorigin
+          ></link>
+          <link
+            href='https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'
+            rel='stylesheet'
+          ></link>
+        </Head>
         {/* <HeroBanner heroBanner={bannerData.length && bannerData[0]}  /> */}
         {/* 
       {modal ? (
@@ -38,7 +51,7 @@ const Home = ({ products, CategoryData }) => {
         ''
       )} */}
 
-        <div className='products-heading'>
+        <div className='products-heading about__para'>
           <h2>Our Product Categories</h2>
         </div>
 
