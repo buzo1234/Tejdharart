@@ -5,6 +5,7 @@ const Context = createContext();
 
 export const StateContext = ({ children }) => {
   const [showCart, setShowCart] = useState(false);
+  const [cat, setCat] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantities, setTotalQuantities] = useState(0);
@@ -94,6 +95,10 @@ export const StateContext = ({ children }) => {
     setCartItems(newCartItems);
   };
 
+  const logAllCategories = (catdata) => {
+    setCat(catdata);
+  };
+
   const toggleCartItemQuanitity = (id, value) => {
     foundProduct = cartItems.find((item) => item.id_main === id);
     index = cartItems.findIndex((product) => product.id_main === id);
@@ -144,6 +149,9 @@ export const StateContext = ({ children }) => {
         totalQuantities,
         qty,
         active,
+        cat,
+        setCat,
+        logAllCategories,
         setActive,
         incQty,
         decQty,

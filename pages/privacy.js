@@ -1,7 +1,9 @@
 import React from 'react';
 import { Footer } from '../components';
+import { useStateContext } from '../context/StateContext';
 
 const privacy = () => {
+  const { cat } = useStateContext();
   return (
     <div>
       <div className='px-4 my-5 max-w-6xl mx-auto'>
@@ -264,7 +266,7 @@ const privacy = () => {
           modification, your sole recourse is to stop using the Site.
         </p>
       </div>
-      <Footer />
+      <Footer data={cat} />
     </div>
   );
 };

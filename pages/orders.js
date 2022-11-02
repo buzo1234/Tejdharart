@@ -3,8 +3,10 @@ import { useRouter } from 'next/router';
 import { useUserContext } from '../context/UserContext';
 import axios from 'axios';
 import Orderblock from '../components/Orderblock';
-
+import { useStateContext } from '../context/StateContext';
+import { Footer } from '../components';
 export default function Orders() {
+  const { cat } = useStateContext();
   const { state, dispatch } = useUserContext();
   const router = useRouter();
   const [p, setP] = useState(false);
@@ -52,20 +54,23 @@ export default function Orders() {
   if (p) {
     console.log(orders);
     return (
-      <div className='max-w-6xl mx-auto px-4'>
-        <p className='text-2xl font-semibold'>Your Orders</p>
-        {/* Order Template */}
-        {/*  */}
-        {orders.map((item, i) => {
-          return (
-            <Orderblock
-              key={i}
-              item={item.order}
-              index={i + 1}
-              date={item.datetime}
-            />
-          );
-        })}
+      <div>
+        <div className='max-w-6xl mx-auto px-4'>
+          <p className='text-2xl font-semibold'>Your Orders</p>
+          {/* Order Template */}
+          {/*  */}
+          {orders.map((item, i) => {
+            return (
+              <Orderblock
+                key={i}
+                item={item.order}
+                index={i + 1}
+                date={item.datetime}
+              />
+            );
+          })}
+        </div>
+        <Footer data={cat} />
       </div>
     );
   } else {

@@ -3,8 +3,9 @@ import { Footer, LoginPage } from '../components';
 import { useRouter } from 'next/router';
 import { useUserContext } from '../context/UserContext';
 import { useEffect, useState } from 'react';
-
+import { useStateContext } from '../context/StateContext';
 export default function Home() {
+  const { cat } = useStateContext();
   const router = useRouter();
   const { state, dispatch } = useUserContext();
   const [show, setShow] = useState(false);
@@ -30,7 +31,7 @@ export default function Home() {
             <LoginPage />
           </div>
 
-          <Footer />
+          <Footer data={cat} />
         </div>
       );
     } else {

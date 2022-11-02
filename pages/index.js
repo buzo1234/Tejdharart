@@ -2,17 +2,23 @@ import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 import { client } from '../lib/client';
-import {
-  Product,
-  FooterBanner,
-  HeroBanner,
-  Footer,
-  Navbar,
-} from '../components';
+import { Product, Footer } from '../components';
 import Category from '../components/Category';
+import { useStateContext } from '../context/StateContext';
 
 const Home = ({ products, CategoryData }) => {
   const [modal, setModal] = useState(true);
+  const { logAllCategories, cat } = useStateContext();
+
+  useEffect(() => {
+    logAllCategories(CategoryData);
+
+    console.log('cat data', cat);
+  }, []);
+
+  useEffect(() => {
+    console.log('cat data', cat);
+  }, [cat]);
 
   if (typeof window === undefined) {
     return <></>;
@@ -69,7 +75,7 @@ const Home = ({ products, CategoryData }) => {
         </div>
 
         {/* <FooterBanner footerBanner={bannerData && bannerData[0]} /> */}
-        <Footer data={CategoryData} />
+        {cat !== undefined ? <Footer data={cat} /> : null}
       </div>
     );
   }

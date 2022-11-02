@@ -15,7 +15,7 @@ const ProductDetails = ({ product, products }) => {
   console.log('product details', product);
   const { productImage, title, body, defaultPrice, colorVariants } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+  const { decQty, incQty, qty, onAdd, setShowCart, cat } = useStateContext();
   const [selcolor, setselcolor] = useState(null);
 
   useEffect(() => {
@@ -119,7 +119,11 @@ const ProductDetails = ({ product, products }) => {
             >
               Add to Cart
             </button>
-            <button type='button' className='buy-now' onClick={handleBuyNow}>
+            <button
+              type='button'
+              className='buy-now bg-gray-500'
+              onClick={handleBuyNow}
+            >
               Buy Now
             </button>
           </div>
@@ -136,7 +140,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer data={cat} />
     </div>
   );
 };

@@ -3,10 +3,13 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { client } from '../../lib/client';
 import { Footer, Product } from '../../components';
+import { useStateContext } from '../../context/StateContext';
 
 const CategoryDetails = ({ category: { title }, products }) => {
   const router = useRouter();
   const { slug } = router.query;
+  const { cat } = useStateContext();
+
   return (
     <div>
       <div className='products-heading'>
@@ -19,7 +22,7 @@ const CategoryDetails = ({ category: { title }, products }) => {
         ))}
       </div>
 
-      <Footer />
+      <Footer data={cat} />
     </div>
   );
 };

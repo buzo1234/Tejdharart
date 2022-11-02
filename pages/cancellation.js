@@ -1,7 +1,9 @@
 import React from 'react';
 import { Footer } from '../components';
+import { useStateContext } from '../context/StateContext';
 
 const cancellation = () => {
+  const { cat } = useStateContext();
   return (
     <div>
       <div className='px-4 my-5 max-w-6xl mx-auto'>
@@ -68,7 +70,7 @@ const cancellation = () => {
           specific item.
         </p>
       </div>
-      <Footer />
+      <Footer data={cat} />
     </div>
   );
 };

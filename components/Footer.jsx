@@ -6,6 +6,7 @@ import { client } from '../lib/client';
 import Head from 'next/head';
 
 const Footer = ({ data }) => {
+  console.log('footer data', data);
   return (
     <div className='flex flex-col mt-20  w-full bg-amber-300'>
       <Head>
@@ -83,7 +84,7 @@ const Footer = ({ data }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+/* export const getServerSideProps = async () => {
   const CategoryQuery = '*[_type == "category"]';
   const CategoryData = await client.fetch(CategoryQuery);
 
@@ -91,5 +92,5 @@ export const getServerSideProps = async () => {
     props: { CategoryData },
   };
 };
-
+ */
 export default Footer;

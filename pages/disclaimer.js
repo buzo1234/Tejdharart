@@ -1,7 +1,9 @@
 import React from 'react';
 import { Footer } from '../components';
-
+import { useStateContext } from '../context/StateContext';
 const disclaimer = () => {
+  const { cat } = useStateContext();
+
   return (
     <div>
       <div className='px-4 my-5 max-w-6xl mx-auto'>
@@ -39,7 +41,7 @@ const disclaimer = () => {
           </li>
         </ol>
       </div>
-      <Footer />
+      <Footer data={cat} />
     </div>
   );
 };
