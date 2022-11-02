@@ -103,10 +103,10 @@ const Navbar = () => {
             >
               <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                 <div className='py-1'>
-                  {cat?.map((category) => {
+                  {cat?.map((category, i) => {
                     let dd = category.slug;
                     return (
-                      <Menu.Item>
+                      <Menu.Item key={i}>
                         {({ active }) => (
                           <Link href={`/category/${dd.current}`}>
                             <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
