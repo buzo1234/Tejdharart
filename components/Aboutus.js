@@ -52,7 +52,7 @@ const Aboutus = () => {
           <p className='col-span-1 text-[25px] px-5 about__para'>
             Well, it does mean &apos;precise&apos; and &apos;sharp&apos; but
             it&apos;s an acronym of the founder&apos;s name. Tejashree Dharane.
-            Tej-Dhar Art was founded xx years ago with the idea of bringing
+            Tej-Dhar Art was founded in April 2019 with the idea of bringing
             Nostalgia, creativity, uniqueness and lots of love, packaged in the
             form of a GIFT. We understand your need for that perfect gift for
             that special someone, or for that special occasion. We make sure

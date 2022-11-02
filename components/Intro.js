@@ -29,7 +29,7 @@ const Intro = () => {
         Each product line comes with that personalised touch. Warmly
         hand-crafted, contemporary and quirky too. <br />
         <br />
-        Browse through our wide array… <b>Happy Shopping 🛒</b>.
+        Browse through our wide array… <b>Happy Shopping</b>.
         <br />
         <br />
       </p>
