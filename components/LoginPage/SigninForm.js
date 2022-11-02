@@ -25,11 +25,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
       await axios({
         method: 'post',
         url: 'https://tejdhar-otp-service.vercel.app/auth/signin/',
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'content-type': 'text/json',
-          'Access-Control-Allow-Methods': 'GET, POST, DELETE, HEAD, OPTIONS',
-        },
+
         data: {
           email: email,
         },
