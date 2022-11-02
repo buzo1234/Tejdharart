@@ -61,7 +61,7 @@ const Cart = () => {
       };
       await axios({
         method: 'post',
-        url: 'https://tejdhar-otp-service.vercel.app/auth/atc',
+        url: 'http://localhost:5000/auth/atc',
         data: new_cart,
       })
         .then((res) => {
@@ -88,9 +88,8 @@ const Cart = () => {
           'Access-Control-Allow-Headers':
             'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
         },
-        withCredentials: false,
 
-        url: 'https://tejdhar-otp-service.vercel.app/auth/pay/',
+        url: 'http://localhost:5000/auth/pay/',
         data: data,
       })
         .then((res) => {
