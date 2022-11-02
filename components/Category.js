@@ -7,7 +7,7 @@ const Category = ({ category: { title, slug, image, description, _id } }) => {
   return (
     <div>
       <Link href={`/category/${slug.current}`}>
-        <div className='category-card'>
+        <div className='product-card'>
           {image && (
             <img
               src={urlFor(image)}
