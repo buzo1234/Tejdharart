@@ -25,7 +25,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
       await axios({
         method: 'post',
         url: 'https://tejdhar-otp-service.vercel.app/auth/signin/',
-
+        withCredentials: true,
         data: {
           email: email,
         },
@@ -73,7 +73,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
   return (
     <div className='selection:bg-indigo-500 selection:text-white '>
       <div className='flex justify-center items-center '>
-        <div className=' flex-1'>
+        <div className=' block h-full'>
           <div className='mx-auto overflow-hidden'>
             <div className='p-8'>
               <h1 className='text-xl md:text-4xl lg:text-5xl font-bold text-black'>
@@ -87,7 +87,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
                     name='email'
                     type='number'
                     className='peer h-10 w-full border-b-2 border-black text-black placeholder-transparent focus:outline-none focus:border-indigo-600  bg-transparent'
-                    placeholder='Phone'
+                    placeholder='john@doe.com'
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <label
@@ -139,13 +139,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
                   className='mt-20 px-8 py-4 uppercase rounded-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-center block w-full focus:outline-none focus:ring focus:ring-offset-2 focus:ring-indigo-500 focus:ring-opacity-80 cursor-pointer bg-transparent disabled:bg-opacity-40 disabled:cursor-not-allowed'
                 />
               </form>
-              <a
-                href='#'
-                className='mt-4 block text-sm text-center font-medium text-indigo-600 hover:underline focus:outline-none focus:ring-2 focus:ring-indigo-500'
-              >
-                {' '}
-                Forgot your password?{' '}
-              </a>
+
               <div className='flex w-full justify-center items-center mt-5 space-x-4'>
                 <p className='text-xs md:text-lg lg:text-lg xl:text-lg'>
                   Don&apos;t have an account?
