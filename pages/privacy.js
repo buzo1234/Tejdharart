@@ -2,7 +2,7 @@ import React from 'react';
 import { Footer } from '../components';
 import { useStateContext } from '../context/StateContext';
 
-const privacy = () => {
+const Privacy = () => {
   const { cat } = useStateContext();
   return (
     <div>
@@ -271,4 +271,4 @@ const privacy = () => {
   );
 };
 
-export default privacy;
+export default Privacy;

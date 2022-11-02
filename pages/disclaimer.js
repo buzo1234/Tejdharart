@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer } from '../components';
 import { useStateContext } from '../context/StateContext';
-const disclaimer = () => {
+const Disclaimer = () => {
   const { cat } = useStateContext();
 
   return (
@@ -46,4 +46,4 @@ const disclaimer = () => {
   );
 };
 
-export default disclaimer;
+export default Disclaimer;

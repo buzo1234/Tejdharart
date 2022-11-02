@@ -2,7 +2,7 @@ import React from 'react';
 import { Footer } from '../components';
 import AboutFounder from '../components/AboutFounder';
 import { useStateContext } from '../context/StateContext';
-const founder = () => {
+const Founder = () => {
   const { cat } = useStateContext();
   return (
     <div>
@@ -12,4 +12,4 @@ const founder = () => {
   );
 };
 
-export default founder;
+export default Founder;

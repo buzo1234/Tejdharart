@@ -2,7 +2,7 @@ import React from 'react';
 import { Footer } from '../components';
 import { useStateContext } from '../context/StateContext';
 
-const cancellation = () => {
+const Cancellation = () => {
   const { cat } = useStateContext();
   return (
     <div>
@@ -75,4 +75,4 @@ const cancellation = () => {
   );
 };
 
-export default cancellation;
+export default Cancellation;

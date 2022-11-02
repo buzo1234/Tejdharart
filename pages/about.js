@@ -3,7 +3,7 @@ import { Footer } from '../components';
 import Aboutus from '../components/Aboutus';
 import { useStateContext } from '../context/StateContext';
 
-const about = () => {
+const About = () => {
   const { cat } = useStateContext();
 
   return (
@@ -14,4 +14,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;
