@@ -11,6 +11,10 @@ const Home = ({ products, CategoryData }) => {
   const { logAllCategories, cat } = useStateContext();
 
   useEffect(() => {
+    CategoryData.sort((a, b) => (a._createdAt > b._createdAt ? 1 : -1));
+  }, [CategoryData]);
+
+  useEffect(() => {
     logAllCategories(CategoryData);
 
     console.log('cat data', cat);

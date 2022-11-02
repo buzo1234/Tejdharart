@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 import { client } from '../../lib/client';
@@ -9,6 +9,10 @@ const CategoryDetails = ({ category: { title }, products }) => {
   const router = useRouter();
   const { slug } = router.query;
   const { cat } = useStateContext();
+
+  useEffect(() => {
+    products.sort((a, b) => (a._createdAt > b._createdAt ? -1 : 1));
+  }, [products]);
 
   return (
     <div>
