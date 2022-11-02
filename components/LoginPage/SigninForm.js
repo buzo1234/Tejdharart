@@ -29,7 +29,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'DELETE, POST, GET, OPTIONS',
+          'Access-Control-Allow-Methods': 'DELETE, POST, GET',
           'Access-Control-Allow-Headers':
             'Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization',
         },
