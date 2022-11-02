@@ -25,7 +25,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
       await axios({
         method: 'get',
         url: 'https://tejdhar-otp-service.vercel.app/auth/signin/',
-        withCredentials: true,
+        withCredentials: false,
         data: {
           email: email,
         },
