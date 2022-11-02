@@ -27,6 +27,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
         url: 'https://tejdhar-otp-service.vercel.app/auth/signin/',
         headers: {
           'Access-Control-Allow-Origin': '*',
+          'content-type': 'text/json',
         },
         data: {
           email: email,
