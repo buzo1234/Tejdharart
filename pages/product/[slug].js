@@ -71,7 +71,9 @@ const ProductDetails = ({ product, products }) => {
           </div>
           {colorVariants !== undefined ? (
             <div>
-              <p className='font-semibold'>Color Variants:</p>
+              <p className='font-semibold'>
+                Color Variants (Please select your color):
+              </p>
               <p className='p-0 m-0 text-sm'>{selcolor}</p>
               <div className='flex gap-4'>
                 {colorVariants.map((item, i) => (
