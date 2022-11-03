@@ -86,10 +86,10 @@ const Home = ({ products, CategoryData }) => {
 };
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "product"]';
+  const query = "*[_type == 'product' && !(_id in path('drafts.**'))]";
   const products = await client.fetch(query);
 
-  const CategoryQuery = '*[_type == "category"]';
+  const CategoryQuery = "*[_type == 'category' && !(_id in path('drafts.**'))]";
   const CategoryData = await client.fetch(CategoryQuery);
 
   return {
