@@ -92,7 +92,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
                   />
                   <label
                     htmlFor='email'
-                    className='absolute left-0 -top-3.5 text-black text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-black peer-focus:text-sm'
+                    className='absolute left-0 -top-3.5 text-black text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-black peer-focus:text-sm bg-transparent'
                   >
                     Mobile Number
                   </label>

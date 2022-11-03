@@ -24,7 +24,7 @@ const LoginPage = () => {
       <div
         className={`signup absolute top-0 left-0 h-full w-full md:w-1/2 lg:w-1/2 xl:w-1/2 flex justify-center items-center transition-all duration-700 ease-in-out ${
           isAnimated
-            ? 'md:translate-x-full lg:translate-x-full xl:translate-x-full tran  opacity-100 z-20 animate-show'
+            ? 'md:translate-x-full lg:translate-x-full xl:translate-x-full tran  opacity-100 z-30 animate-show'
             : 'opacity-0 z-10'
         }`}
         style={{ backgroundImage: 'url(Background.jpg)' }}

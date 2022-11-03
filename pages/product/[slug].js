@@ -148,7 +148,7 @@ const ProductDetails = ({ product, products }) => {
 };
 
 export const getStaticPaths = async () => {
-  const query = `*[_type == "product"] {
+  const query = `*[_type == "product" && !(_id in path('drafts.**'))] {
     slug {
       current
     }
@@ -170,8 +170,8 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params: { slug } }) => {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]';
+  const query = `*[_type == "product" && !(_id in path('drafts.**')) && slug.current == '${slug}'][0]`;
+  const productsQuery = "*[_type == 'product' && !(_id in path('drafts.**'))]";
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
