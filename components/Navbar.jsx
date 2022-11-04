@@ -17,8 +17,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const Navbar = () => {
-  const { showCart, setShowCart, totalQuantities, cat } = useStateContext();
+const Navbar = ({cat}) => {
+  const { showCart, setShowCart, totalQuantities } = useStateContext();
   const { state, dispatch } = useUserContext();
   const router = useRouter();
 
@@ -309,6 +309,16 @@ const Navbar = () => {
       </div>
     </div>
   );
+};
+
+export const getServerSideProps = async () => {
+
+  const CategoryQuery = "*[_type == 'category' && !(_id in path('drafts.**'))]";
+  const cat = await client.fetch(CategoryQuery);
+  cat.sort((a, b) => (a._createdAt > b._createdAt ? 1 : -1));
+  return {
+    props: { cat },
+  };
 };
 
 export default Navbar;

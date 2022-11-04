@@ -11,6 +11,7 @@ import { client, urlFor } from '../../lib/client';
 import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 const ProductDetails = ({ product, products }) => {
   console.log('product details', product);
@@ -70,6 +71,7 @@ const ProductDetails = ({ product, products }) => {
               setEmailForm('');
               setPhoneForm('');
               setNameForm('');
+              toast.success('Order request received!');
               setFlag(true);
             } else {
               alert(res.data[1]);
@@ -184,12 +186,14 @@ const ProductDetails = ({ product, products }) => {
               <form className='flex flex-col w-full md:w-3/5 lg:w-3/5 xl:w-3/5'>
                 <input
                   onChange={(e) => setNameForm(e.target.value)}
+                  value={nameForm}
                   type='text'
                   className='mb-4 border-[1px] border-gray-600 border-solid px-3 py-2'
                   placeholder='Enter your name'
                 />
                 <input
                   onChange={(e) => setEmailForm(e.target.value)}
+                  value={emailForm}
                   type='email'
                   className='mb-4 border-[1px] border-gray-600 border-solid px-3 py-2'
                   placeholder='Enter your email'
@@ -197,6 +201,7 @@ const ProductDetails = ({ product, products }) => {
                 <div className='flex w-full '>
                   <input
                     onChange={(e) => setPhoneForm(e.target.value)}
+                    value={phoneForm}
                     type='number'
                     placeholder='Enter your phone number'
                     className='mb-4 w-full border-[1px] border-gray-600 border-solid px-3 py-2'
@@ -204,6 +209,7 @@ const ProductDetails = ({ product, products }) => {
                 </div>
                 <textarea
                   onChange={(e) => setDescForm(e.target.value)}
+                  value={descForm}
                   className=' border-[1px] border-gray-600 border-solid px-3 py-2'
                   name='description'
                   id='description'

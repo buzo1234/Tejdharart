@@ -2,11 +2,20 @@ import React from 'react';
 import Image from 'next/image';
 import { urlFor } from '../lib/client';
 
-const Orderblock = ({ item, index, date }) => {
+const Orderblock = ({ item, index, date, status }) => {
   return (
     <div className='bg-gradient-to-r from-amber-300 via-amber-100 to-amber-300 px-4 py-2 rounded-md  my-4 flex flex-col justify-center   w-full'>
+      <div className='flex w-full justify-between items-center'>
+      <div >
+
       <p className='text-lg font-semibold'>Order: {index}</p>
       <p className='font-semibold'>Date: {date}</p>
+      </div>
+      {status !== undefined ? <div>
+        <p className='font-semibold'>Order Status: {status}</p>
+      </div> : null}
+      
+      </div>
       {item.map((val, i) => {
         return (
           <div key={i}>

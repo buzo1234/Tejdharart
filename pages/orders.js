@@ -66,6 +66,7 @@ export default function Orders() {
                 item={item.order}
                 index={i + 1}
                 date={item.datetime}
+                status= {item?.status}
               />
             );
           })}

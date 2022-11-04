@@ -75,7 +75,7 @@ export const StateContext = ({ children }) => {
       setCartItems([...cartItems, { ...productclone }]);
     }
 
-    toast.success(`${qty} ${product.title} added to the cart.`);
+    t.successtoas(`${qty} ${product.title} added to the cart.`);
   };
 
   const onRemove = (product) => {
