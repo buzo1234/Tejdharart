@@ -23,6 +23,12 @@ export default {
       type: 'number',
     },
     {
+      title: 'Is it Coustomizable?',
+      name: 'custom',
+      type: 'boolean',
+      initialValue: false,
+    },
+    {
       name: 'productImage',
       title: 'Product Images',
       type: 'array',
