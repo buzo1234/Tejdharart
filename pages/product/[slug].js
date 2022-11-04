@@ -13,10 +13,18 @@ import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
   console.log('product details', product);
-  const { productImage, title, body, defaultPrice, colorVariants } = product;
+  const { productImage, title, body, defaultPrice, colorVariants, custom } =
+    product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart, cat } = useStateContext();
   const [selcolor, setselcolor] = useState(null);
+
+  const [nameForm, setNameForm] = useState('');
+  const [emailForm, setEmailForm] = useState('');
+  const [phoneForm, setPhoneForm] = useState();
+  const [descForm, setDescForm] = useState('');
+
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     if (colorVariants !== undefined) {
@@ -33,15 +41,34 @@ const ProductDetails = ({ product, products }) => {
     setShowCart(true);
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (
+      nameForm &&
+      emailForm &&
+      phoneForm &&
+      descForm &&
+      phoneForm.length === 10
+    ) {
+      setFlag(true);
+    } else {
+      alert('Please fill all the details');
+    }
+  };
+
   return (
     <div>
       <div className='product-detail-container'>
         <div>
           <div className='image-container'>
-            <img
-              src={productImage && urlFor(productImage && productImage[index])}
-              className='product-detail-image object-contain'
-            />
+            {productImage ? (
+              <img
+                src={
+                  productImage && urlFor(productImage && productImage[index])
+                }
+                className='product-detail-image object-contain'
+              />
+            ) : null}
           </div>
           <div className='small-images-container'>
             {productImage?.map((item, i) => (
@@ -100,35 +127,89 @@ const ProductDetails = ({ product, products }) => {
           ) : null}
           <h4 className='font-semibold'>Details: </h4>
           <PortableText value={body?.en} />
-          <p className='price'>&#x20B9;{defaultPrice}</p>
-          <div className='quantity'>
-            <h3>Quantity:</h3>
-            <p className='quantity-desc'>
-              <span className='minus' onClick={decQty}>
-                <AiOutlineMinus />
-              </span>
-              <span className='num'>{qty}</span>
-              <span className='plus' onClick={incQty}>
-                <AiOutlinePlus />
-              </span>
-            </p>
-          </div>
-          <div className='buttons'>
-            <button
-              type='button'
-              className='add-to-cart'
-              onClick={() => onAdd(product, selcolor, qty)}
-            >
-              Add to Cart
-            </button>
-            <button
-              type='button'
-              className='buy-now bg-gray-500'
-              onClick={handleBuyNow}
-            >
-              Buy Now
-            </button>
-          </div>
+          <p className='price'>
+            {/* &#x20B9;{defaultPrice} */}
+            {custom ? '' : <p>&#x20B9;{defaultPrice}</p>}
+          </p>
+          {!custom ? (
+            <div className='quantity'>
+              <h3>Quantity:</h3>
+              <p className='quantity-desc'>
+                <span className='minus' onClick={decQty}>
+                  <AiOutlineMinus />
+                </span>
+                <span className='num'>{qty}</span>
+                <span className='plus' onClick={incQty}>
+                  <AiOutlinePlus />
+                </span>
+              </p>
+            </div>
+          ) : null}
+
+          {custom ? (
+            <>
+              <p className='font-bold my-3 text-lg'>
+                Please fill this form to place a customization order!
+              </p>
+              <form className='flex flex-col w-full md:w-3/5 lg:w-3/5 xl:w-3/5'>
+                <input
+                  onChange={(e) => setNameForm(e.target.value)}
+                  type='text'
+                  className='mb-4 border-[1px] border-gray-600 border-solid px-3 py-2'
+                  placeholder='Enter your name'
+                />
+                <input
+                  onChange={(e) => setEmailForm(e.target.value)}
+                  type='email'
+                  className='mb-4 border-[1px] border-gray-600 border-solid px-3 py-2'
+                  placeholder='Enter your email'
+                />
+                <div className='flex w-full '>
+                  <input
+                    onChange={(e) => setPhoneForm(e.target.value)}
+                    type='number'
+                    placeholder='Enter your phone number'
+                    className='mb-4 w-full border-[1px] border-gray-600 border-solid px-3 py-2'
+                  />
+                </div>
+                <textarea
+                  onChange={(e) => setDescForm(e.target.value)}
+                  className=' border-[1px] border-gray-600 border-solid px-3 py-2'
+                  name='description'
+                  id='description'
+                  placeholder='Enter description of your customized product'
+                  cols='30'
+                  rows='6'
+                ></textarea>
+                <div className='buttons'>
+                  <button
+                    type='button'
+                    className='add-to-cart'
+                    onClick={(e) => handleFormSubmit(e)}
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </>
+          ) : (
+            <div className='buttons'>
+              <button
+                type='button'
+                className='add-to-cart'
+                onClick={() => onAdd(product, selcolor, qty)}
+              >
+                Add to Cart
+              </button>
+              <button
+                type='button'
+                className='buy-now bg-gray-500'
+                onClick={handleBuyNow}
+              >
+                Buy Now
+              </button>
+            </div>
+          )}
         </div>
       </div>
 

@@ -67,9 +67,11 @@ const Footer = ({ data }) => {
         <div className='flex w-full flex-col mt-4 md:mt-0 lg:mt-0 xl:mt-0'>
           <p className='text-lg font-bold mb-2'>Follow us on our Socials!</p>
           <div className='flex gap-2'>
-            <p className='icons'>
-              <AiFillInstagram className='w-8 h-8' />
-            </p>
+            <Link href='https://www.instagram.com/tejdharart/'>
+              <p className='icons cursor-pointer'>
+                <AiFillInstagram className='w-8 h-8' />
+              </p>
+            </Link>
             <p className='icons'>
               <AiOutlineTwitter className='w-8 h-8' />
             </p>
