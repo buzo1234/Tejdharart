@@ -88,7 +88,7 @@ const Navbar = () => {
         <div className='hidden md:block lg:block xl:block'>
           <Menu as='div' className='relative inline-block text-left'>
             <div>
-              <Menu.Button className='inline-flex w-full justify-center rounded-md  px-4 py-2 text-sm font-medium text-gray-700 shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100'>
+              <Menu.Button className='inline-flex w-full justify-center items-center rounded-md  px-4 py-2 text-sm md:text-lg lg:text-lg xl:text-lg font-medium text-gray-700 shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100'>
                 Categories
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
@@ -178,7 +178,7 @@ const Navbar = () => {
                     aria-hidden='true'
                   />
                 </Menu.Button>
-            </div>
+              </div>
 
               <Transition
                 as={Fragment}
@@ -266,7 +266,7 @@ const Navbar = () => {
           className='relative inline-block text-left md:hidden lg:hidden xl:hidden'
         >
           <div>
-            <Menu.Button className='inline-flex w-full justify-center rounded-md  px-4 py-2 text-sm font-medium text-gray-700 shadow-sm  focus:outline-none '>
+            <Menu.Button className='inline-flex w-full justify-center  text-sm font-medium text-gray-700 shadow-sm  focus:outline-none '>
               <div className='w-[29px]'>
                 <div className='bg-black h-[3.5px] mb-2'></div>
                 <div className='bg-black h-[3.5px] my-2'></div>

@@ -10,6 +10,7 @@ import { PortableText } from '@portabletext/react';
 import { client, urlFor } from '../../lib/client';
 import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
+import axios from 'axios';
 
 const ProductDetails = ({ product, products }) => {
   console.log('product details', product);
@@ -41,7 +42,7 @@ const ProductDetails = ({ product, products }) => {
     setShowCart(true);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (
       nameForm &&
@@ -50,7 +51,36 @@ const ProductDetails = ({ product, products }) => {
       descForm &&
       phoneForm.length === 10
     ) {
-      setFlag(true);
+      try {
+        let data = {
+          name: nameForm,
+          email: emailForm,
+          phone: phoneForm,
+          description: descForm,
+        };
+        await axios({
+          method: 'post',
+          url: 'https://tejdhar-otp-service.vercel.app/auth/sendmail',
+          data: data,
+        })
+          .then((res) => {
+            if (res.data[0]) {
+              console.log(res.data[1]);
+              setDescForm('');
+              setEmailForm('');
+              setPhoneForm('');
+              setNameForm('');
+              setFlag(true);
+            } else {
+              alert(res.data[1]);
+
+              setFlag(false);
+            }
+          })
+          .catch((error) => alert(error));
+      } catch (error) {
+        alert(error);
+      }
     } else {
       alert('Please fill all the details');
     }
@@ -191,6 +221,12 @@ const ProductDetails = ({ product, products }) => {
                   </button>
                 </div>
               </form>
+
+              {flag ? (
+                <p className='text-lg text-green-800 font-semibold md:text-xl lg:text-xl xl:text-xl'>
+                  Order Request sent! You will hear from us shortly
+                </p>
+              ) : null}
             </>
           ) : (
             <div className='buttons'>
