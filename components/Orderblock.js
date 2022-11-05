@@ -12,7 +12,7 @@ const Orderblock = ({ item, index, date, status }) => {
       <p className='font-semibold'>Date: {date}</p>
       </div>
       {status !== undefined ? <div className='flex flex-col md:flex-row lg:flex-row xl:flex-row items-center'>
-        <p><b>Order Status:</b> {status}</p>
+        <p><b>Order Status:</b><br className='md:hidden lg:hidden xl:hidden'/> {status}</p>
       </div> : null}
       
       </div>
@@ -31,15 +31,15 @@ const Orderblock = ({ item, index, date, status }) => {
                   }
                   width={130}
                   height={130}
-                  className='rounded-lg'
+                  className='rounded-lg mr-3'
                 />
               </div>
-              <p className='font-semibold text-md md:text-lg lg:text-lg xl:text-lg text-center'>{val.title}</p>
-              <p className='font-semibold text-md md:text-lg lg:text-lg xl:text-lg text-center'>
-                Price: &#x20B9;{val.defaultPrice}
+              <p className='font-semibold text-sm md:text-lg lg:text-lg xl:text-lg text-center'>{val.title}</p>
+              <p className='font-semibold text-sm md:text-lg lg:text-lg xl:text-lg text-center'>
+                Price:<br className='md:hidden lg:hidden xl:hidden'/> &#x20B9;{val.defaultPrice}
               </p>
-              <p className='font-semibold text-md md:text-lg lg:text-lg xl:text-lg text-center'>
-                Qty x {val.quantity}
+              <p className='font-semibold text-sm md:text-lg lg:text-lg xl:text-lg text-center'>
+                Qty<br className='md:hidden lg:hidden xl:hidden'/> x {val.quantity}
               </p>
             </div>
             {item.length > 1 && item.length !== i + 1 ? (
