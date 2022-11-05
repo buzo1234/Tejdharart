@@ -11,8 +11,8 @@ const Orderblock = ({ item, index, date, status }) => {
       <p className='text-lg font-semibold'>Order: {index}</p>
       <p className='font-semibold'>Date: {date}</p>
       </div>
-      {status !== undefined ? <div>
-        <p className='font-semibold'>Order Status: {status}</p>
+      {status !== undefined ? <div className='flex flex-col md:flex-row lg:flex-row xl:flex-row items-center'>
+        <p><b>Order Status:</b> {status}</p>
       </div> : null}
       
       </div>
@@ -34,11 +34,11 @@ const Orderblock = ({ item, index, date, status }) => {
                   className='rounded-lg'
                 />
               </div>
-              <p className='font-semibold text-lg text-center'>{val.title}</p>
-              <p className='font-semibold text-lg text-center'>
+              <p className='font-semibold text-md md:text-lg lg:text-lg xl:text-lg text-center'>{val.title}</p>
+              <p className='font-semibold text-md md:text-lg lg:text-lg xl:text-lg text-center'>
                 Price: &#x20B9;{val.defaultPrice}
               </p>
-              <p className='font-semibold text-lg text-center'>
+              <p className='font-semibold text-md md:text-lg lg:text-lg xl:text-lg text-center'>
                 Qty x {val.quantity}
               </p>
             </div>
