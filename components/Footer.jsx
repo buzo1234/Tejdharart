@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { AiFillInstagram, AiOutlineTwitter } from 'react-icons/ai';
+import { AiFillInstagram, AiOutlineTwitter, AiFillFacebook } from 'react-icons/ai';
 import CatLink from './CatLink';
 import { client } from '../lib/client';
 import Head from 'next/head';
@@ -74,6 +74,9 @@ const Footer = ({ data }) => {
             </Link>
             <p className='icons'>
               <AiOutlineTwitter className='w-8 h-8' />
+            </p>
+            <p className='icons'>
+              <AiFillFacebook className='w-8 h-8' />
             </p>
           </div>
           <p className='text-lg font-bold mt-5'>📧 tejdharart@gmail.com</p>

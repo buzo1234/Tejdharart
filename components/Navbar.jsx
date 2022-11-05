@@ -77,8 +77,8 @@ const Navbar = ({cat}) => {
         <Link href='/'>
           <Image
             src='/logo_tejdharart.jpg'
-            width={120}
-            height={120}
+            width={90}
+            height={90}
             className='cursor-pointer'
           />
         </Link>
