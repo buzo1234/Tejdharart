@@ -11,7 +11,7 @@ import { client, urlFor } from '../../lib/client';
 import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const ProductDetails = ({ product, products }) => {
   console.log('product details', product);
@@ -244,7 +244,7 @@ const ProductDetails = ({ product, products }) => {
                 Add to Cart
               </button>
               <button
-                type='button'
+                 type='button'
                 className='buy-now bg-gray-500'
                 onClick={handleBuyNow}
               >
