@@ -5,7 +5,6 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from 'react-icons/ai';
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { PortableText } from '@portabletext/react';
 
 import { client, urlFor } from '../../lib/client';
@@ -13,7 +12,6 @@ import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-import SliderImage from 'react-zoom-slider';
 
 
 const ProductDetails = ({ product, products }) => {
@@ -28,22 +26,8 @@ const ProductDetails = ({ product, products }) => {
   const [emailForm, setEmailForm] = useState('');
   const [phoneForm, setPhoneForm] = useState();
   const [descForm, setDescForm] = useState('');
-  const [data, setData] = useState([{image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw7sNKG0Ez1btrrnJOcBnTqEZpOcCrnLLdbA&usqp=CAU', text: 'image'}]);
 
   const [flag, setFlag] = useState(false);
-
-  useEffect(() => {
-    setData([]);
-    for(let i=0; i<productImage.length ; i++){
-      let obj = {
-        image: urlFor(productImage[i]),
-        text: 'image'
-      }
-      setData(oldArray => [...oldArray, obj]);
-    }
-    console.log('Data', data)
-  }, [product])
-  
 
   useEffect(() => {
     if (colorVariants !== undefined) {
@@ -108,48 +92,30 @@ const ProductDetails = ({ product, products }) => {
   return (
     <div>
       <div className='product-detail-container'>
-        <div className='flex flex-col'>
-          <div className=' relative flex justify-center image-container'>
-            
-            
+        <div>
+          <div className='image-container'>
             {productImage ? (
-              <>
-              <div className='absolute top-0 left-0 w-full h-full items-center flex justify-between'>
-              <div className='bg-gray-300  py-2 px-2 h-full text-center flex items-center cursor-pointer font-bold md:text-2xl lg:text-3xl xl:text-3xl opacity-30 rounded-tl-xl rounded-bl-xl text-xl text-black via-white to-gray-700 from-gray-700 bg-gradient-to-b' onClick={() => setIndex(index!==0 ?index-1 : productImage.length-1)}><FiChevronLeft /></div>
-              <div className='bg-gray-300  py-2 px-2 h-full text-center flex items-center cursor-pointer font-bold md:text-2xl lg:text-3xl xl:text-3xl opacity-30 rounded-tr-xl rounded-br-xl text-xl text-black from-gray-700 to-gray-700 via-white bg-gradient-to-b' onClick={() => setIndex(index!==productImage.length-1 ? index+1 : 0)}><FiChevronRight/></div>
-            </div>
               <img
                 src={
-                  productImage && urlFor(productImage && productImage[index] || 'https://www.pdquipment.com/wp-content/uploads/dummy-product-image.jpg')
+                  productImage && urlFor(productImage && productImage[index])
                 }
                 className='product-detail-image object-contain'
-                />
-                </>
+              />
             ) : null}
           </div>
-          {productImage ?<div className='small-images-container'>
+          <div className='small-images-container'>
             {productImage?.map((item, i) => (
               <img
                 key={i}
-                src={urlFor(item) || 'https://www.pdquipment.com/wp-content/uploads/dummy-product-image.jpg'}
+                src={urlFor(item)}
                 className={
                   i === index ? 'small-image selected-image' : 'small-image'
                 }
                 onMouseEnter={() => setIndex(i)}
               />
             ))}
-          </div> : null }
-          
+          </div>
         </div>
-       {/*  {(data!== undefined && data[0].image) ?<div className='flex w-full md:max-w-screen-sm lg:max-w-screen-sm xl:max-w-screen-sm'> <SliderImage 
-          data={data} 
-          width="100px" 
-          showDescription={true} 
-          direction="right" 
-          /> </div>: null} */}
-        
-        
-          
 
         <div className='product-detail-desc'>
           <h1 className='text-2xl'>{title}</h1>

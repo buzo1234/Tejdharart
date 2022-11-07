@@ -460,18 +460,11 @@ span.text-red {
   margin: 40px;
   margin-top: 60px;
   color: #324d67;
- 
-}
-
-.image-container{
-  display: flex;
-  max-width: 400px;
 }
 
 .product-detail-image {
   border-radius: 15px;
   background-color: #ebebeb;
- /*  background-color: #008cff; */
 
   width: 400px;
   height: 400px;
@@ -484,7 +477,6 @@ span.text-red {
 .small-images-container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 400px;
   gap: 10px;
   margin-top: 20px;
 }
