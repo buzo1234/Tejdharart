@@ -23,15 +23,16 @@ const Footer = ({ data }) => {
       </Head>
       <div className='w-full grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 px-4 py-2 mt-10'>
         <div className='col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 '>
-          <p className='text-xl font-bold my-2'>Tejdharart</p>
+          <p className='text-xl font-bold my-2'>Tejdhar Art</p>
           <p className='text-3xl pr-32 mt-3 drop-shadow-lg tagline'>
-            “There&apos;s no better way than a personalised &apos;Gift&apos;, to
+            “There&apos;s no better way than a &apos;Gift&apos;, to
             express yourself.”
           </p>
           <p className='mt-5 text-xl font-bold'>Address: </p>
           <p className='text-lg'>
             B 3, Arti society Sheela Vihar colony Kothrud; Pune 411038.
           </p>
+          <p className='text-lg font-bold mt-5'>📧 tejdharart@gmail.com</p>
         </div>
 
         <div className='mt-4 md:mt-0 lg:mt-0 xl:mt-0'>
@@ -79,7 +80,7 @@ const Footer = ({ data }) => {
               <AiFillFacebook className='w-8 h-8' />
             </p>
           </div>
-          <p className='text-lg font-bold mt-5'>📧 tejdharart@gmail.com</p>
+          
         </div>
       </div>
       <div className='footer-container'>

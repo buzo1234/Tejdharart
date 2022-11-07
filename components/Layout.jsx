@@ -6,12 +6,9 @@ import Footer from './Footer';
 import Intro from './Intro';
 import { useStateContext } from '../context/StateContext';
 
-
 const Layout = ({ children }) => {
   const [modal, setModal] = useState(true);
-  const {
-    cat
-  } = useStateContext();
+  const { cat } = useStateContext();
   return (
     <div className='layout'>
       <Head>
@@ -20,7 +17,7 @@ const Layout = ({ children }) => {
       {modal ? (
         <>
           <div className='w-screen flex fixed justify-center items-center my-auto z-50 h-screen bg-gray-700/50'>
-            <div className="transition delay-200 translate-y-0 flex-col ease-in-out w-fit md:w-3/4 lg:w-3/4 xl:w-3/4 h-11/12  px-2 md:px-3 lg:px-3 xl:px-3 py-1 mx-1 flex bg-[url('/Background.jpg')] rounded-xl shadow-2xl overflow-y-scroll">
+            <div className="transition delay-200 translate-y-0 flex-col ease-in-out w-fit md:w-3/4 lg:w-3/4 xl:w-3/4 h-11/12  px-2 md:px-3 lg:px-3 xl:px-3 py-1 mx-1 flex bg-[#fcd34d] rounded-xl shadow-2xl overflow-y-scroll">
               <button
                 onClick={() => setModal(false)}
                 className='flex w-full justify-end text-red-600 text-xl font-bold'
@@ -34,7 +31,7 @@ const Layout = ({ children }) => {
       ) : (
         <>
           <div className='w-screen justify-center items-center my-auto z-20 h-screen bg-gray-700/50 transition delay-200 -translate-y-full ease-in-out hidden '>
-            <div className=" flex-col  w-11/12 md:w-3/4 lg:w-3/4 xl:w-3/4 h-fit px-2 md:px-3 lg:px-3 xl:px-3 py-1 mx-auto flex bg-[url('/Background.jpg')] rounded-xl shadow-2xl">
+            <div className=' flex-col  w-11/12 md:w-3/4 lg:w-3/4 xl:w-3/4 h-fit px-2 md:px-3 lg:px-3 xl:px-3 py-1 mx-auto flex bg-[#fcd34d] rounded-xl shadow-2xl'>
               <button
                 onClick={() => setModal(false)}
                 className='flex w-full justify-end text-red-600 text-xl font-bold'
@@ -47,7 +44,7 @@ const Layout = ({ children }) => {
         </>
       )}
       <header>
-        <Navbar cat={cat}/>
+        <Navbar cat={cat} />
       </header>
       <main className='main-container'>{children}</main>
     </div>

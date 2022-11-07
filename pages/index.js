@@ -58,7 +58,7 @@ const Home = ({ products, CategoryData }) => {
       )} */}
 
         <div className='products-heading about__para'>
-          <h2>Our Product Categories</h2>
+          <h2>Our Products</h2>
         </div>
 
         <div className='products-container'>

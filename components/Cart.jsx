@@ -27,6 +27,12 @@ const Cart = () => {
   const router = useRouter();
   const [present, setPresent] = useState(false);
   const [address, setAddress] = useState('');
+  const [add1, setAdd1] = useState('');
+  const [add2, setAdd2] = useState('');
+  const [state, setState] = useState('');
+  const [city, setCity] = useState('');
+  const [pin, setPin] = useState('');
+  const [land, setLand] = useState('');
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('state')).user;
@@ -41,6 +47,8 @@ const Cart = () => {
   console.log(cartItems);
 
   const handleCheckout = async () => {
+    let location = add1 + ", " + add2 + ", " + state + ", " + city + ", " + pin + ", " + land
+    
     console.log(totalPrice);
     const userData = JSON.parse(localStorage.getItem('state')).user;
     const data = {
@@ -52,10 +60,12 @@ const Cart = () => {
       webhook_url: '/webhook/',
     };
 
+    console.log(location)
+
     try {
       let new_cart = {
         cart: cartItems,
-        address: address,
+        address: location,
         userID: userData.userDetails.userPhone,
         userNa: userData.userDetails.userName,
       };
@@ -140,12 +150,36 @@ const Cart = () => {
           <div className='flex w-full'>
             <p className='text-left text-lg font-bold'>Address</p>
           </div>
-          <input
-            type='textarea'
-            onChange={(e) => setAddress(e.target.value)}
-            placeholder='Enter Delivery Address'
-            className='border-red-500 border-[1px] w-full px-2 py-1'
-          />
+          <table className='flex w-full justify-center items-center flex-col '>
+            <tr className='flex w-full py-1 justify-center'>
+              <td className='flex w-full mx-2'>
+                <input type="text" placeholder='Address Line 1' onChange={(e) => setAdd1(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+              </td>
+            
+            </tr>
+            <tr className='flex w-full py-2 justify-center'>
+              <td className='flex w-full mx-2'>
+              <input type="text" placeholder='Address Line 2 (optional)' onChange={(e) => setAdd2(e.target.value)} className='border-red-500 border-[1px] w-full px-2 py-1'/>
+              </td>
+            </tr>
+            <tr className='flex w-full py-2 justify-center'>
+              <td className='flex w-full mx-2'>
+              <input type="text" placeholder='State' onChange={(e) => setState(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+              </td>
+              <td className='flex w-full mx-2'>
+              <input type="text" placeholder='City' onChange={(e) => setCity(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+              </td>
+            </tr>
+            <tr className='flex w-full py-2 justify-center'>
+              <td className='flex w-full mx-2'>
+              <input type="text" placeholder='Pin' onChange={(e) => setPin(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+              </td>
+              <td className='flex w-full mx-2'>
+              <input type="text" placeholder='Nearest Landmark' onChange={(e) => setLand(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+              </td>
+            </tr>
+          </table>
+          
         </div>
 
         <div className='product-container '>
@@ -211,7 +245,7 @@ const Cart = () => {
               <button
                 type='button'
                 className='btn disabled:bg-gray-400 disabled:cursor-not-allowed'
-                disabled={address.length > 10 ? false : true}
+                disabled={(add1.length > 10 && state.length > 3 && city.length > 2 && pin.length === 6) ? false : true}
                 onClick={handleCheckout}
               >
                 Pay Now

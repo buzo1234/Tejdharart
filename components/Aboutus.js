@@ -51,7 +51,7 @@ const Aboutus = () => {
       </p>
       <div className='flex w-full h-1 bg-yellow-200'>{/* Underline */}</div>
       <section className='flex flex-col '>
-        <p className='text-yellow-500 text-[28px] md:text-[48px] lg:text-[48px] xl:text-[48px] text-center font-bold italic my-10'>
+        <p className='text-[#fbbe06] text-[28px] md:text-[48px] lg:text-[48px] xl:text-[48px] text-center font-bold italic my-10'>
           Wondering what &quot;Tej-Dhar&quot; means?
         </p>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 items-center justify-center gap-5'>
@@ -75,7 +75,7 @@ const Aboutus = () => {
         </div>
       </section>
       <section className='flex flex-col text-[25px] px-5 font-poppins'>
-        <p className='text-yellow-500 text-[28px] md:text-[48px] lg:text-[48px] xl:text-[48px] text-center font-bold italic my-10'>
+        <p className='text-[#fbbe06] text-[28px] md:text-[48px] lg:text-[48px] xl:text-[48px] text-center font-bold italic my-10'>
           So, what makes us unique?
         </p>
         <p className='about__para'>
@@ -112,11 +112,11 @@ const Aboutus = () => {
         </p>
         <br />
         <p className=' text-3xl'>
-          &apos;There&apos;s no better way than a personalised &apos;Gift&apos;,
+          &apos;There&apos;s no better way than a &apos;Gift&apos;,
           to express yourself.&apos;
         </p>
 
-        <p className=' text-4xl text-yellow-500'>
+        <p className=' text-4xl text-[#fbbe06]'>
           Love, emotions, feelings, and a lot of &apos;unsaid words&apos;
         </p>
         <br />

@@ -118,16 +118,7 @@ const ProductDetails = ({ product, products }) => {
 
         <div className='product-detail-desc'>
           <h1 className='text-2xl'>{title}</h1>
-          <div className='reviews'>
-            <div className='flex'>
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiFillStar />
-              <AiOutlineStar />
-            </div>
-            <p>(20)</p>
-          </div>
+         
           {colorVariants !== undefined ? (
             <div>
               <p className='font-semibold'>
