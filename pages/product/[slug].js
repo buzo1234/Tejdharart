@@ -99,7 +99,7 @@ const ProductDetails = ({ product, products }) => {
           <div className='image-container flex relative'>
             {productImage ? (
               <>
-                <div className='absolute top-0 left-0 flex h-full mr-1 items-center justify-center cursor-pointer z-40 rounded-tl-lg rounded-bl-lg w-[50px]  text-6xl ' onClick={() => setIndex(index=== 0 ? productImage.length-1 : index-1)}><FiChevronLeft className='px-2 py-2 bg-gray-900 bg-opacity-20 font-bold text-black'/></div>
+                <div className='absolute top-0 left-0 flex h-full mr-1 items-center justify-center cursor-pointer z-40 rounded-tl-lg rounded-bl-lg w-[50px]  text-6xl ' onClick={() => setIndex(index=== 0 ? productImage.length-1 : index-1)}><FiChevronLeft className='px-2 py-2 bg-white bg-opacity-20 font-bold text-black'/></div>
                   <ReactImageMagnify {...{
                     smallImage: {
                       isFluidWidth: true,
@@ -119,7 +119,7 @@ const ProductDetails = ({ product, products }) => {
                   enlargedImageContainerClassName:'bg-red-500 z-30',
                   isHintEnabled:true
                 }} />
-              <div className='absolute top-0 right-0 flex h-full ml-1 items-center justify-center cursor-pointer z-40 rounded-tr-lg rounded-br-lg w-[50px]  text-6xl ' onClick={() => setIndex(index!== productImage.length-1 ? index+1 : 0)}><FiChevronRight className='px-2 py-2 bg-gray-900 bg-opacity-20 font-bold text-black'/></div>
+              <div className='absolute top-0 right-0 flex h-full ml-1 items-center justify-center cursor-pointer z-40 rounded-tr-lg rounded-br-lg w-[50px]  text-6xl ' onClick={() => setIndex(index!== productImage.length-1 ? index+1 : 0)}><FiChevronRight className='px-2 py-2 bg-white bg-opacity-20 font-bold text-black'/></div>
                 </>
               
             /* <img
