@@ -25,6 +25,10 @@ a {
 }
 .layout {
 }
+.input-position {
+  width: 300px;
+  position: relative;
+}
 
 .navbar-container {
   display: flex;
@@ -455,7 +459,7 @@ span.text-red {
   transform: scale(1.1, 1.1);
 }
 .product-detail-container {
-  display: flex;
+  
   gap: 40px;
   margin: 40px;
   margin-top: 60px;
@@ -478,6 +482,7 @@ span.text-red {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  max-width: 400px;
   margin-top: 20px;
 }
 .small-image {

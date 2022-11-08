@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import {
   AiOutlineMinus,
   AiOutlinePlus,
-  AiFillStar,
-  AiOutlineStar,
+
+ 
 } from 'react-icons/ai';
 import { PortableText } from '@portabletext/react';
-
+import {FiChevronLeft, FiChevronRight} from 'react-icons/fi'
 import { client, urlFor } from '../../lib/client';
 import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
-
+import ReactImageMagnify from 'react-image-magnify';
 
 const ProductDetails = ({ product, products }) => {
   console.log('product details', product);
@@ -28,6 +28,7 @@ const ProductDetails = ({ product, products }) => {
   const [descForm, setDescForm] = useState('');
 
   const [flag, setFlag] = useState(false);
+
 
   useEffect(() => {
     if (colorVariants !== undefined) {
@@ -91,16 +92,42 @@ const ProductDetails = ({ product, products }) => {
 
   return (
     <div>
-      <div className='product-detail-container'>
-        <div>
-          <div className='image-container'>
+      <div className='product-detail-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'>
+        <div className='cols-span-1'>
+   
+         
+          <div className='image-container flex relative'>
             {productImage ? (
-              <img
+              <>
+                <div className='absolute top-0 left-0 flex h-full mr-1 items-center justify-center cursor-pointer z-40 rounded-tl-lg rounded-bl-lg w-[50px]  text-6xl ' onClick={() => setIndex(index=== 0 ? productImage.length-1 : index-1)}><FiChevronLeft className='px-2 py-2 bg-gray-900 bg-opacity-20 font-bold text-black'/></div>
+                  <ReactImageMagnify {...{
+                    smallImage: {
+                      isFluidWidth: true,
+                      src:  urlFor( productImage[index]),
+                      
+                },
+                largeImage: {
+                    src: urlFor( productImage[index]),
+                    height: 1200,
+                    width:1200,
+                  
+                  },
+                  /* enlargedImagePosition: 'over', */
+                  imageClassName:'product-detail-image object-contain',
+                  enlargedImageClassName: 'max-w-[1200px] object-contain',
+                  
+                  enlargedImageContainerClassName:'bg-red-500 z-30',
+                  isHintEnabled:true
+                }} />
+              <div className='absolute top-0 right-0 flex h-full ml-1 items-center justify-center cursor-pointer z-40 rounded-tr-lg rounded-br-lg w-[50px]  text-6xl ' onClick={() => setIndex(index!== productImage.length-1 ? index+1 : 0)}><FiChevronRight className='px-2 py-2 bg-gray-900 bg-opacity-20 font-bold text-black'/></div>
+                </>
+              
+            /* <img
                 src={
                   productImage && urlFor(productImage && productImage[index])
                 }
                 className='product-detail-image object-contain'
-              />
+              />  */
             ) : null}
           </div>
           <div className='small-images-container'>
@@ -109,7 +136,7 @@ const ProductDetails = ({ product, products }) => {
                 key={i}
                 src={urlFor(item)}
                 className={
-                  i === index ? 'small-image selected-image' : 'small-image'
+                  i === index ? 'small-image selected-image border-2 border-solid border-red-500 border-spacing-2' : 'small-image'
                 }
                 onMouseEnter={() => setIndex(i)}
               />
@@ -117,7 +144,7 @@ const ProductDetails = ({ product, products }) => {
           </div>
         </div>
 
-        <div className='product-detail-desc'>
+        <div className='product-detail-desc col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2'>
           <h1 className='text-2xl'>{title}</h1>
          
           {colorVariants !== undefined ? (
