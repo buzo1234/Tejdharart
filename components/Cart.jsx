@@ -123,7 +123,7 @@ const Cart = () => {
     const userData = JSON.parse(localStorage.getItem('state')).user;
     const data = {
       purpose: 'Payment to Tejdharart',
-      amount: totalPrice,
+      amount: totalPrice+sf,
       buyer_name: userData.userDetails.userName,
       phone: userData.userDetails.userPhone,
       redirect_url: `https://tejdhar-otp-service.vercel.app/auth/orders?user_id=${userData.userDetails.userPhone}`,
