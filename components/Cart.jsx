@@ -70,28 +70,37 @@ const Cart = () => {
   const [sf, setsf] = useState(0);
 
   useEffect(() => {
-    if(city!=='sc'){
-      if(city ==='Mumbai' || city ==='Pune'){
-        setsf(75);
+    console.log('city', city)
+    if(city!==''){
+
+      if(city!=='sc'){
+        if(city ==='Mumbai' || city ==='Pune'){
+          setsf(75);
+        }
+        else{
+          setsf(135);
+        }
       }
       else{
-        setsf(135);
+        setsf(0);
       }
-    }
-    else{
-      setsf(0);
     }
   }, [city, state])
   
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('state')).user;
-
+    console.log('Entered in use', userData)
     if (userData.userAvailable) {
       setPresent(true);
+      console.log('done');
     } else {
       setPresent(false);
+      console.log('not done');
+
+  
     }
+    console.log(present)
   }, []);
 
   console.log(cartItems);
@@ -238,7 +247,7 @@ const Cart = () => {
                 <select
                   name='state'
                   id=''
-                  onChange={(e) => setState(e.target.value)}
+                  onChange={(e) => {setState(e.target.value); setCity('sc')}}
                   required
                   className='border-red-500 border-[1px] w-full px-2 py-1'
                 >
@@ -255,12 +264,13 @@ const Cart = () => {
                   name='city'
                   id=''
                   value={city}
+                  defaultValue='sc'
                   onChange={(e) => setCity(e.target.value)}
                   required
                   className='border-red-500 border-[1px] w-full px-2 py-1'
                 >
                   <option value='sc'>Select City</option>
-                  {state && state !== 'Select State'
+                  {state && state !== 'sc'
                     ? obj[state].map((val, id) => (
                         <option value={val.city} key={id}>
                           {val.city}
@@ -346,7 +356,7 @@ const Cart = () => {
             ))}
         </div>
 
-        {cartItems.length >= 1 && present ? (
+        {present ? (
           <div className='cart-bottom bg-white'>
             <div className='flex w-full justify-between mb-2'>
               <h4>Total Price</h4>
@@ -362,10 +372,18 @@ const Cart = () => {
               <h3>Subtotal:</h3>
               <h3>&#x20B9;{totalPrice+sf}</h3>
             </div>
+            {add1.length > 10 &&
+                  state.length > 2 &&
+                  city !== 'sc' &&
+                  city.length > 2 &&
+                  state !== 'Select State' &&
+                  pin.length === 6
+                    ? false
+                    : true ? <p className='text-center text-sm text-red-600 mt-4'>Please enter valid Address</p>:null}
             <div className='btn-container'>
               <button
                 type='button'
-                className='btn disabled:bg-gray-400 disabled:cursor-not-allowed'
+                className='btn disabled:bg-gray-400 disabled:cursor-not-allowed mt-4 disabled:mt-0'
                 disabled={
                   add1.length > 10 &&
                   state.length > 2 &&
