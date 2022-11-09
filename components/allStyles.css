@@ -477,7 +477,7 @@ span.text-red {
 }
 .product-detail-image:hover {
   background-color: #f02d34;
-}
+} 
 .small-images-container {
   display: flex;
   flex-wrap: wrap;

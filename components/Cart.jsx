@@ -13,6 +13,7 @@ import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import axios from 'axios';
 import { useRouter } from 'next/router';
+import { obj } from './statecity';
 
 const Cart = () => {
   const cartRef = useRef();
@@ -23,16 +24,65 @@ const Cart = () => {
     setShowCart,
     toggleCartItemQuanitity,
     onRemove,
+    setTotalPrice,
   } = useStateContext();
   const router = useRouter();
   const [present, setPresent] = useState(false);
-  const [address, setAddress] = useState('');
+
   const [add1, setAdd1] = useState('');
   const [add2, setAdd2] = useState('');
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
+  const [statearr, setstatearr] = useState([
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttarakhand',
+    'Uttar Pradesh',
+    'West Bengal',
+    'Jammu & Kashmir',
+  ]);
   const [pin, setPin] = useState('');
   const [land, setLand] = useState('');
+
+  const [sf, setsf] = useState(0);
+
+  useEffect(() => {
+    if(city!=='sc'){
+      if(city ==='Mumbai' || city ==='Pune'){
+        setsf(75);
+      }
+      else{
+        setsf(135);
+      }
+    }
+    else{
+      setsf(0);
+    }
+  }, [city, state])
+  
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('state')).user;
@@ -47,8 +97,19 @@ const Cart = () => {
   console.log(cartItems);
 
   const handleCheckout = async () => {
-    let location = add1 + ", " + add2 + ", " + state + ", " + city + ", " + pin + ", " + land
-    
+    let location =
+      add1 +
+      ', ' +
+      add2 +
+      ', ' +
+      state +
+      ', ' +
+      city +
+      ', ' +
+      pin +
+      ', ' +
+      land;
+
     console.log(totalPrice);
     const userData = JSON.parse(localStorage.getItem('state')).user;
     const data = {
@@ -60,7 +121,7 @@ const Cart = () => {
       webhook_url: '/webhook/',
     };
 
-    console.log(location)
+    console.log(location);
 
     try {
       let new_cart = {
@@ -153,33 +214,83 @@ const Cart = () => {
           <table className='flex w-full justify-center items-center flex-col '>
             <tr className='flex w-full py-1 justify-center'>
               <td className='flex w-full mx-2'>
-                <input type="text" placeholder='Address Line 1' onChange={(e) => setAdd1(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
-              </td>
-            
-            </tr>
-            <tr className='flex w-full py-2 justify-center'>
-              <td className='flex w-full mx-2'>
-              <input type="text" placeholder='Address Line 2 (optional)' onChange={(e) => setAdd2(e.target.value)} className='border-red-500 border-[1px] w-full px-2 py-1'/>
-              </td>
-            </tr>
-            <tr className='flex w-full py-2 justify-center'>
-              <td className='flex w-full mx-2'>
-              <input type="text" placeholder='State' onChange={(e) => setState(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
-              </td>
-              <td className='flex w-full mx-2'>
-              <input type="text" placeholder='City' onChange={(e) => setCity(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+                <input
+                  type='text'
+                  placeholder='Address Line 1'
+                  onChange={(e) => setAdd1(e.target.value)}
+                  required
+                  className='border-red-500 border-[1px] w-full px-2 py-1'
+                />
               </td>
             </tr>
             <tr className='flex w-full py-2 justify-center'>
               <td className='flex w-full mx-2'>
-              <input type="text" placeholder='Pin' onChange={(e) => setPin(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+                <input
+                  type='text'
+                  placeholder='Address Line 2 (optional)'
+                  onChange={(e) => setAdd2(e.target.value)}
+                  className='border-red-500 border-[1px] w-full px-2 py-1'
+                />
+              </td>
+            </tr>
+            <tr className='flex w-full py-2 justify-center'>
+              <td className='flex w-full mx-2'>
+                <select
+                  name='state'
+                  id=''
+                  onChange={(e) => setState(e.target.value)}
+                  required
+                  className='border-red-500 border-[1px] w-full px-2 py-1'
+                >
+                  <option value='Select State'>Select State</option>
+                  {statearr.map((val, id) => (
+                    <option value={val} key={id}>
+                      {val}
+                    </option>
+                  ))}
+                </select>
               </td>
               <td className='flex w-full mx-2'>
-              <input type="text" placeholder='Nearest Landmark' onChange={(e) => setLand(e.target.value)} required className='border-red-500 border-[1px] w-full px-2 py-1'/>
+                <select
+                  name='city'
+                  id=''
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  required
+                  className='border-red-500 border-[1px] w-full px-2 py-1'
+                >
+                  <option value='sc'>Select City</option>
+                  {state && state !== 'Select State'
+                    ? obj[state].map((val, id) => (
+                        <option value={val.city} key={id}>
+                          {val.city}
+                        </option>
+                      ))
+                    : null}
+                </select>
+              </td>
+            </tr>
+            <tr className='flex w-full py-2 justify-center'>
+              <td className='flex w-full mx-2'>
+                <input
+                  type='text'
+                  placeholder='Pin'
+                  onChange={(e) => setPin(e.target.value)}
+                  required
+                  className='border-red-500 border-[1px] w-full px-2 py-1'
+                />
+              </td>
+              <td className='flex w-full mx-2'>
+                <input
+                  type='text'
+                  placeholder='Nearest Landmark'
+                  onChange={(e) => setLand(e.target.value)}
+                  required
+                  className='border-red-500 border-[1px] w-full px-2 py-1'
+                />
               </td>
             </tr>
           </table>
-          
         </div>
 
         <div className='product-container '>
@@ -237,15 +348,34 @@ const Cart = () => {
 
         {cartItems.length >= 1 && present ? (
           <div className='cart-bottom bg-white'>
+            <div className='flex w-full justify-between mb-2'>
+              <h4>Total Price</h4>
+              <h4>&#x20B9;{totalPrice}</h4>
+            </div>
+            <div className='flex w-full justify-between mb-2'>
+              <h4>Shipping Fees</h4>
+              <h4>&#x20B9;{sf}</h4>
+              
+            </div>
+            <div className='bg-gray-500 h-[1px] w-full flex mb-2'></div>
             <div className='total'>
               <h3>Subtotal:</h3>
-              <h3>&#x20B9;{totalPrice}</h3>
+              <h3>&#x20B9;{totalPrice+sf}</h3>
             </div>
             <div className='btn-container'>
               <button
                 type='button'
                 className='btn disabled:bg-gray-400 disabled:cursor-not-allowed'
-                disabled={(add1.length > 10 && state.length > 3 && city.length > 2 && pin.length === 6) ? false : true}
+                disabled={
+                  add1.length > 10 &&
+                  state.length > 2 &&
+                  city !== 'sc' &&
+                  city.length > 2 &&
+                  state !== 'Select State' &&
+                  pin.length === 6
+                    ? false
+                    : true
+                }
                 onClick={handleCheckout}
               >
                 Pay Now
