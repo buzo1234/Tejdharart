@@ -306,7 +306,7 @@ const Cart = () => {
         <div className='product-container '>
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div className='product' key={item?._id + item?.colorVariant}>
+              <div className='product' key={item?._id + item?.colorVariant + item?.sizeVariant}>
                 <img
                   src={urlFor(item?.productImage?.[0])}
                   className='cart-product-image'
@@ -314,11 +314,24 @@ const Cart = () => {
                 <div className='item-desc'>
                   <div className='flex top'>
                     <h5>{item?.title}</h5>
-                    <h4>&#x20B9;{item?.defaultPrice}</h4>
-                    {item?.colorVariant !== null ? (
-                      <p>Colour : {item?.colorVariant}</p>
-                    ) : null}
+                    {item?.variantPrice === item?.defaultPrice ? (<h4>&#x20B9;{item?.defaultPrice}</h4>) : (<h4>&#x20B9;{item?.variantPrice}</h4>)} 
+                      
                   </div>
+                  {item?.colorVariant !== null || item?.sizeVariant!== null ? 
+                  <div style={{display:'flex', justifyContent:'space-evenly', marginTop:'10px'}}>
+                    {item?.colorVariant !== null ? (
+                     
+                        
+                     <p>Colour : <b>{item?.colorVariant}</b></p>
+               
+                     ) : null}
+                     {item?.sizeVariant !== null ? (
+                      <div>
+
+                      <p>Size : <b>{item?.sizeVariant}</b></p>
+                      </div>
+                      ) : null}
+                  </div> : null }
                   <div className='flex bottom'>
                     <div>
                       <p className='quantity-desc'>

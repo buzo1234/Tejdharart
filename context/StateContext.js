@@ -15,18 +15,18 @@ export const StateContext = ({ children }) => {
   let foundProduct;
   let index;
 
-  function check(cart, pro, prod) {
+  function check(cart, pro, pro2, prod) {
     if (cart.length === 0) {
       return false;
     } else {
       for (let i = 0; i < cart.length; i++) {
         console.log('got cart ', cart[i]);
         if (
-          cart[i].colorVariant === pro ||
-          (cart[i].colorVariant === null && pro === null)
+          (cart[i].colorVariant === pro ||
+          (cart[i].colorVariant === null && pro === null)) || (cart[i].sizeVariant === pro2 || (cart[i].sizeVariant === null && pro2 === null) )
         ) {
           console.log('enter', cart[i]?.id_main);
-          if (cart[i].id_main === prod._id + pro) {
+          if (cart[i].id_main === prod._id + pro + pro2) {
             console.log('same id and color', cart[i].id_main, prod._id + pro);
             return true;
           }
@@ -36,16 +36,16 @@ export const StateContext = ({ children }) => {
     }
   }
 
-  const onAdd = (product, color, quantity) => {
+  const onAdd = (product, color,size, proprice,  quantity) => {
     console.log('pp', product);
-    const checkProductInCart = check(cartItems, color, product);
+    const checkProductInCart = check(cartItems, color, size,  product);
     console.log('flag', checkProductInCart); /* cartItems.find(
       (item) =>
         item._id === product._id && item.colorVariant === product.colorVariant
     ); */
 
     setTotalPrice(
-      (prevTotalPrice) => prevTotalPrice + product.defaultPrice * quantity
+      (prevTotalPrice) => prevTotalPrice + proprice * quantity
     );
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 
@@ -53,7 +53,7 @@ export const StateContext = ({ children }) => {
       console.log('Entered', cartItems);
       const updatedCartItems = cartItems.map((cartProduct) => {
         console.log('cart items', cartProduct);
-        if (cartProduct.id_main === product._id + color) {
+        if (cartProduct.id_main === product._id + color + size) {
           console.log('entered in changin loop');
           return {
             ...cartProduct,
@@ -68,10 +68,13 @@ export const StateContext = ({ children }) => {
       setCartItems(updatedCartItems);
     } else {
       console.log('got color : ', color);
+      console.log('got size : ', size);
       let productclone = Object.assign({}, product);
       productclone.quantity = quantity;
       productclone.colorVariant = color;
-      productclone.id_main = product._id + color;
+      productclone.sizeVariant = size;
+      productclone.variantPrice = proprice;
+      productclone.id_main = product._id + color + size;
       setCartItems([...cartItems, { ...productclone }]);
     }
 
@@ -87,7 +90,7 @@ export const StateContext = ({ children }) => {
 
     setTotalPrice(
       (prevTotalPrice) =>
-        prevTotalPrice - foundProduct.defaultPrice * foundProduct.quantity
+        foundProduct.variantPrice === foundProduct.defaultPrice ? (prevTotalPrice - foundProduct.defaultPrice * foundProduct.quantity) : (prevTotalPrice - foundProduct.variantPrice * foundProduct.quantity)
     );
     setTotalQuantities(
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
@@ -110,7 +113,7 @@ export const StateContext = ({ children }) => {
         { ...foundProduct, quantity: foundProduct.quantity + 1 },
       ]);
       setTotalPrice(
-        (prevTotalPrice) => prevTotalPrice + foundProduct.defaultPrice
+        (prevTotalPrice) => foundProduct.variantPrice === foundProduct.defaultPrice ? (prevTotalPrice + foundProduct.defaultPrice) : (prevTotalPrice + foundProduct.variantPrice)
       );
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
     } else if (value === 'dec') {
@@ -120,7 +123,7 @@ export const StateContext = ({ children }) => {
           { ...foundProduct, quantity: foundProduct.quantity - 1 },
         ]);
         setTotalPrice(
-          (prevTotalPrice) => prevTotalPrice - foundProduct.defaultPrice
+          (prevTotalPrice) => foundProduct.variantPrice === foundProduct.defaultPrice ? (prevTotalPrice - foundProduct.defaultPrice) : (prevTotalPrice - foundProduct.variantPrice)
         );
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
       }

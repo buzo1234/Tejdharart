@@ -388,6 +388,7 @@ span.text-red {
 }
 .product {
   display: flex;
+  align-items: center;
   gap: 30px;
   padding: 20px;
 }

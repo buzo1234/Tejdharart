@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { urlFor } from '../lib/client';
 
 const Product = ({
-  product: { productImage, slug, title, defaultPrice, colorVariants },
+  product: { productImage, slug, title, defaultPrice, colorVariants, sizeVariants },
 }) => {
   return (
     <div>
@@ -25,8 +25,8 @@ const Product = ({
             />
           )}
           <p className='product-name'>{title}</p>
-          {colorVariants !== undefined ? (
-            <p className='text-sm text-gray-700 italic'>Has colour variants</p>
+          {colorVariants !== undefined || sizeVariants !== undefined ? (
+            <p className='text-sm text-gray-700 italic'>Has {colorVariants ? 'colour' : null} {colorVariants && sizeVariants ? 'and' : null} {sizeVariants ? 'size': null} variants</p>
           ) : null}
           <p className='product-price'>&#x20B9;{defaultPrice}</p>
         </div>
