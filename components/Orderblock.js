@@ -34,9 +34,14 @@ const Orderblock = ({ item, index, date, status }) => {
                   className='rounded-lg mr-3'
                 />
               </div>
+              <div className='flex flex-col justify-center'>
+
               <p className='font-semibold text-sm md:text-lg lg:text-lg xl:text-lg text-center'>{val.title}</p>
+              {val.colorVariant ? <p className='font-semibold text-xs md:text-md lg:text-md xl:text-md text-center'>Colour : <b>{val.colorVariant}</b></p> : null}
+              {val.sizeVariant ? <p className='font-semibold text-xs md:text-md lg:text-md xl:text-md text-center'>Size : <b>{val.sizeVariant}</b></p> : null}
+              </div>
               <p className='font-semibold text-sm md:text-lg lg:text-lg xl:text-lg text-center'>
-                Price:<br className='md:hidden lg:hidden xl:hidden'/> &#x20B9;{val.defaultPrice}
+                Price:<br className='md:hidden lg:hidden xl:hidden'/> &#x20B9;{val.variantPrice}
               </p>
               <p className='font-semibold text-sm md:text-lg lg:text-lg xl:text-lg text-center'>
                 Qty<br className='md:hidden lg:hidden xl:hidden'/> x {val.quantity}
