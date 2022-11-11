@@ -15,6 +15,7 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { obj } from './statecity';
 
+
 const Cart = () => {
   const cartRef = useRef();
   const {
@@ -106,6 +107,7 @@ const Cart = () => {
   console.log(cartItems);
 
   const handleCheckout = async () => {
+    const toastId = toast.loading('Checking out...');
     let location =
       add1 +
       ', ' +
@@ -173,10 +175,11 @@ const Cart = () => {
         data: data,
       })
         .then((res) => {
+          toast.remove(toastId);
           console.log('resp', res.data);
           router.push(res.data);
         })
-        .catch((error) => console.log('Error now ', error));
+        .catch((error) => {alert('Error now ', error); return});
     } catch (error) {
       alert(error);
     }

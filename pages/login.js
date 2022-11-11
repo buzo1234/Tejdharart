@@ -25,7 +25,7 @@ export default function Home() {
         <div className=' h-full w-screen flex flex-col '>
           <Head>
             <title>Login | Tejdharart</title>
-            <link rel='icon' href='/favicon.ico' />
+            <link rel='icon' href='/logo_tejdharart.jpg' />
           </Head>
           <div className='flex flex-col w-screen h-[800px] justify-center items-center'>
             <LoginPage />
