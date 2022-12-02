@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
             <div className="transition delay-200 translate-y-0 flex-col ease-in-out w-fit md:w-3/4 lg:w-3/4 xl:w-3/4 h-11/12  px-2 md:px-3 lg:px-3 xl:px-3 py-1 mx-1 flex bg-[#fcd34d] rounded-xl shadow-2xl overflow-y-scroll">
               <button
                 onClick={() => setModal(false)}
-                className='flex w-full justify-end text-red-600 text-xl font-bold'
+                className='flex w-full justify-end text-black text-xl font-bold'
               >
                 X
               </button>

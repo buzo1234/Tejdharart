@@ -17,7 +17,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-const Navbar = ({cat}) => {
+const Navbar = ({ cat }) => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   const { state, dispatch } = useUserContext();
   const router = useRouter();
@@ -89,7 +89,7 @@ const Navbar = ({cat}) => {
           <Menu as='div' className='relative inline-block text-left'>
             <div>
               <Menu.Button className='inline-flex w-full justify-center items-center rounded-md  px-4 py-2 text-sm md:text-lg lg:text-lg xl:text-lg font-medium text-gray-700 shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100'>
-                Categories
+                Products
                 <ChevronDownIcon
                   className='-mr-1 ml-2 h-5 w-5'
                   aria-hidden='true'
@@ -193,6 +193,15 @@ const Navbar = ({cat}) => {
                   <div className='py-1'>
                     <Menu.Item>
                       {({ active }) => (
+                        <Link href='/'>
+                          <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                            Home
+                          </a>
+                        </Link>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
                         <Link href='/orders'>
                           <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
                             Orders
@@ -200,6 +209,16 @@ const Navbar = ({cat}) => {
                         </Link>
                       )}
                     </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <Link href='/about'>
+                          <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                            About Us
+                          </a>
+                        </Link>
+                      )}
+                    </Menu.Item>
+
                     {/*  <Menu.Item>
                       {({ active }) => (
                         <a
@@ -310,7 +329,5 @@ const Navbar = ({cat}) => {
     </div>
   );
 };
-
-
 
 export default Navbar;
