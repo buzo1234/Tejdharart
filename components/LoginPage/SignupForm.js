@@ -76,7 +76,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
             <div className='mx-auto overflow-hidden'>
               <div className='p-8'>
                 <h1 className='text-xl md:text-4xl lg:text-5xl font-bold text-black '>
-                  Create account
+                  Create Account
                 </h1>
 
                 <form className='mt-12' action='' method='POST'>

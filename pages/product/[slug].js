@@ -353,7 +353,7 @@ const ProductDetails = ({ product, products }) => {
               </button>
               <button
                 type='button'
-                className='buy-now bg-gray-500'
+                className='buy-now'
                 onClick={handleBuyNow}
               >
                 Buy Now

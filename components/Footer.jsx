@@ -24,7 +24,7 @@ const Footer = ({ data }) => {
       <div className='w-full grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 px-4 py-2 mt-10'>
         <div className='col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 '>
           <p className='text-xl font-bold my-2'>Tejdhar Art</p>
-          <p className='text-3xl pr-32 mt-3 drop-shadow-lg tagline'>
+          <p className='text-3xl pr-32 mt-3 drop-shadow-lg about__para'>
             “There&apos;s no better way than a &apos;Gift&apos;, to
             express yourself.”
           </p>

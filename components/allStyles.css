@@ -242,7 +242,7 @@ span.text-red {
 .products-heading {
   text-align: center;
   margin: 40px 0px;
-  color: #ffa32b;
+  color:  rgb(252 211 77);
 }
 .products-heading h2 {
   font-size: 40px;
@@ -559,12 +559,12 @@ span.text-red {
 .buttons .add-to-cart {
   border-radius: 10px;
   padding: 10px 20px;
-  border: 1px solid #f02d34;
+  border: 1px solid black;
   margin-top: 40px;
   font-size: 18px;
   font-weight: 500;
   background-color: white;
-  color: #f02d34;
+  color: black;
   cursor: pointer;
   width: 200px;
   transform: scale(1, 1);
@@ -577,8 +577,8 @@ span.text-red {
   width: 200px;
   border-radius: 10px;
   padding: 10px 20px;
-  background-color: #a7a7a7;
-  color: white;
+  background-color: rgb(252 211 77);
+  color: black;
   border: none;
   margin-top: 40px;
   font-size: 18px;
