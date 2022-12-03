@@ -130,7 +130,7 @@ export const StateContext = ({ children }) => {
         foundProduct.InStock > foundProduct.quantity ? (
         (prevTotalPrice) => foundProduct.variantPrice === foundProduct.defaultPrice ? (prevTotalPrice + foundProduct.defaultPrice) : (prevTotalPrice + foundProduct.variantPrice)) : totalPrice
       );
-      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
+      setTotalQuantities((prevTotalQuantities) => (foundProduct.InStock > foundProduct.quantity) ?  prevTotalQuantities + 1: prevTotalQuantities);
     } else if (value === 'dec') {
       if (foundProduct.quantity > 1) {
         setCartItems([
