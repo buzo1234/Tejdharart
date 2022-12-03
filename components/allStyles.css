@@ -540,6 +540,22 @@ span.text-red {
   display: flex;
   gap: 30px;
 }
+
+.buttons .ofs {
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 1px solid #f02d34;
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: white;
+  color: #f02d34;
+  cursor: pointer;
+  width: 300px;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+
 .buttons .add-to-cart {
   border-radius: 10px;
   padding: 10px 20px;
@@ -584,7 +600,7 @@ span.text-red {
 .quantity-desc span {
   font-size: 16px;
   padding: 6px 12px;
-  cursor: pointer;
+  
 }
 .quantity-desc .minus {
   border-right: 1px solid gray;

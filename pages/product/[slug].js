@@ -20,9 +20,10 @@ const ProductDetails = ({ product, products }) => {
     colorVariants,
     custom,
     sizeVariants,
+    InStock
   } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, onAdd, setShowCart, cat } = useStateContext();
+  const { decQty, incQty, qty, setQty, onAdd, setShowCart, cat } = useStateContext();
   const [selcolor, setselcolor] = useState(null);
   const [selsize, setselsize] = useState(null);
   const [proprice, setproprice] = useState(defaultPrice);
@@ -32,6 +33,17 @@ const ProductDetails = ({ product, products }) => {
   const [descForm, setDescForm] = useState('');
 
   const [flag, setFlag] = useState(false);
+  const [dis, setDis] = useState(false);
+
+  useEffect(() => {
+    setQty(1);
+  }, [title])
+  
+
+  useEffect(() => {
+    setDis(InStock <= qty ? true : false)
+  }, [qty, title])
+  
 
   useEffect(() => {
     if (colorVariants !== undefined) {
@@ -51,10 +63,10 @@ const ProductDetails = ({ product, products }) => {
       setselsize(null);
       setproprice(defaultPrice);
     }
-  }, [sizeVariants]);
+  }, [sizeVariants,title]);
 
   const handleBuyNow = () => {
-    onAdd(product, selcolor, selsize, proprice, qty);
+    onAdd(product, selcolor, selsize, proprice, qty, InStock);
 
     setShowCart(true);
   };
@@ -260,13 +272,14 @@ const ProductDetails = ({ product, products }) => {
           </p>
           {!custom ? (
             <div className='quantity'>
-              <h3>Quantity:</h3>
+              <h3>Quantity: <br/> {dis && InStock!== 0? <><p className='text-yellow-500 font-semibold text-md'>Only {InStock} left in stock.</p><br/></> : null}</h3>
+              
               <p className='quantity-desc'>
-                <span className='minus' onClick={decQty}>
+                <span className='minus cursor-pointer' onClick={decQty}>
                   <AiOutlineMinus />
                 </span>
                 <span className='num'>{qty}</span>
-                <span className='plus' onClick={incQty}>
+                <span className={dis ?'plus cursor-not-allowed' : 'plus cursor-pointer'}  onClick={dis ? null : incQty}>
                   <AiOutlinePlus />
                 </span>
               </p>
@@ -329,12 +342,12 @@ const ProductDetails = ({ product, products }) => {
                 </p>
               ) : null}
             </>
-          ) : (
+          ) : InStock !== 0 ? (
             <div className='buttons'>
               <button
                 type='button'
                 className='add-to-cart'
-                onClick={() => onAdd(product, selcolor, selsize, proprice, qty)}
+                onClick={() => onAdd(product, selcolor, selsize, proprice, qty,InStock)}
               >
                 Add to Cart
               </button>
@@ -346,6 +359,16 @@ const ProductDetails = ({ product, products }) => {
                 Buy Now
               </button>
             </div>
+          ) : (
+            <div className='buttons'>
+
+            <button
+                type='button'
+                className='ofs'
+              
+                >
+                Item is Out Of Stock              </button>
+                </div>
           )}
         </div>
       </div>

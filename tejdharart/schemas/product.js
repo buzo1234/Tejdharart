@@ -23,6 +23,12 @@ export default {
       type: 'number',
     },
     {
+      title: "Items in Stock",
+      name: 'InStock',
+      type: 'number',
+      initialValue: 0,
+    },
+    {
       title: 'Is it Coustomizable?',
       name: 'custom',
       type: 'boolean',

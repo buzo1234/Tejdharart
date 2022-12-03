@@ -36,18 +36,14 @@ export const StateContext = ({ children }) => {
     }
   }
 
-  const onAdd = (product, color,size, proprice,  quantity) => {
+  const onAdd = (product, color,size, proprice,  quantity,stock) => {
     console.log('pp', product);
     const checkProductInCart = check(cartItems, color, size,  product);
     console.log('flag', checkProductInCart); /* cartItems.find(
       (item) =>
         item._id === product._id && item.colorVariant === product.colorVariant
     ); */
-
-    setTotalPrice(
-      (prevTotalPrice) => prevTotalPrice + proprice * quantity
-    );
-    setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
+    
 
     if (checkProductInCart) {
       console.log('Entered', cartItems);
@@ -55,9 +51,22 @@ export const StateContext = ({ children }) => {
         console.log('cart items', cartProduct);
         if (cartProduct.id_main === product._id + color + size) {
           console.log('entered in changin loop');
+          let stock_copy = stock - cartProduct.quantity
+          if(stock_copy > cartProduct.quantity + quantity){
+            setTotalPrice(
+              (prevTotalPrice) => prevTotalPrice + proprice * quantity
+            );
+            setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
+          }
+          else{
+            setTotalPrice(
+              (prevTotalPrice) => prevTotalPrice + proprice * stock_copy
+            );
+            setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + stock_copy);
+          }
           return {
             ...cartProduct,
-            quantity: cartProduct.quantity + quantity,
+            quantity: (stock > (cartProduct.quantity + quantity)) ? cartProduct.quantity + quantity : stock,
           };
         } else {
           return cartProduct;
@@ -67,6 +76,10 @@ export const StateContext = ({ children }) => {
 
       setCartItems(updatedCartItems);
     } else {
+      setTotalPrice(
+        (prevTotalPrice) => prevTotalPrice + proprice * quantity
+      );
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
       console.log('got color : ', color);
       console.log('got size : ', size);
       let productclone = Object.assign({}, product);
@@ -76,6 +89,7 @@ export const StateContext = ({ children }) => {
       productclone.variantPrice = proprice;
       productclone.id_main = product._id + color + size;
       setCartItems([...cartItems, { ...productclone }]);
+
     }
 
     toast.success(`${qty} ${product.title} added to the cart.`);
@@ -110,10 +124,11 @@ export const StateContext = ({ children }) => {
     if (value === 'inc') {
       setCartItems([
         ...newCartItems,
-        { ...foundProduct, quantity: foundProduct.quantity + 1 },
+        { ...foundProduct, quantity: (foundProduct.InStock > foundProduct.quantity ) ? foundProduct.quantity + 1 : foundProduct.InStock },
       ]);
       setTotalPrice(
-        (prevTotalPrice) => foundProduct.variantPrice === foundProduct.defaultPrice ? (prevTotalPrice + foundProduct.defaultPrice) : (prevTotalPrice + foundProduct.variantPrice)
+        foundProduct.InStock > foundProduct.quantity ? (
+        (prevTotalPrice) => foundProduct.variantPrice === foundProduct.defaultPrice ? (prevTotalPrice + foundProduct.defaultPrice) : (prevTotalPrice + foundProduct.variantPrice)) : totalPrice
       );
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
     } else if (value === 'dec') {
@@ -153,6 +168,7 @@ export const StateContext = ({ children }) => {
         qty,
         active,
         cat,
+        setQty,
         setCat,
         logAllCategories,
         setActive,

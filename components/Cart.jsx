@@ -8,13 +8,13 @@ import {
 } from 'react-icons/ai';
 import { TiDeleteOutline } from 'react-icons/ti';
 import toast from 'react-hot-toast';
+import { client } from '../lib/client';
 
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import { obj } from './statecity';
-
 
 const Cart = () => {
   const cartRef = useRef();
@@ -70,41 +70,50 @@ const Cart = () => {
 
   const [sf, setsf] = useState(0);
 
-  useEffect(() => {
-    console.log('city', city)
-    if(city!==''){
 
-      if(city!=='sc'){
-        if(city ==='Mumbai' || city ==='Pune'){
+  useEffect(() => {
+    console.log('city', city);
+    if (city !== '') {
+      if (city !== 'sc') {
+        if (city === 'Mumbai' || city === 'Pune') {
           setsf(75);
-        }
-        else{
+        } else {
           setsf(135);
         }
-      }
-      else{
+      } else {
         setsf(0);
       }
     }
-  }, [city, state])
-  
+  }, [city, state]);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('state')).user;
-    console.log('Entered in use', userData)
+    console.log('Entered in use', userData);
     if (userData.userAvailable) {
       setPresent(true);
       console.log('done');
     } else {
       setPresent(false);
       console.log('not done');
-
-  
     }
-    console.log(present)
+    console.log(present);
   }, []);
 
-  console.log(cartItems);
+  console.log('CART DATA',cartItems);
+
+  
+  async function UpdateInStock(docid, qty) {
+    client
+      .patch(docid)
+      .dec({ InStock: qty })
+      .commit()
+      .then(() => {
+        return true;
+      })
+      .catch(() => {
+        return false;
+      });
+  }
 
   const handleCheckout = async () => {
     const toastId = toast.loading('Checking out...');
@@ -125,7 +134,7 @@ const Cart = () => {
     const userData = JSON.parse(localStorage.getItem('state')).user;
     const data = {
       purpose: 'Payment to Tejdharart',
-      amount: totalPrice+sf,
+      amount: totalPrice + sf,
       buyer_name: userData.userDetails.userName,
       phone: userData.userDetails.userPhone,
       redirect_url: `https://tejdhar-otp-service.vercel.app/auth/orders?user_id=${userData.userDetails.userPhone}`,
@@ -176,10 +185,14 @@ const Cart = () => {
       })
         .then((res) => {
           toast.remove(toastId);
-          console.log('resp', res.data);
-          router.push(res.data);
+          console.log("RESPONSE_DATA",res.data)
+          console.log('resp', res.data.payment_request.longurl);
+          router.push(res.data.payment_request.longurl);
         })
-        .catch((error) => {alert('Error now ', error); return});
+        .catch((error) => {
+          alert('Error now ', error);
+          return;
+        });
     } catch (error) {
       alert(error);
     }
@@ -250,7 +263,10 @@ const Cart = () => {
                 <select
                   name='state'
                   id=''
-                  onChange={(e) => {setState(e.target.value); setCity('sc')}}
+                  onChange={(e) => {
+                    setState(e.target.value);
+                    setCity('sc');
+                  }}
                   required
                   className='border-red-500 border-[1px] w-full px-2 py-1'
                 >
@@ -309,7 +325,10 @@ const Cart = () => {
         <div className='product-container '>
           {cartItems.length >= 1 &&
             cartItems.map((item) => (
-              <div className='product' key={item?._id + item?.colorVariant + item?.sizeVariant}>
+              <div
+                className='product'
+                key={item?._id + item?.colorVariant + item?.sizeVariant}
+              >
                 <img
                   src={urlFor(item?.productImage?.[0])}
                   className='cart-product-image'
@@ -317,26 +336,37 @@ const Cart = () => {
                 <div className='item-desc'>
                   <div className='flex top'>
                     <h5>{item?.title}</h5>
-                    {item?.variantPrice === item?.defaultPrice ? (<h4>&#x20B9;{item?.defaultPrice}</h4>) : (<h4>&#x20B9;{item?.variantPrice}</h4>)} 
-                      
+                    {item?.variantPrice === item?.defaultPrice ? (
+                      <h4>&#x20B9;{item?.defaultPrice}</h4>
+                    ) : (
+                      <h4>&#x20B9;{item?.variantPrice}</h4>
+                    )}
                   </div>
-                  {item?.colorVariant !== null || item?.sizeVariant!== null ? 
-                  <div style={{display:'flex', justifyContent:'space-evenly', marginTop:'10px'}}>
-                    {item?.colorVariant !== null ? (
-                     
-                        
-                     <p>Colour : <b>{item?.colorVariant}</b></p>
-               
-                     ) : null}
-                     {item?.sizeVariant !== null ? (
-                      <div>
-
-                      <p>Size : <b>{item?.sizeVariant}</b></p>
-                      </div>
+                  {item?.colorVariant !== null || item?.sizeVariant !== null ? (
+                    <div
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-evenly',
+                        marginTop: '10px',
+                      }}
+                    >
+                      {item?.colorVariant !== null ? (
+                        <p>
+                          Colour : <b>{item?.colorVariant}</b>
+                        </p>
                       ) : null}
-                  </div> : null }
+                      {item?.sizeVariant !== null ? (
+                        <div>
+                          <p>
+                            Size : <b>{item?.sizeVariant}</b>
+                          </p>
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : null}
                   <div className='flex bottom'>
                     <div>
+                        {item?.InStock === item?.quantity ? <p className='font-semibold text-yellow-500 text-sm'>Only {item?.InStock} left in stock.</p> : null}
                       <p className='quantity-desc'>
                         <span
                           className='minus'
@@ -381,21 +411,24 @@ const Cart = () => {
             <div className='flex w-full justify-between mb-2'>
               <h4>Shipping Fees</h4>
               <h4>&#x20B9;{sf}</h4>
-              
             </div>
             <div className='bg-gray-500 h-[1px] w-full flex mb-2'></div>
             <div className='total'>
               <h3>Subtotal:</h3>
-              <h3>&#x20B9;{totalPrice+sf}</h3>
+              <h3>&#x20B9;{totalPrice + sf}</h3>
             </div>
             {add1.length > 10 &&
-                  state.length > 2 &&
-                  city !== 'sc' &&
-                  city.length > 2 &&
-                  state !== 'Select State' &&
-                  pin.length === 6
-                    ? false
-                    : true ? <p className='text-center text-sm text-red-600 mt-4'>Please enter valid Address</p>:null}
+            state.length > 2 &&
+            city !== 'sc' &&
+            city.length > 2 &&
+            state !== 'Select State' &&
+            pin.length === 6 ? (
+              false
+            ) : true ? (
+              <p className='text-center text-sm text-red-600 mt-4'>
+                Please enter valid Address
+              </p>
+            ) : null}
             <div className='btn-container'>
               <button
                 type='button'
