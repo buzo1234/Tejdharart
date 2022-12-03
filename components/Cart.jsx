@@ -419,7 +419,7 @@ const Cart = () => {
             </div>
             <div className='my-8'>
               <ul>
-                <li>Order  will be dispatched within 4 to 5</li>
+                <li>Order  will be dispatched within 4 to 5 working days once placed.</li>
                 <li>Once order placed cannot be exchanged/ Cancelled.</li>
                 <li>Select the colour and quantity properly.</li>
                 <li>Delivery time may vary as per location.</li>
