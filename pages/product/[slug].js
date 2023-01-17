@@ -20,10 +20,11 @@ const ProductDetails = ({ product, products }) => {
     colorVariants,
     custom,
     sizeVariants,
-    InStock
+    InStock,
   } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, setQty, onAdd, setShowCart, cat } = useStateContext();
+  const { decQty, incQty, qty, setQty, onAdd, setShowCart, cat } =
+    useStateContext();
   const [selcolor, setselcolor] = useState(null);
   const [selsize, setselsize] = useState(null);
   const [proprice, setproprice] = useState(defaultPrice);
@@ -37,13 +38,11 @@ const ProductDetails = ({ product, products }) => {
 
   useEffect(() => {
     setQty(1);
-  }, [title])
-  
+  }, [title]);
 
   useEffect(() => {
-    setDis(InStock <= qty ? true : false)
-  }, [qty, title])
-  
+    setDis(InStock <= qty ? true : false);
+  }, [qty, title]);
 
   useEffect(() => {
     if (colorVariants !== undefined) {
@@ -63,7 +62,7 @@ const ProductDetails = ({ product, products }) => {
       setselsize(null);
       setproprice(defaultPrice);
     }
-  }, [sizeVariants,title]);
+  }, [sizeVariants, title]);
 
   const handleBuyNow = () => {
     onAdd(product, selcolor, selsize, proprice, qty, InStock);
@@ -192,12 +191,12 @@ const ProductDetails = ({ product, products }) => {
           <h1 className='text-2xl'>{title}</h1>
 
           {colorVariants !== undefined ? (
-            <div style={{marginTop: '20px', marginBottom:'20px'}}>
+            <div style={{ marginTop: '20px', marginBottom: '20px' }}>
               <p className='font-semibold'>
                 Color Variants (Please select your color):
               </p>
-              <p className='p-0 m-0 text-sm'>Selected color :
-                <b>{selcolor}</b>
+              <p className='p-0 m-0 text-sm'>
+                Selected color :<b>{selcolor}</b>
               </p>
               <div className='flex gap-4 flex-wrap'>
                 {colorVariants.map((item, i) => (
@@ -224,7 +223,7 @@ const ProductDetails = ({ product, products }) => {
           ) : null}
 
           {sizeVariants !== undefined ? (
-            <div style={{marginTop: '20px', marginBottom:'20px'}}>
+            <div style={{ marginTop: '20px', marginBottom: '20px' }}>
               <p className='font-semibold'>
                 Size Variants (Please select your size):
               </p>
@@ -272,14 +271,29 @@ const ProductDetails = ({ product, products }) => {
           </p>
           {!custom ? (
             <div className='quantity'>
-              <h3>Quantity: <br/> {dis && InStock > 0? <><p className='text-yellow-500 font-semibold text-md'>Only {InStock} left in stock.</p><br/></> : null}</h3>
-              
+              <h3>
+                Quantity: <br />{' '}
+                {dis && InStock > 0 ? (
+                  <>
+                    <p className='text-yellow-500 font-semibold text-md'>
+                      Only {InStock} left in stock.
+                    </p>
+                    <br />
+                  </>
+                ) : null}
+              </h3>
+
               <p className='quantity-desc'>
                 <span className='minus cursor-pointer' onClick={decQty}>
                   <AiOutlineMinus />
                 </span>
                 <span className='num'>{qty}</span>
-                <span className={dis ?'plus cursor-not-allowed' : 'plus cursor-pointer'}  onClick={dis ? null : incQty}>
+                <span
+                  className={
+                    dis ? 'plus cursor-not-allowed' : 'plus cursor-pointer'
+                  }
+                  onClick={dis ? null : incQty}
+                >
                   <AiOutlinePlus />
                 </span>
               </p>
@@ -342,33 +356,27 @@ const ProductDetails = ({ product, products }) => {
                 </p>
               ) : null}
             </>
-          ) : InStock < 0 ? (
+          ) : InStock > 0 ? (
             <div className='buttons'>
               <button
                 type='button'
                 className='add-to-cart'
-                onClick={() => onAdd(product, selcolor, selsize, proprice, qty,InStock)}
+                onClick={() =>
+                  onAdd(product, selcolor, selsize, proprice, qty, InStock)
+                }
               >
                 Add to Cart
               </button>
-              <button
-                type='button'
-                className='buy-now'
-                onClick={handleBuyNow}
-              >
+              <button type='button' className='buy-now' onClick={handleBuyNow}>
                 Buy Now
               </button>
             </div>
           ) : (
             <div className='buttons'>
-
-            <button
-                type='button'
-                className='ofs'
-              
-                >
-                Item is Out Of Stock              </button>
-                </div>
+              <button type='button' className='ofs'>
+                Item is Out Of Stock{' '}
+              </button>
+            </div>
           )}
         </div>
       </div>
