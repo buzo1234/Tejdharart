@@ -342,7 +342,7 @@ const ProductDetails = ({ product, products }) => {
                 </p>
               ) : null}
             </>
-          ) : InStock !== 0 ? (
+          ) : InStock < 0 ? (
             <div className='buttons'>
               <button
                 type='button'
