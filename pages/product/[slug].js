@@ -272,7 +272,7 @@ const ProductDetails = ({ product, products }) => {
           </p>
           {!custom ? (
             <div className='quantity'>
-              <h3>Quantity: <br/> {dis && InStock!== 0? <><p className='text-yellow-500 font-semibold text-md'>Only {InStock} left in stock.</p><br/></> : null}</h3>
+              <h3>Quantity: <br/> {dis && InStock > 0? <><p className='text-yellow-500 font-semibold text-md'>Only {InStock} left in stock.</p><br/></> : null}</h3>
               
               <p className='quantity-desc'>
                 <span className='minus cursor-pointer' onClick={decQty}>
