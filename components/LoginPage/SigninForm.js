@@ -86,6 +86,7 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
                     id='email'
                     name='email'
                     type='number'
+                    required
                     className='peer h-10 w-full border-b-2 border-black text-black placeholder-transparent focus:outline-none focus:border-indigo-600  bg-transparent'
                     placeholder='john@doe.com'
                     onChange={(e) => setEmail(e.target.value)}

@@ -22,25 +22,29 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
 
   async function otpHandler(e) {
     e.preventDefault();
-    try {
-      await axios({
-        method: 'post',
-        url: 'https://tejdhar-otp-service.vercel.app/auth/',
+    if (name.length > 0 && email.length === 10) {
+      try {
+        await axios({
+          method: 'post',
+          url: 'https://tejdhar-otp-service.vercel.app/auth/',
 
-        data: {
-          name: name,
-          email: email,
-        },
-      }).then((response) => {
-        if (response.data === 'Already existing') {
-          alert('User Already exist! Please Sign In Instead');
-        } else {
-          setotpbtn(false);
-          setsignbtn(true);
-        }
-      });
-    } catch (error) {
-      alert(error);
+          data: {
+            name: name,
+            email: email,
+          },
+        }).then((response) => {
+          if (response.data === 'Already existing') {
+            alert('User Already exist! Please Sign In Instead');
+          } else {
+            setotpbtn(false);
+            setsignbtn(true);
+          }
+        });
+      } catch (error) {
+        alert(error);
+      }
+    } else {
+      alert('Enter Correct Information');
     }
   }
 
@@ -82,6 +86,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
                 <form className='mt-12' action='' method='POST'>
                   <div className='relative'>
                     <input
+                      required
                       id='name'
                       name='name'
                       type='text'
@@ -101,6 +106,7 @@ const SignupForm = ({ isAnimated, setIsAnimated }) => {
                       id='email'
                       name='email'
                       type='number'
+                      required
                       className='peer h-10 w-full border-b-2 border-black text-black placeholder-transparent focus:outline-none focus:border-indigo-600 bg-transparent'
                       placeholder='john@doe.com'
                       onChange={(e) => setEmail(e.target.value)}
