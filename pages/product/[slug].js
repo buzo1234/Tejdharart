@@ -85,6 +85,7 @@ const ProductDetails = ({ product, products }) => {
           email: emailForm,
           phone: phoneForm,
           description: descForm,
+          product: title,
         };
         await axios({
           method: 'post',
