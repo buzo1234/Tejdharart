@@ -70,7 +70,6 @@ const Cart = () => {
 
   const [sf, setsf] = useState(0);
 
-
   useEffect(() => {
     console.log('city', city);
     if (city !== '') {
@@ -99,9 +98,8 @@ const Cart = () => {
     console.log(present);
   }, []);
 
-  console.log('CART DATA',cartItems);
+  console.log('CART DATA', cartItems);
 
-  
   async function UpdateInStock(docid, qty) {
     client
       .patch(docid)
@@ -149,6 +147,7 @@ const Cart = () => {
         address: location,
         userID: userData.userDetails.userPhone,
         userNa: userData.userDetails.userName,
+        datetime: new Date(),
       };
       await axios({
         method: 'post',
@@ -185,7 +184,7 @@ const Cart = () => {
       })
         .then((res) => {
           toast.remove(toastId);
-          console.log("RESPONSE_DATA",res.data)
+          console.log('RESPONSE_DATA', res.data);
           console.log('resp', res.data.payment_request.longurl);
           router.push(res.data.payment_request.longurl);
         })
@@ -366,7 +365,11 @@ const Cart = () => {
                   ) : null}
                   <div className='flex bottom'>
                     <div>
-                        {item?.InStock === item?.quantity ? <p className='font-semibold text-yellow-500 text-sm'>Only {item?.InStock} left in stock.</p> : null}
+                      {item?.InStock === item?.quantity ? (
+                        <p className='font-semibold text-yellow-500 text-sm'>
+                          Only {item?.InStock} left in stock.
+                        </p>
+                      ) : null}
                       <p className='quantity-desc'>
                         <span
                           className='minus'
@@ -419,7 +422,10 @@ const Cart = () => {
             </div>
             <div className='my-8'>
               <ul>
-                <li>Order  will be dispatched within 4 to 5 working days once placed.</li>
+                <li>
+                  Order will be dispatched within 4 to 5 working days once
+                  placed.
+                </li>
                 <li>Once order placed cannot be exchanged/ Cancelled.</li>
                 <li>Select the colour and quantity properly.</li>
                 <li>Delivery time may vary as per location.</li>
