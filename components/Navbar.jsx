@@ -191,7 +191,7 @@ const Navbar = ({ cat }) => {
               >
                 <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
                   <div className='py-1'>
-                    <Menu.Item>
+                    {/* <Menu.Item>
                       {({ active }) => (
                         <Link href='/'>
                           <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
@@ -199,7 +199,7 @@ const Navbar = ({ cat }) => {
                           </a>
                         </Link>
                       )}
-                    </Menu.Item>
+                    </Menu.Item> */}
                     <Menu.Item>
                       {({ active }) => (
                         <Link href='/orders'>
@@ -209,7 +209,7 @@ const Navbar = ({ cat }) => {
                         </Link>
                       )}
                     </Menu.Item>
-                    <Menu.Item>
+                    {/* <Menu.Item>
                       {({ active }) => (
                         <Link href='/about'>
                           <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
@@ -217,7 +217,7 @@ const Navbar = ({ cat }) => {
                           </a>
                         </Link>
                       )}
-                    </Menu.Item>
+                    </Menu.Item> */}
 
                     {/*  <Menu.Item>
                       {({ active }) => (

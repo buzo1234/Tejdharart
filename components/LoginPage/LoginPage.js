@@ -17,7 +17,7 @@ const LoginPage = () => {
         style={{ backgroundImage: 'url(Background.jpg)' }}
       >
         <div className='h-full w-full flex justify-center items-center my-3 '>
-          <SignupForm isAnimated={isAnimated} setIsAnimated={setIsAnimated} />
+          <SigninForm isAnimated={isAnimated} setIsAnimated={setIsAnimated} />
         </div>
       </div>
 
@@ -30,7 +30,7 @@ const LoginPage = () => {
         style={{ backgroundImage: 'url(Background.jpg)' }}
       >
         <div className='h-full w-full flex justify-center items-center my-3'>
-          <SigninForm isAnimated={isAnimated} setIsAnimated={setIsAnimated} />
+          <SignupForm isAnimated={isAnimated} setIsAnimated={setIsAnimated} />
         </div>
       </div>
 
@@ -49,7 +49,7 @@ const LoginPage = () => {
               isAnimated ? 'translate-x-0' : '-translate-x-[20%]'
             } `}
           >
-            <RightOverlayContent
+            <LeftOverlayContent
               isAnimated={isAnimated}
               setIsAnimated={setIsAnimated}
             />
@@ -59,7 +59,7 @@ const LoginPage = () => {
               isAnimated ? 'translate-x-[20%]' : 'translate-x-0'
             }`}
           >
-            <LeftOverlayContent
+            <RightOverlayContent
               isAnimated={isAnimated}
               setIsAnimated={setIsAnimated}
             />

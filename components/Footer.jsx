@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
-import { AiFillInstagram, AiOutlineTwitter, AiFillFacebook } from 'react-icons/ai';
+import {
+  AiFillInstagram,
+  AiOutlineTwitter,
+  AiFillFacebook,
+} from 'react-icons/ai';
 import CatLink from './CatLink';
 import { client } from '../lib/client';
 import Head from 'next/head';
@@ -25,14 +29,17 @@ const Footer = ({ data }) => {
         <div className='col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 '>
           <p className='text-xl font-bold my-2'>Tejdhar Art</p>
           <p className='text-3xl pr-32 mt-3 drop-shadow-lg about__para'>
-            “There&apos;s no better way than a &apos;Gift&apos;, to
-            express yourself.”
+            “There&apos;s no better way than a &apos;Gift&apos;, to express
+            yourself.”
           </p>
           <p className='mt-5 text-xl font-bold'>Address: </p>
           <p className='text-lg'>
             B 3, Arti society Sheela Vihar colony Kothrud; Pune 411038.
           </p>
-          <p className='text-lg font-bold mt-5'>📧 tejdharart@gmail.com</p>
+          <div className='text-lg font-bold mt-5 flex items-center space-x-2'>
+            <img src='/mail.png' alt='email' className='w-[20px] h-[20px]' />
+            <p> tejdharart@gmail.com</p>
+          </div>
         </div>
 
         <div className='mt-4 md:mt-0 lg:mt-0 xl:mt-0'>
@@ -69,18 +76,23 @@ const Footer = ({ data }) => {
           <p className='text-lg font-bold mb-2'>Follow us on our Socials!</p>
           <div className='flex gap-2'>
             <Link href='https://www.instagram.com/tejdharart/'>
-              <p className='icons cursor-pointer'>
-                <AiFillInstagram className='w-8 h-8' />
-              </p>
+              <a target='_blank'>
+                <p className='icons cursor-pointer'>
+                  <AiFillInstagram className='w-8 h-8' />
+                </p>
+              </a>
             </Link>
             <p className='icons'>
               <AiOutlineTwitter className='w-8 h-8' />
             </p>
-            <p className='icons'>
-              <AiFillFacebook className='w-8 h-8' />
-            </p>
+            <Link href='https://www.facebook.com/tejdharart/'>
+              <a target='_blank'>
+                <p className='icons'>
+                  <AiFillFacebook className='w-8 h-8' />
+                </p>
+              </a>
+            </Link>
           </div>
-          
         </div>
       </div>
       <div className='footer-container'>

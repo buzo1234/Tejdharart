@@ -81,22 +81,33 @@ const SigninForm = ({ isAnimated, setIsAnimated }) => {
               </h1>
 
               <form className='mt-12' action='' method='POST'>
-                <div className='relative '>
-                  <input
-                    id='email'
-                    name='email'
-                    type='number'
-                    required
-                    className='peer h-10 w-full border-b-2 border-black text-black placeholder-transparent focus:outline-none focus:border-indigo-600  bg-transparent'
-                    placeholder='john@doe.com'
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  <label
-                    htmlFor='email'
-                    className='absolute left-0 -top-3.5 text-black text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-black peer-focus:text-sm bg-transparent'
-                  >
-                    Mobile Number
-                  </label>
+                <div className='flex w-full items-center'>
+                  <div className='mr-3 w-fit p-3 bg-black/20 rounded-lg  font-semibold '>
+                    +91
+                  </div>
+                  <div className='relative w-full'>
+                    <input
+                      value={email}
+                      id='email'
+                      name='email'
+                      type='number'
+                      required
+                      className='peer h-10 w-full border-b-2 border-black text-black placeholder-transparent focus:outline-none focus:border-indigo-600  bg-transparent'
+                      placeholder='john@doe.com'
+                      onChange={(e) => {
+                        if (e.target.value.length > 10) {
+                          return;
+                        }
+                        setEmail(e.target.value);
+                      }}
+                    />
+                    <label
+                      htmlFor='email'
+                      className='absolute left-0 -top-3.5 text-black text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-black peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-black peer-focus:text-sm bg-transparent'
+                    >
+                      Mobile Number
+                    </label>
+                  </div>
                 </div>
 
                 <div className='flex w-full justify-center items-center'>

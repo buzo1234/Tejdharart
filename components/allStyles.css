@@ -13,6 +13,18 @@ body {
   width: 0px;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -45,6 +57,13 @@ a {
 .marquee {
   position: relative;
   height: 400px;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.marquee2 {
+  position: relative;
+  height: 450px;
   width: 100%;
   overflow-x: hidden;
 }
@@ -242,9 +261,21 @@ span.text-red {
 .products-heading {
   text-align: center;
   margin: 40px 0px;
-  color:  rgb(252 211 77);
+  color: rgb(252 211 77);
 }
+
+.testimonial-heading {
+  text-align: center;
+  margin: 90px 0px 20px 0px;
+  color: rgb(252 211 77);
+}
+
 .products-heading h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.testimonial-heading h2 {
   font-size: 40px;
   font-weight: 800;
 }
@@ -447,7 +478,7 @@ span.text-red {
   border-radius: 15px;
   border: none;
   font-size: 20px;
- 
+
   text-transform: uppercase;
   background-color: #f02d34;
   color: #fff;
@@ -459,7 +490,6 @@ span.text-red {
   transform: scale(1.1, 1.1);
 }
 .product-detail-container {
-  
   gap: 40px;
   margin: 40px;
   margin-top: 60px;
@@ -477,7 +507,7 @@ span.text-red {
 }
 .product-detail-image:hover {
   background-color: #f02d34;
-} 
+}
 .small-images-container {
   display: flex;
   flex-wrap: wrap;
@@ -600,7 +630,6 @@ span.text-red {
 .quantity-desc span {
   font-size: 16px;
   padding: 6px 12px;
-  
 }
 .quantity-desc .minus {
   border-right: 1px solid gray;
@@ -617,6 +646,9 @@ span.text-red {
 .maylike-products-wrapper {
   margin-top: 120px;
 }
+.testimonials-wrapper {
+  margin-top: 40px;
+}
 .maylike-products-wrapper h2 {
   text-align: center;
   margin: 50px;
@@ -624,7 +656,22 @@ span.text-red {
 
   font-size: 28px;
 }
+
+.testimonials-wrapper h2 {
+  text-align: center;
+  margin: 50px;
+  color: #324d67;
+
+  font-size: 28px;
+}
 .maylike-products-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.testimonials-container {
   display: flex;
   justify-content: center;
   gap: 15px;
