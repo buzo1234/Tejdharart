@@ -13,7 +13,7 @@ const LoginPage = () => {
       <div
         className={`block bg-white absolute top-0 left-0 h-full w-full md:w-1/2 lg:w-1/2 xl:w-1/2 justify-center items-center transition-all duration-700 ease-in-out z-20 bg-repeat   ${
           isAnimated ? 'translate-x-full opacity-0' : ''
-        } bg-red-500`}
+        }`}
         style={{ backgroundImage: 'url(Background.jpg)' }}
       >
         <div className='h-full w-full flex justify-center items-center my-3 '>
