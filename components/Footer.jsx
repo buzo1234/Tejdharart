@@ -12,7 +12,7 @@ import Head from 'next/head';
 const Footer = ({ data }) => {
   console.log('footer data', data);
   return (
-    <div className='flex flex-col mt-4  w-full bg-amber-300'>
+    <div className='flex flex-col mt-20 w-full bg-amber-300'>
       <Head>
         <link rel='preconnect' href='https://fonts.googleapis.com'></link>
         <link
