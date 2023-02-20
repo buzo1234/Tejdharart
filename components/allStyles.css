@@ -63,7 +63,7 @@ a {
 
 .marquee2 {
   position: relative;
-  height: 450px;
+  height: 400px;
   width: 100%;
   overflow-x: hidden;
 }
@@ -72,18 +72,38 @@ a {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 15s linear infinite;
-  width: 180%;
+  animation: marquee 45s linear infinite;
+  width: 200%;
 }
 .track:hover {
   animation-play-state: paused;
 }
+
+.track2 {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee2 25s linear infinite;
+  width: 200%;
+}
+.track2:hover {
+  animation-play-state: paused;
+}
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translateX(50%);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  from {
+    transform: translateX(50%);
+  }
+  to {
+    transform: translateX(-100%);
   }
 }
 
@@ -864,10 +884,7 @@ span.text-red {
   .total h3 {
     font-size: 20px;
   }
-  .track {
-    animation: marquee 10s linear infinite;
-    width: 550%;
-  }
+
   .success-wrapper,
   .cancel-wrapper {
     min-height: 69vh;
