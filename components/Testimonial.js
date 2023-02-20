@@ -14,7 +14,7 @@ const Testimonial = ({ review }) => {
         />
       </div>
       <div className='mt-3 font-bold text-lg'>{review.name}</div>
-      <p className=' px-3 py-3 whitespace-normal'>"{review.review}"</p>
+      <p className=' px-3 py-3 whitespace-normal'>&quot;{review.review}&quot;</p>
     </div>
   );
 };
