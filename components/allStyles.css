@@ -63,7 +63,7 @@ a {
 
 .marquee2 {
   position: relative;
-  height: 400px;
+  height: 550px;
   width: 100%;
   overflow-x: hidden;
 }
@@ -72,7 +72,7 @@ a {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 45s linear infinite;
+  animation: marquee 30s linear infinite;
   width: 200%;
 }
 .track:hover {
@@ -83,7 +83,7 @@ a {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee2 25s linear infinite;
+  animation: marquee2 30s linear infinite;
   width: 200%;
 }
 .track2:hover {
@@ -91,7 +91,7 @@ a {
 }
 @keyframes marquee {
   from {
-    transform: translateX(50%);
+    transform: translateX(0%);
   }
   to {
     transform: translateX(-100%);
@@ -106,6 +106,28 @@ a {
     transform: translateX(-100%);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  @keyframes marquee2 {
+    from {
+      transform: translateX(50%);
+    }
+    to {
+      transform: translateX(-250%);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(50%);
+    }
+    to {
+      transform: translateX(-600%);
+    }
+  }
+}
+
+
 
 span.text-red {
   -webkit-text-stroke: 1px #f02d34;
@@ -668,6 +690,12 @@ span.text-red {
 }
 .testimonials-wrapper {
   margin-top: 40px;
+  display: flex;
+  width: 100%;
+}
+
+.track-layer {
+  width: 660%;
 }
 .maylike-products-wrapper h2 {
   text-align: center;
