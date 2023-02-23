@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import ReactImageMagnify from 'react-image-magnify';
 import Head from 'next/head';
 
-const ProductDetails = ({ product, products }) => {
+const ProductDetails = ({ product, products, discount }) => {
   console.log('product details', product);
   const {
     productImage,
@@ -23,7 +23,7 @@ const ProductDetails = ({ product, products }) => {
     InStock,
   } = product;
   const [index, setIndex] = useState(0);
-  const { decQty, incQty, qty, setQty, onAdd, setShowCart, cat } =
+  const { decQty, incQty, qty, setQty, onAdd, setShowCart, cat, setDiscount } =
     useStateContext();
   const [selcolor, setselcolor] = useState(null);
   const [selsize, setselsize] = useState(null);
@@ -35,6 +35,10 @@ const ProductDetails = ({ product, products }) => {
 
   const [flag, setFlag] = useState(false);
   const [dis, setDis] = useState(false);
+
+  useEffect(() => {
+    setDiscount(discount[0].discount);
+  }, []);
 
   useEffect(() => {
     setQty(1);
@@ -422,15 +426,15 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params: { slug } }) => {
   const query = `*[_type == "product" && !(_id in path('drafts.**')) && slug.current == '${slug}'][0]`;
   const productsQuery = "*[_type == 'product' && !(_id in path('drafts.**'))]";
+  const discountQuery = "*[_type == 'Discount' && !(_id in path('drafts.**'))]";
 
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
-
-  console.log(product);
+  const discount = await client.fetch(discountQuery);
 
   return {
-    props: { products, product },
-    revalidate: 10,
+    props: { products, product, discount },
+    revalidate: 2,
   };
 };
 

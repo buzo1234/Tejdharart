@@ -5,10 +5,14 @@ import { client } from '../../lib/client';
 import { Footer, Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
-const CategoryDetails = ({ category: { title }, products }) => {
+const CategoryDetails = ({ category: { title }, products, discount }) => {
   const router = useRouter();
   const { slug } = router.query;
-  const { cat } = useStateContext();
+  const { cat, setDiscount } = useStateContext();
+
+  useEffect(() => {
+    setDiscount(discount[0].discount);
+  }, []);
 
   useEffect(() => {
     products.sort((a, b) => (a._createdAt > b._createdAt ? -1 : 1));
@@ -68,9 +72,12 @@ export const getStaticProps = async ({ params: { slug } }) => {
   const productsQuery = `*[_type == "product" && !(_id in path('drafts.**')) && category._ref == '${category._id}']`;
   const products = await client.fetch(productsQuery);
 
+  const discountQuery = "*[_type == 'Discount' && !(_id in path('drafts.**'))]";
+  const discount = await client.fetch(discountQuery);
+
   return {
-    props: { products, category },
-    revalidate: 10,
+    props: { products, category, discount },
+    revalidate: 2,
   };
 };
 

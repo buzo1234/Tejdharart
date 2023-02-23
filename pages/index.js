@@ -6,10 +6,11 @@ import { Product, Footer } from '../components';
 import Category from '../components/Category';
 import { useStateContext } from '../context/StateContext';
 import Testimonial from '../components/Testimonial';
+import discount from '../tejdharart/schemas/discount';
 
-const Home = ({ products, CategoryData }) => {
+const Home = ({ products, CategoryData, discount }) => {
   const [modal, setModal] = useState(true);
-  const { logAllCategories, cat } = useStateContext();
+  const { logAllCategories, cat, setDiscount } = useStateContext();
 
   useEffect(() => {
     CategoryData.sort((a, b) => (a._createdAt > b._createdAt ? 1 : -1));
@@ -17,6 +18,7 @@ const Home = ({ products, CategoryData }) => {
 
   useEffect(() => {
     logAllCategories(CategoryData);
+    setDiscount(discount[0].discount);
   }, []);
 
   const testimonials = [
@@ -189,12 +191,13 @@ const Home = ({ products, CategoryData }) => {
           <div className='border-[2px] border-amber-300 shadow-xl shadow-amber-300/50 rounded-2xl px-4 py-3 flex flex-col w-full  justify-start items-center cursor-pointer '>
             <p className='font-semibold my-5 text-2xl'>Wedding Bells & Vibes</p>
             <p className='text-lg'>
-              We are famous in the world for &apos;Big Fat Indian Weddings&apos;. Weddings
-              are full of designer clothes to classy decors, delicious food to
-              ghodiwali baraat and love loaded blessings to thoughtful gifts. If
-              everything can be designed or customised in a wedding as per
-              theme, then why not gifts? At this point in wedding, Tejdhar Art
-              is happily there to help you making memories together.
+              We are famous in the world for &apos;Big Fat Indian
+              Weddings&apos;. Weddings are full of designer clothes to classy
+              decors, delicious food to ghodiwali baraat and love loaded
+              blessings to thoughtful gifts. If everything can be designed or
+              customised in a wedding as per theme, then why not gifts? At this
+              point in wedding, Tejdhar Art is happily there to help you making
+              memories together.
               <br />
               <br />
               We offer Custom Designed Invitations, Gift Hampers, Return Gifts,
@@ -255,8 +258,11 @@ export const getServerSideProps = async () => {
   const CategoryQuery = "*[_type == 'category' && !(_id in path('drafts.**'))]";
   const CategoryData = await client.fetch(CategoryQuery);
 
+  const DiscountQuery = "*[_type == 'Discount' && !(_id in path('drafts.**'))]";
+  const discount = await client.fetch(DiscountQuery);
+
   return {
-    props: { products, CategoryData },
+    props: { products, CategoryData, discount },
   };
 };
 

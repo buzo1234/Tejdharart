@@ -26,6 +26,7 @@ const Cart = () => {
     toggleCartItemQuanitity,
     onRemove,
     setTotalPrice,
+    discount,
   } = useStateContext();
   const router = useRouter();
   const [present, setPresent] = useState(false);
@@ -67,6 +68,9 @@ const Cart = () => {
   ]);
   const [pin, setPin] = useState('');
   const [land, setLand] = useState('');
+  const [discountedPrice, setDiscountedPrice] = useState(
+    ((100 - discount) / 100) * totalPrice
+  );
 
   const [sf, setsf] = useState(0);
 
@@ -129,10 +133,11 @@ const Cart = () => {
       land;
 
     console.log(totalPrice);
+    var paymentPrice = discount > 0 ? discountedPrice + sf : totalPrice + sf;
     const userData = JSON.parse(localStorage.getItem('state')).user;
     const data = {
       purpose: 'Payment to Tejdharart',
-      amount: totalPrice + sf,
+      amount: paymentPrice,
       buyer_name: userData.userDetails.userName,
       phone: userData.userDetails.userPhone,
       redirect_url: `https://tejdhar-otp-service.vercel.app/auth/orders?user_id=${userData.userDetails.userPhone}`,
@@ -411,6 +416,18 @@ const Cart = () => {
               <h4>Total Price</h4>
               <h4>&#x20B9;{totalPrice}</h4>
             </div>
+            {discount && cartItems.length > 0 && discount > 0 ? (
+              <div>
+                <div className='flex w-full justify-between mb-2'>
+                  <h4>Discount</h4>
+                  <h4>{discount}%</h4>
+                </div>
+                <div className='flex w-full justify-between mb-2'>
+                  <h4>Discounted Price</h4>
+                  <h4>&#x20B9;{discountedPrice}</h4>
+                </div>
+              </div>
+            ) : null}
             <div className='flex w-full justify-between mb-2'>
               <h4>Shipping Fees</h4>
               <h4>&#x20B9;{sf}</h4>
@@ -418,7 +435,7 @@ const Cart = () => {
             <div className='bg-gray-500 h-[1px] w-full flex mb-2'></div>
             <div className='total'>
               <h3>Subtotal:</h3>
-              <h3>&#x20B9;{totalPrice + sf}</h3>
+              <h3>&#x20B9;{discountedPrice + sf}</h3>
             </div>
             <div className='my-8'>
               <ul>
