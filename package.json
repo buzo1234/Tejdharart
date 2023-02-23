@@ -30,6 +30,7 @@
     "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
     "react-image-magnify": "^2.7.4",
+    "react-multilevel-dropdown": "^4.0.0",
     "stripe": "^8.209.0",
     "tls": "^0.0.1"
   },

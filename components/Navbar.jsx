@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
 
 import { Cart } from './';
 import { useStateContext } from '../context/StateContext';
@@ -19,6 +19,8 @@ function classNames(...classes) {
 
 const Navbar = ({ cat }) => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const [productshow, setProductShow] = useState(false);
+  const [aboutshow, setAboutShow] = useState(false);
   const { state, dispatch } = useUserContext();
   const router = useRouter();
 
@@ -48,6 +50,22 @@ const Navbar = ({ cat }) => {
       }
     }
   }, [state]);
+
+  function setProductModal() {
+    if (productshow) {
+      setProductShow(false);
+    } else {
+      setProductShow(true);
+    }
+  }
+
+  function setAboutModal() {
+    if (aboutshow) {
+      setAboutShow(false);
+    } else {
+      setAboutShow(true);
+    }
+  }
 
   async function logoutUser(e) {
     e.preventDefault();
@@ -280,10 +298,7 @@ const Navbar = ({ cat }) => {
           </>
         )}
 
-        <Menu
-          as='div'
-          className='relative inline-block text-left'
-        >
+        <Menu as='div' className='relative inline-block text-left'>
           <div>
             <Menu.Button className='inline-flex w-full justify-center  text-sm font-medium text-gray-700 shadow-sm  focus:outline-none '>
               <div className='w-[29px]'>
@@ -305,20 +320,108 @@ const Navbar = ({ cat }) => {
           >
             <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
               <div className='py-1'>
-                {cat?.map((category, i) => {
-                  let dd = category.slug;
-                  return (
-                    <Menu.Item key={i}>
-                      {({ active }) => (
-                        <Link href={`/category/${dd.current}`}>
-                          <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
-                            {category.title}
-                          </a>
-                        </Link>
+                <Menu.Item>
+                  <Link href={`/`}>
+                    <a className='block px-4 py-2 text-gray-900 text-sm hover:text-black font-semibold hover:bg-gray-100'>
+                      Home
+                    </a>
+                  </Link>
+                </Menu.Item>
+                <div>
+                  <Menu>
+                    <button
+                      className=' w-full  items-center rounded-md text-smfont-medium  shadow-sm  inline-flex justify-between px-4 py-2  hover:bg-gray-100 text-gray-900 text-sm hover:text-black font-semibold'
+                      onClick={setProductModal}
+                    >
+                      Products
+                      {!productshow ? (
+                        <ChevronDownIcon
+                          className='-mr-1 ml-2 h-5 w-5'
+                          aria-hidden='true'
+                        />
+                      ) : (
+                        <ChevronUpIcon
+                          className='-mr-1 ml-2 h-5 w-5'
+                          aria-hidden='true'
+                        />
                       )}
+                    </button>
+                  </Menu>
+                </div>
+
+                {productshow && (
+                  <div className='py-1'>
+                    {cat?.map((category, i) => {
+                      let dd = category.slug;
+                      return (
+                        <Menu.Item key={i}>
+                          {({ active }) => (
+                            <Link href={`/category/${dd.current}`}>
+                              <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                                {category.title}
+                              </a>
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      );
+                    })}
+                  </div>
+                )}
+
+                <Menu.Item>
+                  <Link href={'/'}>
+                    <a className='block px-4 py-2 text-gray-900 text-sm hover:text-black font-semibold hover:bg-gray-100'>
+                      We Also Offer
+                    </a>
+                  </Link>
+                </Menu.Item>
+                <div>
+                  <Menu>
+                    <button
+                      className=' w-full  items-center rounded-md text-smfont-medium  shadow-sm  inline-flex justify-between px-4 py-2  hover:bg-gray-100 text-gray-900 text-sm hover:text-black font-semibold'
+                      onClick={setAboutModal}
+                    >
+                      About Us
+                      {!aboutshow ? (
+                        <ChevronDownIcon
+                          className='-mr-1 ml-2 h-5 w-5'
+                          aria-hidden='true'
+                        />
+                      ) : (
+                        <ChevronUpIcon
+                          className='-mr-1 ml-2 h-5 w-5'
+                          aria-hidden='true'
+                        />
+                      )}
+                    </button>
+                  </Menu>
+                </div>
+
+                {aboutshow && (
+                  <div className='py-1'>
+                    <Menu.Item>
+                      <Link href={'/about'}>
+                        <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                          About Tejdhar
+                        </a>
+                      </Link>
                     </Menu.Item>
-                  );
-                })}
+                    <Menu.Item>
+                      <Link href={'/founder'}>
+                        <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                          About founder
+                        </a>
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link href={'/cancellation'}>
+                        <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                          Contact us
+                        </a>
+                      </Link>
+                    </Menu.Item>
+                  </div>
+                )}
               </div>
             </Menu.Items>
           </Transition>
