@@ -90,6 +90,7 @@ const ProductDetails = ({ product, products, discount }) => {
           phone: phoneForm,
           description: descForm,
           product: title,
+          subject: 'New Customization Order Received from Tejdhar'
         };
         await axios({
           method: 'post',

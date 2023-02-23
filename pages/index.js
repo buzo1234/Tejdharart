@@ -7,6 +7,7 @@ import Category from '../components/Category';
 import { useStateContext } from '../context/StateContext';
 import Testimonial from '../components/Testimonial';
 import discount from '../tejdharart/schemas/discount';
+import Link from 'next/link';
 
 const Home = ({ products, CategoryData, discount }) => {
   const [modal, setModal] = useState(true);
@@ -168,65 +169,59 @@ const Home = ({ products, CategoryData, discount }) => {
         </div> */}
 
         <div className='testimonial-heading'>
-          <h2>We also offer</h2>
+          <h2>We also provide</h2>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 mx-5 md:mx-5 lg:mx-20 xl:mx-20 gap-x-4 gap-y-4'>
-          <div className='border-[2px] border-amber-300 shadow-xl rounded-2xl shadow-amber-300/50 px-4 py-3 flex flex-col w-full justify-start items-center cursor-pointer '>
-            <p className='font-semibold text-2xl my-5'>Corporate Gifting</p>
-            <p className='text-lg'>
-              Corporate gifting is a gesture towards your clients, employees or
-              any other co-habitant within the business space. Recipients see it
-              as an expression of gratitude, appreciation and value. Considering
-              this thought, here at Tejdhar Art we offer you customised design
-              products or hampers curated uniquely only for you. We make them
-              mainly suitable for your budget at the same time occasion. Reach
-              out to us and allow us to help you make your people smile.
-              <br />
-              <br />
-              We offer Customised Corporate stationery, Goodie Bags, Hampers,
-              Combos, Gift Packaging Solutions.
-            </p>
+        <div className='products-container'>
+          <div>
+            <Link href={`/corporate`}>
+              <div className='service-card'>
+                {
+                  <img
+                    src={'/corporate.jpeg'}
+                    width={250}
+                    height={250}
+                    className='product-image'
+                    loading='eager'
+                  />
+                }
+                <p className='service-name'>Corporate Gifting</p>
+              </div>
+            </Link>
           </div>
-          <div className='border-[2px] border-amber-300 shadow-xl shadow-amber-300/50 rounded-2xl px-4 py-3 flex flex-col w-full  justify-start items-center cursor-pointer '>
-            <p className='font-semibold my-5 text-2xl'>Wedding Bells & Vibes</p>
-            <p className='text-lg'>
-              We are famous in the world for &apos;Big Fat Indian
-              Weddings&apos;. Weddings are full of designer clothes to classy
-              decors, delicious food to ghodiwali baraat and love loaded
-              blessings to thoughtful gifts. If everything can be designed or
-              customised in a wedding as per theme, then why not gifts? At this
-              point in wedding, Tejdhar Art is happily there to help you making
-              memories together.
-              <br />
-              <br />
-              We offer Custom Designed Invitations, Gift Hampers, Return Gifts,
-              Wedding Favours, Gift Tags, Trousseau Packing.
-            </p>
+
+          <div>
+            <Link href={`/wedding`}>
+              <div className='service-card'>
+                {
+                  <img
+                    src={'/wedding.jpeg'}
+                    width={250}
+                    height={250}
+                    className='product-image'
+                    loading='eager'
+                  />
+                }
+                <p className='service-name'>Wedding Bells & Vibes</p>
+              </div>
+            </Link>
           </div>
-          <div className='border-[2px] border-amber-300 shadow-xl shadow-amber-300/50 rounded-2xl px-4 py-3 flex flex-col w-full justify-start items-center cursor-pointer '>
-            <p className='font-semibold my-5 text-2xl'>Occasionally Yours</p>
-            <p className='text-lg'>
-              Gifting is the best way to express. Many occasions are incomplete
-              without gifting. When we gift, we make that person feel special
-              and the occasion too. If you are bored with stereotypical gift
-              items then get in touch with us today. We assure you, we will be
-              your perfect gifting partner.
-              <br />
-              <br />
-              We offer Diwali Gifts, Return Gifts suitable for occasion,
-              Bridesmaid Gifts, Anniversary Gifts, New Year Gifts, Christmas
-              Gifts, Gift Wrapping/Packaging Solutions.
-              <br />
-              <br />
-              • Products in this category are made to order.
-              <br /> • Quotation will be sent after products and quantity is
-              finalised.
-              <br /> • Making time varies as per requirement.
-              <br /> • Shipping cost chargeable at actual.
-              <br /> • Allow us to deliver you best by placing an order in time.
-              <br /> • No refunds/cancellations.
-            </p>
+
+          <div>
+            <Link href={`/occasionally`}>
+              <div className='service-card'>
+                {
+                  <img
+                    src={'/occasional.jpeg'}
+                    width={250}
+                    height={250}
+                    className='product-image'
+                    loading='eager'
+                  />
+                }
+                <p className='service-name'>Occasionally Yours</p>
+              </div>
+            </Link>
           </div>
         </div>
 

@@ -127,8 +127,6 @@ a {
   }
 }
 
-
-
 span.text-red {
   -webkit-text-stroke: 1px #f02d34;
   margin-left: 6px;
@@ -191,6 +189,21 @@ span.text-red {
   align-items: center;
   flex-direction: column;
 }
+
+.service-card {
+  cursor: pointer;
+  transform: scale(1, 1);
+  transition: transform 0.5s ease;
+  box-shadow: 5px 10px #888888;
+  padding: 3px 3px;
+  width: 300px;
+  height: 350px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
 .product-card:hover {
   transform: scale(1.02, 1.02);
 }
@@ -227,6 +240,12 @@ span.text-red {
 .product-name {
   font-weight: 500;
   margin: 10px 10px;
+  text-align: center;
+}
+
+.service-name {
+  font-weight: 500;
+  margin: 10px;
   text-align: center;
 }
 .product-price {

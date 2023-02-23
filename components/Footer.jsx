@@ -38,7 +38,7 @@ const Footer = ({ data }) => {
           </p>
           <div className='text-lg font-bold mt-5 flex items-center space-x-2'>
             <img src='/mail2.png' alt='email' className='w-[30px] h-[30px]' />
-            <p> tejdharart@gmail.com</p>
+            <p> info@tejdharart.in</p>
           </div>
         </div>
 
