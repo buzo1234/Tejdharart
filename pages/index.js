@@ -169,7 +169,7 @@ const Home = ({ products, CategoryData }) => {
           <h2>We also offer</h2>
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 mx-5 gap-x-4 gap-y-4'>
+        <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 mx-5 md:mx-5 lg:mx-20 xl:mx-20 gap-x-4 gap-y-4'>
           <div className='border-[2px] border-amber-300 shadow-xl rounded-2xl shadow-amber-300/50 px-4 py-3 flex flex-col w-full justify-start items-center cursor-pointer '>
             <p className='font-semibold text-2xl my-5'>Corporate Gifting</p>
             <p className='text-lg'>
