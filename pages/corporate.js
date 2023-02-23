@@ -3,7 +3,7 @@ import { Footer } from '../components';
 import Head from 'next/head';
 import { useStateContext } from '../context/StateContext';
 
-const corporate = () => {
+const Corporate = () => {
   const { cat } = useStateContext();
   const [nameForm, setNameForm] = useState('');
   const [emailForm, setEmailForm] = useState('');
@@ -146,4 +146,4 @@ const corporate = () => {
   );
 };
 
-export default corporate;
+export default Corporate;
