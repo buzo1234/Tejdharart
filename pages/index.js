@@ -189,7 +189,7 @@ const Home = ({ products, CategoryData }) => {
           <div className='border-[2px] border-amber-300 shadow-xl shadow-amber-300/50 rounded-2xl px-4 py-3 flex flex-col w-full  justify-start items-center cursor-pointer '>
             <p className='font-semibold my-5 text-2xl'>Wedding Bells & Vibes</p>
             <p className='text-lg'>
-              We are famous in the world for 'Big Fat Indian Weddings'. Weddings
+              We are famous in the world for &apos;Big Fat Indian Weddings&apos;. Weddings
               are full of designer clothes to classy decors, delicious food to
               ghodiwali baraat and love loaded blessings to thoughtful gifts. If
               everything can be designed or customised in a wedding as per
