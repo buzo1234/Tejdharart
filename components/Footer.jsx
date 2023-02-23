@@ -37,7 +37,7 @@ const Footer = ({ data }) => {
             B 3, Arti society Sheela Vihar colony Kothrud; Pune 411038.
           </p>
           <div className='text-lg font-bold mt-5 flex items-center space-x-2'>
-            <img src='/mail.png' alt='email' className='w-[20px] h-[20px]' />
+            <img src='/mail2.png' alt='email' className='w-[30px] h-[30px]' />
             <p> tejdharart@gmail.com</p>
           </div>
         </div>

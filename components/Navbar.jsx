@@ -87,7 +87,7 @@ const Navbar = ({ cat }) => {
       <div className='flex items-center  space-x-5'>
         <div className='hidden md:block lg:block xl:block'>
           <Menu as='div' className='relative inline-block text-left'>
-            <div>
+            {/* <div>
               <Menu.Button className='inline-flex w-full justify-center items-center rounded-md  px-4 py-2 text-sm md:text-lg lg:text-lg xl:text-lg font-medium text-gray-700 shadow-sm  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100'>
                 Products
                 <ChevronDownIcon
@@ -95,7 +95,7 @@ const Navbar = ({ cat }) => {
                   aria-hidden='true'
                 />
               </Menu.Button>
-            </div>
+            </div> */}
 
             <Transition
               as={Fragment}
@@ -282,7 +282,7 @@ const Navbar = ({ cat }) => {
 
         <Menu
           as='div'
-          className='relative inline-block text-left md:hidden lg:hidden xl:hidden'
+          className='relative inline-block text-left'
         >
           <div>
             <Menu.Button className='inline-flex w-full justify-center  text-sm font-medium text-gray-700 shadow-sm  focus:outline-none '>
