@@ -169,7 +169,7 @@ const Home = ({ products, CategoryData, discount }) => {
         </div> */}
 
         <div className='testimonial-heading'>
-          <h2>We also provide</h2>
+          <h2>We Also Offer</h2>
         </div>
 
         <div className='products-container'>

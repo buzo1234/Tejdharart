@@ -21,6 +21,7 @@ const Navbar = ({ cat }) => {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   const [productshow, setProductShow] = useState(false);
   const [aboutshow, setAboutShow] = useState(false);
+  const [serviceshow, setServiceShow] = useState(false);
   const { state, dispatch } = useUserContext();
   const router = useRouter();
 
@@ -64,6 +65,14 @@ const Navbar = ({ cat }) => {
       setAboutShow(false);
     } else {
       setAboutShow(true);
+    }
+  }
+
+  function setServiceModal() {
+    if (serviceshow) {
+      setServiceShow(false);
+    } else {
+      setServiceShow(true);
     }
   }
 
@@ -368,17 +377,57 @@ const Navbar = ({ cat }) => {
                   </div>
                 )}
 
-                <Menu.Item>
-                  <Link href={'/'}>
-                    <a className='block px-4 py-2 text-gray-900 text-sm hover:text-black font-semibold hover:bg-gray-100'>
-                      We Also Offer
-                    </a>
-                  </Link>
-                </Menu.Item>
-                <div>
+<div>
                   <Menu>
                     <button
                       className=' w-full  items-center rounded-md text-smfont-medium  shadow-sm  inline-flex justify-between px-4 py-2  hover:bg-gray-100 text-gray-900 text-sm hover:text-black font-semibold'
+                      onClick={setServiceModal}
+                    >
+                      We Also Offer
+                      {!serviceshow ? (
+                        <ChevronDownIcon
+                          className='-mr-1 ml-2 h-5 w-5'
+                          aria-hidden='true'
+                        />
+                      ) : (
+                        <ChevronUpIcon
+                          className='-mr-1 ml-2 h-5 w-5'
+                          aria-hidden='true'
+                        />
+                      )}
+                    </button>
+                  </Menu>
+                </div>
+
+                {serviceshow && (
+                  <div className='py-1'>
+                    <Menu.Item>
+                      <Link href={'/corporate'}>
+                        <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                          Corporate Gifting
+                        </a>
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link href={'/wedding'}>
+                        <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                          Wedding Bells & Vibes
+                        </a>
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <Link href={'/occasionally'}>
+                        <a className='block px-4 py-2 text-gray-600 text-sm hover:text-gray-900 hover:bg-gray-100'>
+                          Occasionally Yours
+                        </a>
+                      </Link>
+                    </Menu.Item>
+                  </div>
+                )}
+                <div>
+                  <Menu>
+                    <button
+                      className='w-full  items-center rounded-md text-smfont-medium  shadow-sm  inline-flex justify-between px-4 py-2  hover:bg-gray-100 text-gray-900 text-sm hover:text-black font-semibold'
                       onClick={setAboutModal}
                     >
                       About Us
