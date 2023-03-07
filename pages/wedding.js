@@ -52,7 +52,7 @@ const Wedding = () => {
               setEmailForm('');
               setPhoneForm('');
               setNameForm('');
-              toast.success('Order request received!');
+              toast.success('Request received!');
               setFlag(true);
             } else {
               alert(res.data[1]);
