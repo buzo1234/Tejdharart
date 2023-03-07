@@ -97,7 +97,7 @@ const Wedding = () => {
 
         <div
           className='product-detail-container  justify-center grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 items-center'
-          style={{ margin: '0px', gap: '0px', marginTop: '0px' }}
+          style={{ margin: '0px', gap: '20px 0px', marginTop: '0px' }}
         >
           <div className='col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3 '>
             <p className='font-bold my-3 text-lg'>
