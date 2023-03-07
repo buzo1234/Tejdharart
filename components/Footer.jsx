@@ -96,7 +96,7 @@ const Footer = ({ data }) => {
         </div>
       </div>
       <div className='footer-container'>
-        <p>©2022 Tejdharart, All rights reserverd</p>
+        <p>©2023 Tejdharart, All rights reserverd</p>
       </div>
     </div>
   );

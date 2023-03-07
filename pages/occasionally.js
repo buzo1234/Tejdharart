@@ -103,8 +103,8 @@ const Occasinally = () => {
         <br />
         <br />
 
-        <div className='product-detail-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 items-center'>
-          <div className='col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2 '>
+        <div className='product-detail-container  justify-center grid grid-cols-1 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-5 items-center' style={{margin:'0px', gap:'0px', marginTop:'0px'}}>
+          <div className='col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-3 '>
             <p className='font-bold my-3 text-lg'>
               Please fill this form for further enquiries.
             </p>
@@ -159,7 +159,7 @@ const Occasinally = () => {
               </p>
             ) : null}
           </div>
-          <div className='col-span-1  flex flex-col w-full'>
+          <div className='col-span-1 md:col-span-2 lg:col-span-2 xl:col-span-2  p-2 flex flex-col w-full items-start'>
             <div className='image-container flex relative'>
               {productImage ? (
                 <>
@@ -186,10 +186,11 @@ const Occasinally = () => {
                       },
                       /* enlargedImagePosition: 'over', */
                       imageClassName: 'product-detail-image object-contain',
-                      enlargedImageClassName: 'max-w-[1500px] object-contain',
+                      enlargedImageClassName: 'max-w-[1500px] object-contain left-0',
 
-                      enlargedImageContainerClassName: 'bg-red-500 z-30',
+                      enlargedImageContainerClassName: 'bg-red-500 z-30 ',
                       isHintEnabled: true,
+                      enlargedImagePosition: "over"
                     }}
                   />
                   <div
