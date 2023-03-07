@@ -212,7 +212,7 @@ const Home = ({ products, CategoryData, discount }) => {
               <div className='service-card'>
                 {
                   <img
-                    src={'/occasional.jpeg'}
+                    src={'/og2.jpeg'}
                     width={250}
                     height={250}
                     className='product-image'
