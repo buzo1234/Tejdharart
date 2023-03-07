@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Footer } from '../components';
 import Head from 'next/head';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useStateContext } from '../context/StateContext';
 
 const Corporate = () => {
